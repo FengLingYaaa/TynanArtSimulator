@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TynanArtSimulator-泰南艺术生成器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-card">
+        <div class="app-title">
+          <h1>TynanArtSimulator-泰南艺术生成器</h1>
+          <p>网页端 · 独立运行版</p>
+        </div>
+        <div class="top-grid">
+          <div class="field-inline">
+            <span class="label">模板模式</span>
+            <label><input type="radio" name="mode" value="simple" checked /> 简易模板</label>
+            <label><input type="radio" name="mode" value="complete" /> 完整模板</label>
+          </div>
+          <div class="field-inline">
+            <button id="openPresetBtn" type="button" class="ghost">人物预设</button>
+          </div>
+          <label class="field-inline">
+            <span class="label">载体类型</span>
+            <select id="carrierSelect"></select>
+          </label>
+          <label class="field-inline">
+            <span class="label">生成数量</span>
+            <select id="variantSelect">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option selected>4</option>
+              <option>5</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <main class="main-layout">
+        <aside class="event-column card">
+          <h2>事件类型</h2>
+          <label class="event-search">
+            <span>搜索事件</span>
+            <input id="eventSearch" type="text" placeholder="输入关键词筛选事件" />
+          </label>
+          <div id="eventList" class="event-list"></div>
+        </aside>
+
+        <section class="left-column">
+          <section id="formContainer" class="card"></section>
+
+          <section class="bottom-actions card slim">
+            <div class="button-row">
+              <button id="generateBtn" type="button">生成</button>
+              <button id="clearFormBtn" type="button" class="secondary">清空当前表单</button>
+              <button id="copyAllBtn" type="button" class="ghost">复制全部结果</button>
+            </div>
+          </section>
+        </section>
+
+        <section class="right-column card">
+          <div class="results-head">
+            <h2>候选结果</h2>
+            <p>右侧会显示 1–5 条中文艺术文本候选，每条都可单独复制。</p>
+          </div>
+          <div id="resultsContainer" class="results-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="presetModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-head">
+          <div>
+            <h2>人物预设</h2>
+            <p>这里添加的人物会自动排在角色建议最上方，且完整模板可自动带入称呼与代词。</p>
+          </div>
+          <button id="closePresetBtn" type="button" class="ghost">关闭</button>
+        </div>
+        <div class="preset-layout">
+          <div class="preset-list-wrap">
+            <ul id="presetList" class="preset-list"></ul>
+          </div>
+          <div class="preset-form">
+            <label>
+              <span>姓名</span>
+              <input id="presetName" type="text" placeholder="例如：风铃草" />
+            </label>
+            <label>
+              <span>称呼/身份</span>
+              <input id="presetTitle" type="text" list="role_title_list" placeholder="例如：工匠" />
+            </label>
+            <label>
+              <span>代词</span>
+              <select id="presetPronoun"></select>
+            </label>
+            <div class="button-row">
+              <button id="savePresetBtn" type="button">保存/更新预设</button>
+              <button id="deletePresetBtn" type="button" class="secondary">删除选中</button>
+              <button id="clearPresetBtn" type="button" class="ghost">清空输入</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <datalist id="role_title_list"></datalist>
+    <script src="./content-data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
