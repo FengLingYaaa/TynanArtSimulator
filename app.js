@@ -1,8 +1,10 @@
 const { EVENT_SCHEMAS, SLOT_SUGGESTIONS, TEXT_TEMPLATES } = window.TynanArtData;
 
 const PRESET_KEY = "rimworld_art_text_presets_v1";
+const THEME_KEY = "tynan_art_theme_v1";
 const CATEGORY_ORDER = [
   "艺术与创作",
+  "劳作与技艺",
   "社交与关系",
   "动物与自然",
   "日常与娱乐",
@@ -31,6 +33,7 @@ const refs = {
   resultsContainer: document.querySelector("#resultsContainer"),
   openPresetBtn: document.querySelector("#openPresetBtn"),
   closePresetBtn: document.querySelector("#closePresetBtn"),
+  themeToggleBtn: document.querySelector("#themeToggleBtn"),
   presetModal: document.querySelector("#presetModal"),
   eventList: document.querySelector("#eventList"),
   eventSearch: document.querySelector("#eventSearch"),
@@ -45,6 +48,7 @@ init();
 
 function init() {
   hydrateStaticControls();
+  applyTheme(loadTheme());
   bindStaticActions();
   renderPresetList();
   renderEventList();
@@ -84,6 +88,7 @@ function bindStaticActions() {
   refs.eventSearch.addEventListener("input", renderEventList);
   refs.openPresetBtn.addEventListener("click", openPresetModal);
   refs.closePresetBtn.addEventListener("click", closePresetModal);
+  refs.themeToggleBtn.addEventListener("click", toggleTheme);
 
   document.querySelector("#savePresetBtn").addEventListener("click", savePreset);
   document.querySelector("#deletePresetBtn").addEventListener("click", deletePreset);
@@ -481,6 +486,21 @@ function openPresetModal() {
 function closePresetModal() {
   refs.presetModal.classList.add("hidden");
   refs.presetModal.setAttribute("aria-hidden", "true");
+}
+
+function loadTheme() {
+  return localStorage.getItem(THEME_KEY) || "light";
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme === "dark" ? "dark" : "light";
+  refs.themeToggleBtn.textContent = theme === "dark" ? "切换日间" : "夜间模式";
+}
+
+function toggleTheme() {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme(next);
 }
 
 function personNameSuggestions() {

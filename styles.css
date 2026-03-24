@@ -8,6 +8,24 @@
   --accent: #3b82f6;
   --accent-weak: #dbeafe;
   --danger: #dc2626;
+  --field-bg: #ffffff;
+  --field-bg-elevated: #f8fafc;
+  --field-placeholder: #94a3b8;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --line: #334155;
+  --accent: #60a5fa;
+  --accent-weak: rgba(96, 165, 250, 0.18);
+  --danger: #f87171;
+  --field-bg: #0b1220;
+  --field-bg-elevated: #162033;
+  --field-placeholder: #64748b;
 }
 
 * {
@@ -57,7 +75,7 @@ body {
 
 .top-grid {
   display: grid;
-  grid-template-columns: 1.5fr auto 0.9fr 0.7fr;
+  grid-template-columns: 1.5fr auto auto 0.9fr 0.7fr;
   gap: 12px;
   align-items: center;
 }
@@ -176,7 +194,7 @@ label {
   border-bottom-left-radius: 0;
   padding: 0;
   min-height: 42px;
-  background: #f8fafc;
+  background: var(--field-bg-elevated);
   color: var(--text);
   border: 1px solid var(--line);
   border-left: 0;
@@ -195,7 +213,7 @@ label {
   z-index: 20;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: white;
+  background: var(--card);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
   max-height: 220px;
   overflow: auto;
@@ -239,9 +257,23 @@ textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: #fff;
+  background: var(--field-bg);
   padding: 10px 12px;
   min-height: 42px;
+  color: var(--text);
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: var(--field-placeholder);
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  outline-offset: 1px;
+  border-color: var(--accent);
 }
 
 button {
@@ -258,7 +290,7 @@ button.secondary {
 }
 
 button.ghost {
-  background: white;
+  background: var(--card);
   color: var(--text);
   border-color: var(--line);
 }
@@ -304,7 +336,7 @@ button:hover {
 
 .event-item {
   border: 1px solid var(--line);
-  background: white;
+  background: var(--card);
   color: var(--text);
   text-align: left;
   padding: 10px 12px;
@@ -320,7 +352,7 @@ button:hover {
 .event-item.active {
   border-color: var(--accent);
   background: var(--accent-weak);
-  color: #0f172a;
+  color: var(--text);
 }
 
 .preset-list {
@@ -419,7 +451,7 @@ button:hover {
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 12px;
-  background: #fcfdff;
+  background: color-mix(in srgb, var(--card) 92%, white 8%);
   display: flex;
   flex-direction: column;
   gap: 10px;

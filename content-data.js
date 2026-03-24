@@ -126,7 +126,7 @@ window.TynanArtData = {
         "include_style",
         "include_context"
       ],
-      "category": "艺术与创作"
+      "category": "劳作与技艺"
     },
     {
       "id": "finished_research",
@@ -176,7 +176,7 @@ window.TynanArtData = {
         "include_style",
         "include_context"
       ],
-      "category": "艺术与创作"
+      "category": "劳作与技艺"
     },
     {
       "id": "read_book",
@@ -789,7 +789,7 @@ window.TynanArtData = {
         "include_style",
         "include_context"
       ],
-      "category": "艺术与创作"
+      "category": "劳作与技艺"
     },
     {
       "id": "insult",
@@ -1157,7 +1157,7 @@ window.TynanArtData = {
         "include_style",
         "include_context"
       ],
-      "category": "艺术与创作"
+      "category": "劳作与技艺"
     },
     {
       "id": "game_play",
@@ -2563,6 +2563,366 @@ window.TynanArtData = {
         "include_context"
       ],
       "category": "异象与灾难"
+    },
+    {
+      "id": "vomit",
+      "label": "呕吐",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "呕吐者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "医疗与生理"
+    },
+    {
+      "id": "cavein_escape",
+      "label": "躲避塌方",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "躲避者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "异象与灾难"
+    },
+    {
+      "id": "caravan_ambush",
+      "label": "商队遇伏",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "商队成员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "异象与灾难"
+    },
+    {
+      "id": "ship_chunk_crash",
+      "label": "远古舰船残骸坠落",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "目击者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "异象与灾难"
+    },
+    {
+      "id": "volcanic_winter",
+      "label": "火山寒冬",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "经历者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "异象与灾难"
+    },
+    {
+      "id": "disease_onset",
+      "label": "疾病发作",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "患者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "illness",
+          "label": "疾病",
+          "slot_type": "object",
+          "suggestion_type": "illness_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "pawn",
+        "illness",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "illness",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "医疗与生理"
+    },
+    {
+      "id": "recruit_failure",
+      "label": "招募失败",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "recruiter",
+          "label": "招募者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "target",
+          "label": "目标对象",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "recruiter",
+        "target",
+        "date_text"
+      ],
+      "complete_fields": [
+        "recruiter",
+        "target",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "社交与关系"
+    },
+    {
+      "id": "animal_revenge",
+      "label": "动物反击",
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "石棺饰板"
+      ],
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "遭袭者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "animal",
+          "label": "动物",
+          "slot_type": "object",
+          "suggestion_type": "animal_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "simple_fields": [
+        "pawn",
+        "animal",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "animal",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ],
+      "category": "动物与自然"
     }
   ],
   "SLOT_SUGGESTIONS": {
@@ -2677,6 +3037,14 @@ window.TynanArtData = {
       "打牌",
       "骰子游戏",
       "扑克桌"
+    ],
+    "illness_name": [
+      "流感",
+      "疟疾",
+      "瘟疫",
+      "食物中毒",
+      "感染",
+      "机械病症"
     ],
     "quality": [
       "粗糙",
@@ -4376,6 +4744,222 @@ window.TynanArtData = {
           "在狂风卷起尘土的时候",
           "在风柱开始接地的一刻",
           "在所有退路都显得仓促之际"
+        ]
+      },
+      "vomit": {
+        "event_nouns": [
+          "{pawn_display}剧烈呕吐",
+          "{pawn_display}因不适而呕吐",
+          "{pawn_display}在痛苦中弯下身子"
+        ],
+        "main_images": [
+          "{pawn_display}正弯身呕吐{scene_fragment}",
+          "{pawn_display}跪倒在地，无法抑制恶心{scene_fragment}",
+          "{pawn_display}在呕吐后显得虚弱而狼狈{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "人物姿态被刻得极其不适，使观者几乎能感到胃部翻腾。",
+          "{pawn_pronoun}的神情扭曲而痛苦。",
+          "背景被压缩成尴尬而无力的沉默。"
+        ],
+        "style_sentences": [
+          "这件作品表现出身体失控时最直接的脆弱。",
+          "它让人想到病痛来袭时，体面往往是最先失去的东西。",
+          "整体气氛狼狈、难堪而真实。"
+        ],
+        "scene_phrases": [
+          "在众人避开的角落里",
+          "在身体彻底抗议的一刻",
+          "在恶心压过意志的时候"
+        ]
+      },
+      "cavein_escape": {
+        "event_nouns": [
+          "{pawn_display}躲过塌方",
+          "{pawn_display}从坠落的碎石中逃开",
+          "{pawn_display}险些被塌方吞没"
+        ],
+        "main_images": [
+          "{pawn_display}正从塌落的碎石前跃开{scene_fragment}",
+          "{pawn_display}在塌方逼近时猛然后退{scene_fragment}",
+          "{pawn_display}险险躲过头顶坠下的岩块{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "坠落的碎石被刻成下压的线条，使危险来得极快。",
+          "{pawn_pronoun}的动作停在仓促的一瞬，像是本能救了性命。",
+          "背景中的矿道显得逼仄而压迫。"
+        ],
+        "style_sentences": [
+          "这件作品表现出灾祸来临时的仓皇反应。",
+          "它让人想到许多生还并非因为准备充分，而是因为来得及。",
+          "整体气氛急迫、沉重而充满侥幸。"
+        ],
+        "scene_phrases": [
+          "在岩层断裂的一刻",
+          "在回声猛然炸开的矿道里",
+          "在碎石砸向地面的瞬间"
+        ]
+      },
+      "caravan_ambush": {
+        "event_nouns": [
+          "{pawn_display}所在商队遭遇伏击",
+          "{pawn_display}卷入对商队的突袭",
+          "{pawn_display}在商队遇伏时被迫迎战"
+        ],
+        "main_images": [
+          "{pawn_display}正站在被伏击的商队旁{scene_fragment}",
+          "{pawn_display}在商队混乱中寻找掩护{scene_fragment}",
+          "{pawn_display}面对突如其来的袭击显得格外警惕{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "行李、牲畜与武器的轮廓混作一团，使伏击显得更加突然。",
+          "{pawn_pronoun}的姿态紧绷，像是刚意识到危险已无处不在。",
+          "背景中的道路被切断，增添无处可逃的意味。"
+        ],
+        "style_sentences": [
+          "这件作品表现出旅途中的安全感如何在瞬间崩解。",
+          "它让人想到远行从不只意味着自由，也意味着更容易被暴力截住。",
+          "整体气氛混乱、仓促而危险。"
+        ],
+        "scene_phrases": [
+          "在行进中的道路上",
+          "在伏兵突然出现的时刻",
+          "在商队秩序被撕开的一瞬"
+        ]
+      },
+      "ship_chunk_crash": {
+        "event_nouns": [
+          "远古舰船残骸坠落在{pawn_display}所见之地",
+          "{pawn_display}目睹舰船残骸坠下",
+          "{pawn_display}见证一块燃烧的残骸落入地面"
+        ],
+        "main_images": [
+          "{pawn_display}正望向燃烧坠落的舰船残骸{scene_fragment}",
+          "一块炽热的舰船残骸在{pawn_display}视野中撞向地面{scene_fragment}",
+          "{pawn_display}被舰船残骸的坠落逼得停下脚步{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "残骸拖出的火痕被刻得锋利，使其来势显得蛮横。",
+          "人物与地面都显得渺小，像是被天外之物强行打断。",
+          "背景中的尘浪与火光同时扩散，增添撞击的重量。"
+        ],
+        "style_sentences": [
+          "这件作品表现出宇宙遗物坠入日常空间时的粗暴感。",
+          "它让人想到遥远战争的余烬如何仍能砸进边地生活。",
+          "整体气氛剧烈、灼热而突兀。"
+        ],
+        "scene_phrases": [
+          "在天空被尾焰划开的瞬间",
+          "在所有人都来不及反应之际",
+          "在轰鸣尚未落到地面的前一刻"
+        ]
+      },
+      "volcanic_winter": {
+        "event_nouns": [
+          "火山寒冬降临到{pawn_display}所处之地",
+          "{pawn_display}经历火山寒冬",
+          "{pawn_display}目睹灰烬遮蔽天空"
+        ],
+        "main_images": [
+          "{pawn_display}正站在被灰烬笼罩的天地间{scene_fragment}",
+          "{pawn_display}仰望被灰色云层吞没的天空{scene_fragment}",
+          "{pawn_display}在寒冷与灰烬中缓慢行走{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "天空与地面的界线被灰烬模糊，使世界显得更冷。",
+          "{pawn_pronoun}的姿态显得沉重，像是连呼吸都被压住。",
+          "背景中的植物与建筑都失去鲜明颜色，只剩灰白层次。"
+        ],
+        "style_sentences": [
+          "这件作品表现出漫长灾候如何缓慢改变世界的表情。",
+          "它让人想到有些灾难并不轰鸣，而是在持续中吞噬希望。",
+          "整体气氛阴沉、寒冷而迟滞。"
+        ],
+        "scene_phrases": [
+          "在灰烬持续飘落的时候",
+          "在白昼也像黄昏的一日",
+          "在寒冷与沉默一同压下之际"
+        ]
+      },
+      "disease_onset": {
+        "event_nouns": [
+          "{pawn_display}罹患{illness_name}",
+          "{pawn_display}被{illness_name}击中",
+          "{pawn_display}在疾病发作中变得虚弱"
+        ],
+        "main_images": [
+          "{pawn_display}正被{illness_name}折磨{scene_fragment}",
+          "{pawn_display}在病症发作中显得摇摇欲坠{scene_fragment}",
+          "{pawn_display}因{illness_name}而神情痛苦{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "人物姿态被刻得无力而迟钝，像是每个动作都更费力。",
+          "{pawn_pronoun}的神情显得病恹而勉强。",
+          "背景被处理得很静，衬出身体不适本身的存在感。"
+        ],
+        "style_sentences": [
+          "这件作品表现出疾病如何在日常中突然占据人的全部注意。",
+          "它让人想到看不见的病症同样能成为压倒性的对手。",
+          "整体气氛虚弱、沉闷而令人担忧。"
+        ],
+        "scene_phrases": [
+          "在病症刚刚发作的时候",
+          "在呼吸也变得费力的一日",
+          "在身体不再可靠的一刻"
+        ]
+      },
+      "recruit_failure": {
+        "event_nouns": [
+          "{recruiter_display}招募{target_display}失败",
+          "{target_display}拒绝了{recruiter_display}的说服",
+          "{recruiter_display}未能赢得{target_display}的回应"
+        ],
+        "main_images": [
+          "{recruiter_display}正被{target_display}冷冷拒绝{scene_fragment}",
+          "{target_display}从{recruiter_display}面前转开视线{scene_fragment}",
+          "{recruiter_display}的说辞在{target_display}面前失去作用{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "两人之间的距离没有缩短，反而显得更明显。",
+          "人物神情被刻得克制，却足够表明失败已成事实。",
+          "背景被处理得安静，使拒绝本身更直接。"
+        ],
+        "style_sentences": [
+          "这件作品表现出说服并不总能改写命运。",
+          "它让人想到人际关系中最沉重的部分，往往是无法扭转。",
+          "整体气氛平静、尴尬而略带挫败。"
+        ],
+        "scene_phrases": [
+          "在对话已经走到尽头的时候",
+          "在沉默取代回应的一刻",
+          "在所有努力都显得徒劳之际"
+        ]
+      },
+      "animal_revenge": {
+        "event_nouns": [
+          "{animal_name}向{pawn_display}发起反击",
+          "{pawn_display}遭到{animal_name}的报复",
+          "{animal_name}在受扰后突然扑向{pawn_display}"
+        ],
+        "main_images": [
+          "{animal_name}正向{pawn_display}猛扑过去{scene_fragment}",
+          "{pawn_display}在{animal_name}反击时本能后退{scene_fragment}",
+          "{animal_name}被激怒后朝{pawn_display}发起攻击{scene_fragment}"
+        ],
+        "detail_sentences": [
+          "动物的动作被刻得极快，使攻击带着本能的暴烈。",
+          "{pawn_pronoun}的姿态显得仓促而被动。",
+          "背景中的地面线条向后拖曳，增添袭来的速度感。"
+        ],
+        "style_sentences": [
+          "这件作品表现出自然并不总愿意顺从人的靠近。",
+          "它让人想到轻视野性往往会立刻招致代价。",
+          "整体气氛突然、粗暴而充满惊惧。"
+        ],
+        "scene_phrases": [
+          "在惊扰的一瞬间",
+          "在兽性骤然压过平静的时候",
+          "在退避已来不及的一刻"
         ]
       }
     }
