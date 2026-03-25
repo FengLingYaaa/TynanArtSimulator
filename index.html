@@ -1,115 +1,398 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#eef2f7" />
     <title>TynanArtSimulator-泰南艺术生成器</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="app-shell">
       <header class="top-card">
-        <div class="app-title">
-          <h1>TynanArtSimulator-泰南艺术生成器</h1>
-          <p>网页端 · 独立运行版</p>
-        </div>
-
-        <div class="top-grid">
-          <div class="field-inline">
-            <span class="label">模板模式</span>
-            <label><input type="radio" name="mode" value="simple" checked /> 简易模板</label>
-            <label><input type="radio" name="mode" value="complete" /> 完整模板</label>
+        <div class="header-main">
+          <div>
+            <h1>TynanArtSimulator-泰南艺术生成器</h1>
+            <p>单页版 · 艺术文本生成 / 机制说明 / 自定义事件</p>
           </div>
-
-          <div class="field-inline">
+          <div class="header-actions">
             <button id="openPresetBtn" type="button" class="ghost">人物预设</button>
-          </div>
-
-          <div class="field-inline">
             <button id="themeToggleBtn" type="button" class="ghost">夜间模式</button>
+            <button id="clearCookieBtn" type="button" class="ghost danger-text">清空 Cookie</button>
           </div>
-
-          <label class="field-inline">
-            <span class="label">载体类型</span>
-            <select id="carrierSelect"></select>
-          </label>
-
-          <label class="field-inline">
-            <span class="label">生成数量</span>
-            <select id="variantSelect">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option selected>4</option>
-              <option>5</option>
-            </select>
-          </label>
         </div>
+
+        <nav class="view-tabs" aria-label="页面切换">
+          <button class="view-tab active" type="button" data-view="generator">生成器</button>
+          <button class="view-tab" type="button" data-view="mechanism">生成机制</button>
+          <button class="view-tab" type="button" data-view="custom">自定义事件</button>
+        </nav>
       </header>
 
-      <main class="main-layout">
-        <aside class="event-column card">
-          <h2>事件类型</h2>
-          <label class="event-search">
-            <span>搜索事件</span>
-            <input id="eventSearch" type="text" placeholder="输入关键词筛选事件" />
-          </label>
-          <div id="eventList" class="event-list"></div>
-        </aside>
-
-        <section class="left-column">
-          <section id="formContainer" class="card"></section>
-
-          <section class="bottom-actions card slim">
-            <div class="button-row">
-              <button id="generateBtn" type="button">生成</button>
-              <button id="clearFormBtn" type="button" class="secondary">清空当前表单</button>
-              <button id="copyAllBtn" type="button" class="ghost">复制全部结果</button>
+      <main>
+        <section id="view-generator" class="view-section active">
+          <div class="settings-card card">
+            <div class="settings-grid">
+              <div class="field-inline">
+                <span class="label">模板模式</span>
+                <label><input type="radio" name="mode" value="simple" checked /> 简易模板</label>
+                <label><input type="radio" name="mode" value="complete" /> 完整模板</label>
+              </div>
+              <label class="field-inline">
+                <span class="label">载体类型</span>
+                <select id="carrierSelect"></select>
+              </label>
+              <label class="field-inline">
+                <span class="label">生成数量</span>
+                <select id="variantSelect">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option selected>4</option>
+                  <option>5</option>
+                </select>
+              </label>
             </div>
-          </section>
+          </div>
+
+          <div class="main-layout">
+            <aside class="event-column card">
+              <h2>事件类型</h2>
+              <label class="event-search">
+                <span>搜索事件</span>
+                <input id="eventSearch" type="text" placeholder="输入关键词筛选事件" />
+              </label>
+              <div id="eventList" class="event-list"></div>
+            </aside>
+
+            <section class="left-column">
+              <section id="formContainer" class="card"></section>
+              <section class="card slim">
+                <div class="button-row">
+                  <button id="generateBtn" type="button">生成</button>
+                  <button id="clearFormBtn" type="button" class="secondary">清空当前表单</button>
+                  <button id="copyAllBtn" type="button" class="ghost">复制全部结果</button>
+                </div>
+              </section>
+            </section>
+
+            <section class="right-column card">
+              <div class="section-head">
+                <h2>候选结果</h2>
+                <p>右侧会显示 1–5 条中文艺术文本候选，每条都可单独复制。</p>
+              </div>
+              <div id="resultsContainer" class="results-grid"></div>
+            </section>
+          </div>
         </section>
 
-        <section class="right-column card">
-          <div class="results-head">
-            <h2>候选结果</h2>
-            <p>右侧会显示 1–5 条中文艺术文本候选，每条都可单独复制。</p>
+        <section id="view-mechanism" class="view-section">
+          <div class="main-layout mechanism-layout">
+            <aside class="event-column card">
+              <h2>浏览事件模板</h2>
+              <label class="event-search">
+                <span>搜索事件</span>
+                <input id="mechanismSearch" type="text" placeholder="输入关键词筛选事件" />
+              </label>
+              <div id="mechanismEventList" class="event-list"></div>
+            </aside>
+
+            <section class="right-column card">
+              <div class="section-head">
+                <h2>艺术文本生成机制</h2>
+                <p>表层上，它只是“开头句 + 主画面 + 细节 + 风格 + 背景句”；深入看，则是一个基于槽位与句式池的可组合系统。</p>
+              </div>
+
+              <div id="mechanismFlow" class="flow-diagram"></div>
+              <div id="mechanismFlowDetail" class="flow-detail card inset"></div>
+              <div id="mechanismDetails" class="mechanism-details"></div>
+            </section>
           </div>
-          <div id="resultsContainer" class="results-grid"></div>
+        </section>
+
+        <section id="view-custom" class="view-section">
+          <div class="main-layout custom-layout">
+            <aside class="event-column card">
+              <h2>自定义类</h2>
+              <div class="button-row">
+                <button id="newCustomEventBtn" type="button">新建模板</button>
+                <button id="cloneBaseEventBtn" type="button" class="ghost">从现有事件复制</button>
+              </div>
+              <label class="event-search">
+                <span>搜索自定义事件</span>
+                <input id="customEventSearch" type="text" placeholder="输入关键词筛选已保存模板" />
+              </label>
+              <div id="customEventList" class="event-list"></div>
+            </aside>
+
+            <section class="right-column card">
+              <div class="section-head">
+                <h2>自定义事件模板</h2>
+                <p>改为引导式编辑：先填事件名，再补参与者与句式；变量名、元字段等高级选项折叠在下方，需要时再展开即可。</p>
+              </div>
+
+              <div class="custom-layout-grid">
+                <div class="custom-form-stack">
+                  <section class="form-section guide-section">
+                    <h3>三步创建</h3>
+                    <div class="guide-grid">
+                      <article class="guide-item">
+                        <strong>1</strong>
+                        <div>
+                          <h4>先决定事件是什么</h4>
+                          <p>填写事件标题，勾选适用载体。若你只是想改一点点，优先使用“从现有事件复制”。</p>
+                        </div>
+                      </article>
+                      <article class="guide-item">
+                        <strong>2</strong>
+                        <div>
+                          <h4>再补参与者与对象</h4>
+                          <p>只需添加“谁”和“什么东西”；变量名可留空，系统会自动生成一个可用版本。</p>
+                        </div>
+                      </article>
+                      <article class="guide-item">
+                        <strong>3</strong>
+                        <div>
+                          <h4>最后写句式池</h4>
+                          <p>每条句式单独写一张卡片，系统会随机组合。主画面句越清晰，生成预览越稳定。</p>
+                        </div>
+                      </article>
+                    </div>
+                  </section>
+                  <section class="form-section">
+                    <div class="section-head compact">
+                      <h3>基础信息</h3>
+                      <p>这里尽量只保留你最常会改的项目。</p>
+                    </div>
+                    <div class="form-grid custom-basic-grid">
+                      <label>
+                        <span>事件标题</span>
+                        <input id="customLabel" type="text" placeholder="例如：远征归来" />
+                      </label>
+                      <div class="field-card">
+                        <span class="field-card-title">适用载体</span>
+                        <div id="carrierCheckboxes" class="checkbox-grid compact"></div>
+                      </div>
+                    </div>
+                    <details class="advanced-panel">
+                      <summary>高级设置（可选）</summary>
+                      <div class="form-grid">
+                        <label>
+                          <span>事件 ID（可留空自动生成）</span>
+                          <input id="customId" type="text" placeholder="例如：custom_homecoming" />
+                        </label>
+                      </div>
+                      <div class="subtle-panel">
+                        <h4>完整模板中允许额外填写的补充字段</h4>
+                        <p class="hint">勾选后，生成器完整模板会出现这些额外输入项。</p>
+                        <div id="metaFieldCheckboxes" class="checkbox-grid"></div>
+                      </div>
+                    </details>
+                  </section>
+
+                  <section class="form-section">
+                    <div class="section-head compact">
+                      <h3>参与者与对象</h3>
+                      <p>“界面名称”决定用户看到的称呼；“变量名”只在写句式时用到，不填也可以。</p>
+                    </div>
+                    <div class="editor-grid">
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>必填角色</h4>
+                            <p class="hint">生成时必须提供，例如创作者、主角、受害者。</p>
+                          </div>
+                          <button id="addRequiredRoleBtn" type="button" class="ghost mini-button">添加角色</button>
+                        </div>
+                        <div id="requiredRoleEditor" class="list-editor"></div>
+                      </section>
+
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>必填对象</h4>
+                            <p class="hint">生成时必须提供，例如作品、武器、动物、书籍。</p>
+                          </div>
+                          <button id="addRequiredObjectBtn" type="button" class="ghost mini-button">添加对象</button>
+                        </div>
+                        <div id="requiredObjectEditor" class="list-editor"></div>
+                      </section>
+
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>可选角色</h4>
+                            <p class="hint">只在某些句式里偶尔出现时放这里。</p>
+                          </div>
+                          <button id="addOptionalRoleBtn" type="button" class="ghost mini-button">添加角色</button>
+                        </div>
+                        <div id="optionalRoleEditor" class="list-editor"></div>
+                      </section>
+
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>可选对象</h4>
+                            <p class="hint">例如背景物件、附属道具、次要动物。</p>
+                          </div>
+                          <button id="addOptionalObjectBtn" type="button" class="ghost mini-button">添加对象</button>
+                        </div>
+                        <div id="optionalObjectEditor" class="list-editor"></div>
+                      </section>
+                    </div>
+                  </section>
+
+                  <section class="form-section">
+                    <div class="section-head compact">
+                      <h3>句式模板</h3>
+                      <p>每条单独填写一张卡片，比原来的多行文本更容易读，也更不容易输错。</p>
+                    </div>
+                    <div class="editor-grid">
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>背景叙述 event_nouns</h4>
+                            <p class="hint">用于“这件作品讲述了什么”。</p>
+                          </div>
+                          <button id="addEventNounBtn" type="button" class="ghost mini-button">添加句式</button>
+                        </div>
+                        <div id="eventNounsEditor" class="list-editor"></div>
+                      </section>
+
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>主画面 main_images</h4>
+                            <p class="hint">最核心的部分，建议至少写 1 条清晰描述。</p>
+                          </div>
+                          <button id="addMainImageBtn" type="button" class="ghost mini-button">添加句式</button>
+                        </div>
+                        <div id="mainImagesEditor" class="list-editor"></div>
+                      </section>
+
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>细节句 detail_sentences</h4>
+                            <p class="hint">补背景、补动作、补构图压缩感。</p>
+                          </div>
+                          <button id="addDetailBtn" type="button" class="ghost mini-button">添加句式</button>
+                        </div>
+                        <div id="detailsEditor" class="list-editor"></div>
+                      </section>
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>风格句 style_sentences</h4>
+                            <p class="hint">补氛围、寓意、压迫感或戏剧感。</p>
+                          </div>
+                          <button id="addStyleBtn" type="button" class="ghost mini-button">添加句式</button>
+                        </div>
+                        <div id="stylesEditor" class="list-editor"></div>
+                      </section>
+
+                      <section class="editor-card">
+                        <div class="editor-head">
+                          <div>
+                            <h4>场景短语 scene_phrases</h4>
+                            <p class="hint">通常作为“，在……之中”这类补充片段。</p>
+                          </div>
+                          <button id="addSceneBtn" type="button" class="ghost mini-button">添加短语</button>
+                        </div>
+                        <div id="scenesEditor" class="list-editor"></div>
+                      </section>
+                    </div>
+                  </section>
+
+                  <section class="form-section">
+                    <details class="advanced-panel" open>
+                      <summary>变量写法速查</summary>
+                      <div class="helper-list">
+                        <p><code>{角色key_display}</code> 通常显示为“称呼 + 姓名”；<code>{角色key_name}</code> 只取姓名；<code>{角色key_pronoun}</code> 是代词。</p>
+                        <p><code>{对象key_name}</code> 读取对象名；<code>{scene_fragment}</code> 会自动带上逗号前缀，适合接在主画面句尾。</p>
+                        <p><code>{event_noun}</code> 用于背景句收束；若勾选了品质、标题、材料等元字段，也可直接写 <code>{quality}</code> / <code>{title}</code> / <code>{material}</code>。</p>
+                      </div>
+                    </details>
+                  </section>
+
+                  <section class="form-section">
+                    <h3>保存操作</h3>
+                    <div class="button-row">
+                      <button id="saveCustomEventBtn" type="button">保存/更新事件</button>
+                      <button id="deleteCustomEventBtn" type="button" class="secondary">删除当前事件</button>
+                      <button id="resetCustomEventBtn" type="button" class="ghost">清空编辑器</button>
+                    </div>
+                  </section>
+                </div>
+
+                <aside class="preview-column card inset">
+                  <div class="section-head compact">
+                    <h2>实时预览</h2>
+                    <p>根据当前编辑内容即时尝试生成预览。</p>
+                  </div>
+                  <label class="event-search">
+                    <span>预览载体</span>
+                    <select id="previewCarrierSelect"></select>
+                  </label>
+                  <div id="customPreviewStatus" class="hint">等待输入…</div>
+                  <section class="preview-token-box">
+                    <div class="section-head compact">
+                      <h3>当前可用变量</h3>
+                      <p>可直接复制这些名字到句式中。</p>
+                    </div>
+                    <div id="customPreviewTokens" class="token-list"></div>
+                  </section>
+                  <textarea id="customPreviewOutput" rows="18" readonly></textarea>
+                </aside>
+              </div>
+            </section>
+          </div>
+
+          <div id="cloneModal" class="modal hidden" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-head">
+                <div>
+                  <h2>从现有事件复制</h2>
+                  <p>选择一个系统事件作为起点，会自动复制其句式与槽位结构到当前编辑器中。</p>
+                </div>
+                <button id="closeCloneBtn" type="button" class="ghost">关闭</button>
+              </div>
+              <label class="event-search">
+                <span>搜索系统事件</span>
+                <input id="cloneSearch" type="text" placeholder="输入关键词筛选系统事件" />
+              </label>
+              <div id="cloneEventList" class="event-list"></div>
+            </div>
+          </div>
         </section>
       </main>
     </div>
-
     <div id="presetModal" class="modal hidden" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-head">
           <div>
             <h2>人物预设</h2>
-            <p>这里添加的人物会自动排在角色建议最上方，且完整模板可自动带入称呼与代词。</p>
+            <p>这里添加的人物会自动排在角色建议最上方，且完整模板会自动带入称呼与代词。</p>
           </div>
           <button id="closePresetBtn" type="button" class="ghost">关闭</button>
         </div>
-
         <div class="preset-layout">
           <div class="preset-list-wrap">
             <ul id="presetList" class="preset-list"></ul>
           </div>
-
           <div class="preset-form">
             <label>
               <span>姓名</span>
               <input id="presetName" type="text" placeholder="例如：风铃草" />
             </label>
-
             <label>
               <span>称呼/身份</span>
-              <input id="presetTitle" type="text" list="role_title_list" placeholder="例如：工匠" />
+              <input id="presetTitle" type="text" list="roleTitleList" placeholder="例如：工匠" />
             </label>
-
             <label>
               <span>代词</span>
               <select id="presetPronoun"></select>
             </label>
-
             <div class="button-row">
               <button id="savePresetBtn" type="button">保存/更新预设</button>
               <button id="deletePresetBtn" type="button" class="secondary">删除选中</button>
@@ -120,8 +403,15 @@
       </div>
     </div>
 
-    <datalist id="role_title_list"></datalist>
+    <div id="themeTransitionOverlay" class="theme-transition-overlay" aria-hidden="true"></div>
+
+    <datalist id="roleTitleList"></datalist>
     <script src="./content-data.js"></script>
-    <script src="./app.js"></script>
+    <script src="./storage.js"></script>
+    <script src="./catalog.js"></script>
+    <script src="./engine.js"></script>
+    <script src="./index.js"></script>
+    <script src="./mechanism.js"></script>
+    <script src="./custom-event.js"></script>
   </body>
 </html>
