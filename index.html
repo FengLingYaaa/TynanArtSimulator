@@ -15,18 +15,33 @@
             <h1>TynanArtSimulator-泰南艺术生成器</h1>
             <p>单页版 · 艺术文本生成 / 机制说明 / 自定义事件</p>
           </div>
-          <div class="header-actions">
-            <button id="openPresetBtn" type="button" class="ghost">人物预设</button>
-            <button id="themeToggleBtn" type="button" class="ghost">夜间模式</button>
-            <button id="clearCookieBtn" type="button" class="ghost danger-text">清空 Cookie</button>
+          <div class="header-actions-wrap">
+            <span class="toolbar-label">快捷功能</span>
+            <div class="header-actions">
+              <button id="openPresetBtn" type="button" class="ghost utility-btn">人物预设</button>
+              <button
+                id="themeToggleBtn"
+                type="button"
+                class="ghost utility-btn theme-toggle"
+                aria-label="切换到夜间模式"
+                title="切换到夜间模式"
+              >
+                <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+              </button>
+              <button id="clearCookieBtn" type="button" class="ghost utility-btn danger-text">清空 Cookie</button>
+            </div>
           </div>
         </div>
 
-        <nav class="view-tabs" aria-label="页面切换">
-          <button class="view-tab active" type="button" data-view="generator">生成器</button>
-          <button class="view-tab" type="button" data-view="mechanism">生成机制</button>
-          <button class="view-tab" type="button" data-view="custom">自定义事件</button>
-        </nav>
+        <div class="view-tabs-wrap">
+          <span class="toolbar-label">页面切换</span>
+          <nav class="view-tabs" aria-label="页面切换">
+            <button class="view-tab active" type="button" data-view="generator">生成器</button>
+            <button class="view-tab" type="button" data-view="mechanism">生成机制</button>
+            <button class="view-tab" type="button" data-view="custom">自定义事件</button>
+          </nav>
+        </div>
       </header>
 
       <main>
@@ -404,6 +419,7 @@
     </div>
 
     <div id="themeTransitionOverlay" class="theme-transition-overlay" aria-hidden="true"></div>
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
     <datalist id="roleTitleList"></datalist>
     <script src="./content-data.js"></script>

@@ -728,7 +728,9 @@
       loadEditor(normalized);
       renderPreview();
       global.dispatchEvent(new Event("tynan-custom-events-updated"));
-      global.alert("自定义事件已保存。");
+      if (global.TynanGeneratorPage && global.TynanGeneratorPage.showToast) {
+        global.TynanGeneratorPage.showToast("自定义事件已保存。", "success");
+      }
     } catch (error) {
       global.alert(error.message || String(error));
     }
@@ -748,6 +750,9 @@
     else resetEditor();
     renderPreview();
     global.dispatchEvent(new Event("tynan-custom-events-updated"));
+    if (global.TynanGeneratorPage && global.TynanGeneratorPage.showToast) {
+      global.TynanGeneratorPage.showToast("自定义事件已删除。", "success");
+    }
   }
 
   function findItem(id) {

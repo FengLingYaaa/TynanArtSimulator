@@ -11,6 +11,7 @@
     themeToggleBtn: document.querySelector("#themeToggleBtn"),
     themeMeta: document.querySelector('meta[name="theme-color"]'),
     themeTransitionOverlay: document.querySelector("#themeTransitionOverlay"),
+    toastContainer: document.querySelector("#toastContainer"),
     clearCookieBtn: document.querySelector("#clearCookieBtn"),
     openPresetBtn: document.querySelector("#openPresetBtn"),
     closePresetBtn: document.querySelector("#closePresetBtn"),
@@ -146,7 +147,9 @@
   function applyTheme(theme) {
     var current = theme === "dark" ? "dark" : "light";
     document.documentElement.dataset.theme = current;
-    refs.themeToggleBtn.textContent = current === "dark" ? "切换日间" : "夜间模式";
+    var nextLabel = current === "dark" ? "切换到日间模式" : "切换到夜间模式";
+    refs.themeToggleBtn.setAttribute("aria-label", nextLabel);
+    refs.themeToggleBtn.setAttribute("title", nextLabel);
     refs.themeToggleBtn.setAttribute("aria-pressed", current === "dark" ? "true" : "false");
     if (refs.themeMeta) refs.themeMeta.setAttribute("content", THEME_META[current]);
   }
@@ -809,11 +812,30 @@
     return node;
   }
 
+  function showToast(message, type) {
+    if (!refs.toastContainer || !message) return;
+    var toast = document.createElement("div");
+    toast.className = "toast" + (type ? " " + type : "");
+    toast.setAttribute("role", "status");
+    toast.textContent = message;
+    refs.toastContainer.appendChild(toast);
+    global.requestAnimationFrame(function () {
+      toast.classList.add("show");
+    });
+
+    global.setTimeout(function () {
+      toast.classList.remove("show");
+      global.setTimeout(function () {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 260);
+    }, 2200);
+  }
+
   function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(
         function () {
-          global.alert("文本已复制到剪贴板。");
+          showToast("文本已复制到剪贴板。", "success");
         },
         function () {
           fallbackCopy(text);
@@ -834,9 +856,9 @@
     textarea.select();
     try {
       document.execCommand("copy");
-      global.alert("文本已复制到剪贴板。");
+      showToast("文本已复制到剪贴板。", "success");
     } catch (_error) {
-      global.alert("复制失败，请手动复制。");
+      showToast("复制失败，请手动复制。", "error");
     }
     document.body.removeChild(textarea);
   }
@@ -854,5 +876,6 @@
     createPlaceholder: createPlaceholder,
     copyText: copyText,
     buildGroupedEvents: buildGroupedEvents,
+    showToast: showToast,
   };
 })(window);
