@@ -268,6 +268,17 @@ textarea::placeholder {
   color: var(--field-placeholder);
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0px 1000px var(--field-bg) inset;
+  box-shadow: 0 0 0px 1000px var(--field-bg) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
 input[type="text"]:focus,
 select:focus,
 textarea:focus {

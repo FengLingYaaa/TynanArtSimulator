@@ -13,22 +13,27 @@
           <h1>TynanArtSimulator-泰南艺术生成器</h1>
           <p>网页端 · 独立运行版</p>
         </div>
+
         <div class="top-grid">
           <div class="field-inline">
             <span class="label">模板模式</span>
             <label><input type="radio" name="mode" value="simple" checked /> 简易模板</label>
             <label><input type="radio" name="mode" value="complete" /> 完整模板</label>
           </div>
+
           <div class="field-inline">
             <button id="openPresetBtn" type="button" class="ghost">人物预设</button>
           </div>
+
           <div class="field-inline">
             <button id="themeToggleBtn" type="button" class="ghost">夜间模式</button>
           </div>
+
           <label class="field-inline">
             <span class="label">载体类型</span>
             <select id="carrierSelect"></select>
           </label>
+
           <label class="field-inline">
             <span class="label">生成数量</span>
             <select id="variantSelect">
@@ -83,23 +88,28 @@
           </div>
           <button id="closePresetBtn" type="button" class="ghost">关闭</button>
         </div>
+
         <div class="preset-layout">
           <div class="preset-list-wrap">
             <ul id="presetList" class="preset-list"></ul>
           </div>
+
           <div class="preset-form">
             <label>
               <span>姓名</span>
               <input id="presetName" type="text" placeholder="例如：风铃草" />
             </label>
+
             <label>
               <span>称呼/身份</span>
               <input id="presetTitle" type="text" list="role_title_list" placeholder="例如：工匠" />
             </label>
+
             <label>
               <span>代词</span>
               <select id="presetPronoun"></select>
             </label>
+
             <div class="button-row">
               <button id="savePresetBtn" type="button">保存/更新预设</button>
               <button id="deletePresetBtn" type="button" class="secondary">删除选中</button>
