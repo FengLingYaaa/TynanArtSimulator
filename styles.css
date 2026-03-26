@@ -330,6 +330,18 @@ button:active,
   flex-wrap: wrap;
 }
 
+.checkbox-inline {
+  flex-direction: row;
+  justify-content: flex-start;
+  min-height: 42px;
+  align-self: stretch;
+}
+
+.checkbox-inline input {
+  width: 18px;
+  height: 18px;
+}
+
 .label {
   min-width: 56px;
   color: var(--muted);
