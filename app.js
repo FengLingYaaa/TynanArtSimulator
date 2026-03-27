@@ -332,13 +332,40 @@
       "传奇级": "legendary"
     },
     material: {
-      "木制": "wooden",
-      "花岗岩": "granite",
+      "钢铁": "steel",
       "钢制": "steel",
+      "黄金": "gold",
+      "金制": "gold",
+      "白银": "silver",
       "银制": "silver",
-      "金色": "golden",
+      "翡翠": "jade",
       "玉制": "jade",
-      "石制": "stone"
+      "玻璃钢": "plasteel",
+      "玻璃钢制": "plasteel",
+      "活铁": "bioferrite",
+      "木材": "wood",
+      "木制": "wooden",
+      "石制": "stone",
+      "花岗岩": "granite",
+      "花岗岩制": "granite"
+    },
+    thing_name: {
+      "小雕塑": "small sculpture",
+      "大雕塑": "large sculpture",
+      "宏伟雕塑": "grand sculpture",
+      "扶手椅": "armchair",
+      "餐椅": "dining chair",
+      "棺材": "sarcophagus",
+      "左轮手枪": "revolver"
+    },
+    object_name: {
+      "墙": "wall",
+      "栅栏": "fence",
+      "书柜": "bookcase",
+      "小书柜": "small bookcase",
+      "坟墓": "grave",
+      "棺材": "sarcophagus",
+      "艺创台": "art bench"
     },
     weapon_name: {
       "单分子剑": "monosword",
@@ -349,32 +376,44 @@
       "重型冲锋枪": "heavy SMG",
       "等离子剑": "plasmasword"
     },
-    thing_name: {
-      "花岗岩雕像": "granite sculpture",
-      "木雕": "wooden sculpture",
-      "长椅": "bench",
-      "石制棺材": "stone sarcophagus",
-      "细工陶瓶": "fine pottery vase",
-      "玉制摆件": "jade ornament",
-      "玻璃钢武器": "plasteel weapon"
+    animal_name: {
+      "驼鹿": "moose",
+      "阿尔法敲击兽": "alpha thrumbo",
+      "野猪": "boar",
+      "森林狼": "timber wolf",
+      "乳齿象": "mastodon",
+      "驯鹿": "reindeer",
+      "大熊猫": "panda"
+    },
+    project_name: {
+      "微电子基础": "microelectronics",
+      "电荷弹": "charged shot",
+      "电力": "electricity",
+      "星际航行基础": "starflight basics",
+      "仿生学": "bionics",
+      "简易假体": "prosthetics",
+      "深钻井": "deep drilling",
+      "精密装配": "fabrication",
+      "高级精密装配": "advanced fabrication",
+      "低温休眠舱": "cryptosleep casket"
     },
     skill_name: {
       "建造": "construction",
       "艺术": "artistic work",
       "射击": "shooting",
-      "近战": "melee combat",
+      "格斗": "melee combat",
       "种植": "growing",
       "烹饪": "cooking",
       "医疗": "medicine",
       "研究": "research"
     },
     game_name: {
-      "桌棋": "a board game",
-      "台球": "billiards",
-      "飞镖盘": "darts",
-      "打牌": "cards",
-      "骰子游戏": "a dice game",
-      "扑克桌": "poker"
+      "台球桌": "billiards table",
+      "象棋桌": "chess table",
+      "扑克桌": "poker table",
+      "皇家博弈棋": "Game-of-Ur board",
+      "投石圈": "hoopstone ring",
+      "马蹄钉": "horseshoes pin"
     },
     training_name: {
       "服从": "obedience",
@@ -389,19 +428,11 @@
       "瘟疫": "plague",
       "食物中毒": "food poisoning",
       "感染": "infection",
-      "机械病症": "mechanites"
-    },
-    material_name: {
-      "钢铁": "steel",
-      "黄金": "gold",
-      "白银": "silver",
-      "翡翠": "jade",
-      "零部件": "component",
-      "高级零部件": "advanced component",
-      "玻璃钢": "plasteel",
-      "活铁": "bioferrite"
+      "感官纳米机械感染": "sensory mechanites",
+      "肌纤维纳米机械感染": "fibrous mechanites"
     }
   };
+
   var QUALITY_SHORT_MAP = {
     "极差": "极差",
     "较差": "较差",
@@ -411,6 +442,9 @@
     "大师级": "大师",
     "传奇级": "传奇"
   };
+
+  var LEGACY_SCULPTURE_POOL = ["雕塑", "作品", "艺术品", "雕像"];
+
   var EN_CARRIER_OPENERS = {
     "雕塑": [
       "This sculpture depicts {main_image_en}.",
@@ -438,11 +472,13 @@
       "An engraving on this sarcophagus depicts {main_image_en}."
     ]
   };
+
   var EN_CONTEXT_SENTENCES = [
     "This depiction refers to {event_noun_en} on {date_text_en}.",
     "This depiction relates to {event_noun_en} on {date_text_en}.",
     "This depiction tells the story of {event_noun_en} on {date_text_en}."
   ];
+
   var EN_ART_CONJUNCTIONS = [
     "as an interesting contrast,",
     "rounding out the work,",
@@ -451,6 +487,7 @@
     "provocatively,",
     "besides that,"
   ];
+
   var EN_ART_EXTRA_CLAUSES = [
     "the image is bordered by abstract shapes",
     "at the edge of the image are several figures",
@@ -461,6 +498,7 @@
     "a standing figure appears near the edge of the image",
     "the whole image is depicted by the careful arrangement of simple shapes"
   ];
+
   var EN_ART_STYLE_CLAUSES = [
     "the work symbolizes loss",
     "the work is executed in a symbolic style",
@@ -471,72 +509,9 @@
     "the work is shaded in hues of red and blue",
     "almost every shape in the image seems to be triangular"
   ];
-  var CN_STYLE_CONNECTORS = ["作为有趣的对比，", "作为对作品的补充，", "顺带一提，", "惊人的是，", "极具挑衅意味的是，", "不寻常的是，", "虽然很少有人会期待，", "除此之外，"];
-  var CN_ART_EXTRA_TEMPLATES = [
-    "画面边缘由{subimageplural_cn}组成",
-    "画面的边缘是{subimageplural_cn}",
-    "{side_position_cn}有{subimagesingle_cn}",
-    "主体身后是{subimageany_cn}",
-    "图像的下半部分被{subimageany_cn}支配",
-    "这一幕发生在一处聚落里",
-    "这一幕发生在一处聚落附近",
-    "一个人物{idles_cn}{side_position_cn}",
-    "一位{pawn_adj_cn}人物{idles_cn}{side_position_cn}",
-    "整幅画面由精心布置的{subimageplural_cn}组成"
-  ];
-  var CN_ART_STYLE_TEMPLATES = [
-    "这件作品象征着{concept_cn}",
-    "这件作品充满了{concept_cn}的意味，并以一种{artstyle_cn}的风格绘制",
-    "这件作品采用了{artstyle_cn}的风格",
-    "作品带有一种{artstyle_cn}的气息，并呈现出{composition_cn}的结构",
-    "整幅画面的构图显得{composition_cn}",
-    "作品的风格是{artstyle_cn}的，并混合了{artstyle_secondary_cn}元素",
-    "这幅图像同时表达了{concept_cn}与{concept_secondary_cn}",
-    "这件作品以{color_cn}和{color_secondary_cn}的色调铺陈"
-  ];
-  var CN_SUBIMAGE_SINGLES = ["一个人物", "一处地形", "一个聚落", "一棵树", "一株作物", "一群动物"];
-  var CN_SUBIMAGE_PLURALS = ["几个人物", "几件武器", "许多形状", "几株作物", "一簇树木", "数个抽象形体"];
-  var CN_SIDE_POSITIONS = ["在背景中", "在远处", "在画面边缘", "在主体旁边", "在焦点背后", "在图像的上半部分", "在图像的下半部分"];
-  var CN_PAWN_ADJS = ["受伤的", "站立的", "年轻的", "年老的", "肮脏的", "手持武器的"];
-  var CN_IDLES = ["静静站着", "安静地坐着", "停留着", "显现出来", "浮现在那里"];
-  var CN_CONCEPTS = ["失落", "希望", "绝望", "秩序", "暴力", "哀伤", "生存", "渴望", "喜悦", "虔敬"];
-  var CN_ART_STYLES = ["古典", "现代", "象征性", "注重细节", "几何化", "抽象", "极简", "表现主义"];
-  var CN_COMPOSITIONS = ["三角形", "平衡", "动态", "静态", "垂直", "水平", "集中的"];
-  var CN_COLORS = ["红色", "蓝色", "金色", "白色", "绿色", "紫色", "灰色"];
-  var CN_DEPICTS = ["描绘", "刻画", "表现"];
-  var CN_DEPICTION_VERBS = ["描绘", "刻画", "表现"];
-  var CN_DEPICTION_NOUNS = ["作品", "图像", "描绘"];
-  var CN_GRAMMAR_FALLBACKS = {
-    Color: ["红色", "蓝色", "金色", "绿色", "紫色", "灰色"],
-    PersonJob: ["殖民者", "工匠", "旅人", "猎手"],
-    Animal: ["动物", "野兽", "牲畜"],
-    TerrainFeature: ["地形", "山丘", "岩坡"],
-    Community: ["聚落", "营地", "社区"],
-    Enemy: ["敌人", "袭击者", "对手"],
-    Weapon: ["武器", "兵器", "刀刃"],
-    Gore: ["鲜血", "血污"],
-    Apparel: ["衣物", "服装"],
-    Vegetable: ["作物", "蔬菜"],
-    Game: ["游戏", "娱乐项目"],
-    AdjectiveFriendly: ["友善", "亲切", "温和"],
-    AdjectiveAngsty: ["阴郁", "痛苦", "忧伤"],
-    AdjectiveBadass: ["凌厉", "强悍", "凶猛"],
-    AdjectiveAny: ["奇特", "温和", "不安"],
-    AdjectiveLarge: ["巨大的", "高耸的"],
-    TreeType: ["树木", "大树"],
-    NaturalObject: ["自然物", "岩石"],
-    Shape: ["形状", "图形"],
-    ConceptAny: ["希望", "绝望", "秩序", "失落"],
-    Character: ["人物", "身影", "角色"],
-    Quantity_adjphrase: ["几位", "数位", "一些", "数个"],
-    quantity_adjphrase: ["几位", "数位", "一些", "数个"],
-    Mechanoid: ["机械族"],
-    ally: ["同伴"],
-    friendlyverb: ["友善", "亲切", "温和"]
-  };
 
   function pick(items) {
-    return items[Math.floor(Math.random() * items.length)];
+    return items && items.length ? items[Math.floor(Math.random() * items.length)] : "";
   }
 
   function shuffle(items) {
@@ -553,7 +528,7 @@
   function uniqueItems(items) {
     var out = [];
     (items || []).forEach(function (item) {
-      if (item && out.indexOf(item) === -1) out.push(item);
+      if (item !== "" && item && out.indexOf(item) === -1) out.push(item);
     });
     return out;
   }
@@ -564,21 +539,24 @@
     return state[key].pop();
   }
 
-  function mergeObjects(base, extra) {
-    var out = {};
-    Object.keys(base).forEach(function (key) {
-      out[key] = base[key];
-    });
-    Object.keys(extra).forEach(function (key) {
-      out[key] = extra[key];
-    });
-    return out;
-  }
-
   function renderTemplate(template, mapping) {
     return String(template || "").replace(/\{([^}]+)\}/g, function (_match, key) {
       return Object.prototype.hasOwnProperty.call(mapping, key) ? mapping[key] : "";
     });
+  }
+
+  function deepClone(value) {
+    return JSON.parse(JSON.stringify(value || {}));
+  }
+
+  function normalizeThingLabel(name, material) {
+    name = String(name || "").trim();
+    material = String(material || "").trim();
+    if (!name) return "";
+    if (!material) return name;
+    var prefix = material.endsWith("制") ? material : material + "制";
+    if (name.indexOf(material) !== -1 || name.indexOf(prefix) !== -1) return name;
+    return prefix + name;
   }
 
   function buildItemPhrase(name, quality, material) {
@@ -586,17 +564,151 @@
     quality = String(quality || "").trim();
     material = String(material || "").trim();
     if (!name) return "一件作品";
-    var materialPhrase = "";
-    if (material) {
-      var root = material.endsWith("制") ? material.slice(0, -1) : material;
-      if (root && name.indexOf(root) === -1) {
-        materialPhrase = material.endsWith("制") ? material : material + "制";
-      }
-    }
-    if (quality && materialPhrase) return quality + "的" + materialPhrase + name;
-    if (quality) return quality + "的" + name;
-    if (materialPhrase) return materialPhrase + name;
-    return name;
+    var normalized = normalizeThingLabel(name, material);
+    return quality ? quality + "的" + normalized : normalized;
+  }
+
+  function wrapBookTitle(name) {
+    name = String(name || "").trim();
+    if (!name) return "《无题之书》";
+    if (/^《.*》$/.test(name)) return name;
+    return "《" + name + "》";
+  }
+
+  function wrapEnglishBookTitle(name) {
+    name = String(name || "").trim();
+    if (!name) return "\"Untitled Book\"";
+    if (/^".*"$/.test(name)) return name;
+    return "\"" + name + "\"";
+  }
+
+  function ensureSentence(text) {
+    var cleaned = String(text || "").trim();
+    if (!cleaned) return "";
+    return /[。！？]$/.test(cleaned) ? cleaned : cleaned + "。";
+  }
+
+  function ensureEnglishSentence(text) {
+    var cleaned = String(text || "").trim();
+    if (!cleaned) return "";
+    cleaned = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+    return /[.!?]$/.test(cleaned) ? cleaned : cleaned + ".";
+  }
+
+  function normalizeOutput(text) {
+    return String(text || "")
+      .replace(/\s+/g, "")
+      .replace(/，。/g, "。")
+      .replace(/。{2,}/g, "。")
+      .replace(/，{2,}/g, "，")
+      .replace(/([，。！？])\1+/g, "$1")
+      .replace(/([，。！？])([，。！？])/g, function (_match, a, b) {
+        return a === "。" || b === "。" ? "。" : a;
+      })
+      .replace(/^，+|，+$/g, "");
+  }
+
+  function escapeRegExp(text) {
+    return String(text || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function replaceMany(text, replacements) {
+    var output = String(text || "");
+    (replacements || []).forEach(function (pair) {
+      output = output.replace(pair[0], pair[1]);
+    });
+    return output;
+  }
+
+  function replaceQuantityWithWordPool(text, words, unitMap, minLength) {
+    var output = String(text || "");
+    var mapping = unitMap || {};
+    var requiredLength = Math.max(1, Number(minLength || 1));
+    (words || []).forEach(function (word) {
+      if (!word) return;
+      if (String(word).length < requiredLength) return;
+      Object.keys(mapping).forEach(function (from) {
+        output = output.replace(new RegExp(escapeRegExp(from + word), "g"), mapping[from] + word);
+      });
+    });
+    return output;
+  }
+
+  function replaceLargeAnimalPhrases(text, adjectives, animals) {
+    var output = String(text || "");
+    (adjectives || []).forEach(function (adjective) {
+      if (!adjective) return;
+      (animals || []).forEach(function (animal) {
+        if (!animal) return;
+        output = output.replace(
+          new RegExp("一" + escapeRegExp(adjective) + escapeRegExp(animal), "g"),
+          "一只" + adjective + "的" + animal
+        );
+      });
+    });
+    return output;
+  }
+
+  function cleanChineseGeneratedText(text) {
+    var cleaned = String(text || "");
+    var wordPools =
+      (global.TynanArtData &&
+        global.TynanArtData.TEXT_TEMPLATES &&
+        global.TynanArtData.TEXT_TEMPLATES.art_word_pools) ||
+      {};
+
+    cleaned = replaceMany(cleaned, [
+      [/这件(?:展示|表现|描述|塑造|刻画|描绘)描述了/g, "这件作品描述了"],
+      [/(?:展示|表现|描述|塑造|刻画|描绘)中所引述的故事/g, "图像中所引述的故事"],
+      [/(?:展示|表现|描述|塑造|刻画|描绘)记述了/g, "这件作品记述了"],
+      [/向我们塑造了/g, "向我们展示了"],
+      [/上塑造了/g, "上描绘了"],
+      [/几位旁观者们/g, "几位旁观者"],
+      [/([他她TＡA]{1,2}的)在最喜欢的书房里放松/g, "在$1最喜欢的书房里放松"],
+      [/几件风雪帽/g, "几顶风雪帽"],
+      [/数件风雪帽/g, "数顶风雪帽"],
+      [/一些风雪帽/g, "一些风雪帽"],
+      [/数只风雪帽/g, "数顶风雪帽"],
+      [/头上带着几顶风雪帽/g, "头上戴着几顶风雪帽"],
+      [/头上带着数顶风雪帽/g, "头上戴着数顶风雪帽"],
+      [/头上带着一些风雪帽/g, "头上戴着一些风雪帽"]
+    ]);
+
+    cleaned = replaceQuantityWithWordPool(cleaned, wordPools.Animal, {
+      "几位": "几只",
+      "数位": "数只",
+      "数个": "数只"
+    });
+    cleaned = replaceQuantityWithWordPool(cleaned, wordPools.Vegetable, {
+      "几位": "几株",
+      "数位": "数株",
+      "数个": "数株"
+    });
+    cleaned = replaceQuantityWithWordPool(cleaned, wordPools.Weapon, {
+      "几位": "几件",
+      "数位": "数件",
+      "数个": "数件"
+    }, 2);
+    cleaned = replaceQuantityWithWordPool(cleaned, wordPools.Apparel, {
+      "几位": "几件",
+      "数位": "数件",
+      "数个": "数件"
+    }, 2);
+    cleaned = replaceQuantityWithWordPool(cleaned, wordPools.Shape, {
+      "几位": "几个",
+      "数位": "数个"
+    }, 2);
+    cleaned = replaceLargeAnimalPhrases(cleaned, wordPools.AdjectiveLarge, wordPools.Animal);
+
+    return normalizeOutput(cleaned);
+  }
+
+  function normalizeEnglishOutput(text) {
+    return String(text || "")
+      .replace(/\s+/g, " ")
+      .replace(/\s+([,.!?;:])/g, "$1")
+      .replace(/([,.!?])\1+/g, "$1")
+      .trim();
   }
 
   function translateByType(type, value) {
@@ -618,7 +730,7 @@
     text = String(text || "").trim();
     if (!text) return "something";
     if (/^(a|an|the)\s/i.test(text)) return text;
-    return (/^[aeiou]/i.test(text) ? "an " : "a ") + text;
+    return /^[aeiou]/i.test(text) ? "an " + text : "a " + text;
   }
 
   function buildEnglishItemPhrase(name, quality, material) {
@@ -633,87 +745,6 @@
     return withArticle(parts.join(" "));
   }
 
-  function wrapBookTitle(name) {
-    name = String(name || "").trim();
-    if (!name) return "《无题之书》";
-    if (name.indexOf("《") === 0 && name.lastIndexOf("》") === name.length - 1) return name;
-    return "《" + name + "》";
-  }
-
-  function wrapEnglishBookTitle(name) {
-    name = String(name || "").trim();
-    if (!name) return "\"Untitled Book\"";
-    if (/^".*"$/.test(name)) return name;
-    return "\"" + name + "\"";
-  }
-
-  function ensureSentence(text) {
-    var cleaned = String(text || "").trim();
-    if (!cleaned) return "";
-    return "。！？".indexOf(cleaned.slice(-1)) !== -1 ? cleaned : cleaned + "。";
-  }
-
-  function ensureEnglishSentence(text) {
-    var cleaned = String(text || "").trim();
-    if (!cleaned) return "";
-    cleaned = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
-    return /[.!?]$/.test(cleaned) ? cleaned : cleaned + ".";
-  }
-
-  function normalizeOutput(text) {
-    return String(text || "")
-      .replace(/\s+/g, "")
-      .replace(/，。/g, "。")
-      .replace(/。。+/g, "。")
-      .replace(/，，+/g, "，")
-      .replace(/([，。！？])\1+/g, "$1")
-      .replace(/([，。！？])([，。！？])/g, function (match) {
-        return match.indexOf("。") !== -1 ? "。" : match.charAt(0);
-      })
-      .replace(/^，+|，+$/g, "");
-  }
-
-  function cleanChineseGeneratedText(text, mapping) {
-    var cleaned = String(text || "");
-    cleaned = cleaned
-      .replace(/正全身心投入地做/g, "正全身心投入地制作")
-      .replace(/正一脸满足地做/g, "正一脸满足地制作")
-      .replace(/正极度紧张地做/g, "正极度紧张地制作")
-      .replace(/在工作台旁做/g, "在工作台旁制作")
-      .replace(/在工作台旁致力于完成/g, "在工作台旁制作")
-      .replace(/在([一-龥A-Za-z0-9_]+)的工作台旁/g, "在工作台旁")
-      .replace(/几位旁观者们/g, "几位旁观者")
-      .replace(/几位动物/g, "几只动物")
-      .replace(/数位动物/g, "几只动物")
-      .replace(/一些动物/g, "几只动物")
-      .replace(/数个动物/g, "几只动物")
-      .replace(/几位作物/g, "几株作物")
-      .replace(/数位作物/g, "几株作物")
-      .replace(/数个作物/g, "几株作物")
-      .replace(/几位武器/g, "几件武器")
-      .replace(/数位武器/g, "几件武器")
-      .replace(/数个武器/g, "几件武器")
-      .replace(/几位形状/g, "数个形状")
-      .replace(/数位形状/g, "数个形状")
-      .replace(/一些形状/g, "数个形状")
-      .replace(/数个形状/g, "数个形状")
-      .replace(/，。/g, "。");
-    if (!mapping || !mapping.title) {
-      cleaned = cleaned
-        .replace(/[^。！？]*标题[^。！？]*。/g, "")
-        .replace(/[^。！？]*悬在背景中。/g, "");
-    }
-    return normalizeOutput(cleaned);
-  }
-
-  function normalizeEnglishOutput(text) {
-    return String(text || "")
-      .replace(/\s+/g, " ")
-      .replace(/\s+([,.!?;:])/g, "$1")
-      .replace(/([,.!?])\1+/g, "$1")
-      .trim();
-  }
-
   function getArtGrammarPools(bundle) {
     var pools = (bundle && bundle.TEXT_TEMPLATES && bundle.TEXT_TEMPLATES.art_grammar_pools) || {};
     if (!pools.__word_pools) pools.__word_pools = getArtWordPools(bundle);
@@ -725,7 +756,7 @@
   }
 
   function resolveRuleTokens(text, localPools, globalPools, selectionState, depth) {
-    if (depth > 8) return String(text || "");
+    if (depth > 10) return String(text || "");
     return String(text || "").replace(/\[([^\]]+)\]/g, function (_match, rawKey) {
       var key = String(rawKey || "").replace(/\(.*?\)/g, "").trim();
       var pool = (localPools && localPools[key]) || (globalPools && globalPools[key]) || null;
@@ -735,70 +766,9 @@
       if ((!pool || !pool.length) && globalPools && globalPools.__word_pools && globalPools.__word_pools[key]) {
         pool = globalPools.__word_pools[key];
       }
-      if ((!pool || !pool.length) && CN_GRAMMAR_FALLBACKS[key]) {
-        pool = CN_GRAMMAR_FALLBACKS[key];
-      }
       if (!pool || !pool.length) return "";
       return resolveRuleTokens(nextFromPool("grammar_" + key, pool, selectionState), localPools, globalPools, selectionState, depth + 1);
     });
-  }
-
-  function buildChineseArtExtra(bundle, selectionState, localPools) {
-    var globalPools = getArtGrammarPools(bundle);
-    var template = nextFromPool("cn_artextra_clause", globalPools.artextra_clause || CN_ART_EXTRA_TEMPLATES, selectionState);
-    if (!template) {
-      return renderTemplate(nextFromPool("cn_art_extra_template_fallback", CN_ART_EXTRA_TEMPLATES, selectionState), {
-        subimageplural_cn: nextFromPool("cn_subimage_plural", CN_SUBIMAGE_PLURALS, selectionState),
-        subimagesingle_cn: nextFromPool("cn_subimage_single", CN_SUBIMAGE_SINGLES, selectionState),
-        subimageany_cn: nextFromPool("cn_subimage_any", CN_SUBIMAGE_SINGLES.concat(CN_SUBIMAGE_PLURALS), selectionState),
-        side_position_cn: nextFromPool("cn_side_position", CN_SIDE_POSITIONS, selectionState),
-        pawn_adj_cn: nextFromPool("cn_pawn_adj", CN_PAWN_ADJS, selectionState),
-        idles_cn: nextFromPool("cn_idles", CN_IDLES, selectionState)
-      });
-    }
-    return resolveRuleTokens(template, localPools || {}, globalPools, selectionState, 0);
-  }
-
-  function buildChineseArtStyle(bundle, selectionState, localPools) {
-    var globalPools = getArtGrammarPools(bundle);
-    var template = nextFromPool("cn_style_clause", globalPools.style_clause || CN_ART_STYLE_TEMPLATES, selectionState);
-    if (!template) {
-      return renderTemplate(nextFromPool("cn_art_style_template_fallback", CN_ART_STYLE_TEMPLATES, selectionState), {
-        concept_cn: nextFromPool("cn_concept", CN_CONCEPTS, selectionState),
-        concept_secondary_cn: nextFromPool("cn_concept_secondary", CN_CONCEPTS, selectionState),
-        artstyle_cn: nextFromPool("cn_artstyle", CN_ART_STYLES, selectionState),
-        artstyle_secondary_cn: nextFromPool("cn_artstyle_secondary", CN_ART_STYLES, selectionState),
-        composition_cn: nextFromPool("cn_composition", CN_COMPOSITIONS, selectionState),
-        color_cn: nextFromPool("cn_color", CN_COLORS, selectionState),
-        color_secondary_cn: nextFromPool("cn_color_secondary", CN_COLORS, selectionState)
-      });
-    }
-    return resolveRuleTokens(template, localPools || {}, globalPools, selectionState, 0);
-  }
-
-  function buildChineseStyleGroup(bundle, selectionState, localPools) {
-    var globalPools = getArtGrammarPools(bundle);
-    var template = nextFromPool("cn_style_group", globalPools.style_group || ["[artextra_clause]，[style_clause]。", "[style_clause]。", "[artextra_clause]。", ""], selectionState);
-    return resolveRuleTokens(template, localPools || {}, globalPools, selectionState, 0);
-  }
-
-  function renderChineseArtTemplate(template, mapping, selectionState) {
-    var text = renderTemplate(template, mapping);
-    var depictionPool =
-      text.indexOf("[depiction]中") !== -1 ||
-      text.indexOf("这件[depiction]") !== -1 ||
-      text.indexOf("[depiction]记述") !== -1
-        ? CN_DEPICTION_NOUNS
-        : CN_DEPICTION_VERBS;
-    var depictionKey =
-      depictionPool === CN_DEPICTION_NOUNS ? "cn_depiction_noun" : "cn_depiction_verb";
-    return text
-      .replace(/\[depicts\]/g, nextFromPool("cn_depicts", CN_DEPICTS, selectionState))
-      .replace(/\[depiction\]/g, nextFromPool(depictionKey, depictionPool, selectionState));
-  }
-
-  function dedupeSignature(text) {
-    return String(text || "").replace(/[，。！？；：“”《》、\s]/g, "");
   }
 
   function buildEnglishDateText(dateText) {
@@ -806,8 +776,6 @@
     var quadrumMap = { "翠象": "Aprimay", "赫象": "Jugust", "荼象": "Septober", "素象": "Decembary" };
     var match = text.match(/^(\d+)年(翠象|赫象|荼象|素象)(\d+)日$/);
     if (!match) return text || "an unknown date";
-    var year = match[1];
-    var quadrum = quadrumMap[match[2]] || match[2];
     var day = Number(match[3]);
     var suffix = "th";
     if (day % 100 < 11 || day % 100 > 13) {
@@ -815,75 +783,179 @@
       else if (day % 10 === 2) suffix = "nd";
       else if (day % 10 === 3) suffix = "rd";
     }
-    return day + suffix + " of " + quadrum + ", " + year;
+    return day + suffix + " of " + (quadrumMap[match[2]] || match[2]) + ", " + match[1];
   }
 
-  function buildMapping(schema, context, eventPack, bundle, selectionState) {
+  function subjectPronoun(raw) {
+    var pronoun = String(raw || "").trim() || "TA";
+    return pronoun.endsWith("的") ? pronoun.slice(0, -1) : pronoun;
+  }
+
+  function possessivePronoun(raw) {
+    var pronoun = String(raw || "").trim() || "TA";
+    return pronoun.endsWith("的") ? pronoun : pronoun + "的";
+  }
+
+  function englishPronouns(raw) {
+    var pronoun = subjectPronoun(raw);
+    if (pronoun === "她") return { subject: "she", object: "her", possessive: "her" };
+    if (pronoun === "他") return { subject: "he", object: "him", possessive: "his" };
+    return { subject: "they", object: "them", possessive: "their" };
+  }
+
+  function setObjectForms(mapping, key, rawValue, labelValue, englishValue, qualityShort, material) {
+    var raw = String(rawValue || "").trim();
+    var label = String(labelValue || rawValue || "").trim();
+    var english = String(englishValue || raw || "").trim();
+    mapping[key + "_name"] = raw;
+    mapping[key + "_label"] = label;
+    mapping[key + "_display"] = label;
+    mapping[key + "_definite"] = label;
+    mapping[key + "_indefinite"] = label;
+    mapping[key + "_nameDef"] = label;
+    mapping[key + "_nameFull"] = label;
+    mapping[key + "_nameIndef"] = label;
+    mapping[key + "_shortNameDef"] = label;
+    mapping[key + "_title"] = raw;
+    mapping[key + "_quality"] = qualityShort;
+    mapping[key + "_stuffLabel"] = String(material || "").trim();
+    mapping[key] = label;
+
+    mapping[key + "_name_en"] = english;
+    mapping[key + "_label_en"] = english;
+    mapping[key + "_definite_en"] = english;
+    mapping[key + "_indefinite_en"] = english;
+  }
+
+  function buildMapping(schema, context, bundle) {
     var mapping = {};
     var roleOrder = [];
-    schema.required_slots.concat(schema.optional_slots).forEach(function (slot) {
+    var allSlots = schema.required_slots.concat(schema.optional_slots);
+    var quality = String(context.quality || "").trim() || pick(bundle.SLOT_SUGGESTIONS.quality || [""]);
+    var qualityShort = QUALITY_SHORT_MAP[quality] || quality;
+    var material = String(context.material || "").trim();
+    var title = String(context.title || "").trim();
+
+    allSlots.forEach(function (slot) {
       if (slot.slot_type === "role") {
         var role = context.roles[slot.key] || {};
         var name = String(role.name || "").trim();
-        var title = String(role.title || "").trim();
-        var pronoun = String(role.pronoun || "").trim() || pick(bundle.SLOT_SUGGESTIONS.pronoun);
-        mapping[slot.key + "_name"] = name;
-        mapping[slot.key + "_display"] = title ? title + name : name;
-        mapping[slot.key + "_pronoun"] = pronoun;
+        var honorific = String(role.title || "").trim();
+        var pronounRaw = String(role.pronoun || "").trim() || pick(bundle.SLOT_SUGGESTIONS.pronoun || ["TA"]);
+        var display = (honorific ? honorific : "") + (name ? name : "");
+        var subject = subjectPronoun(pronounRaw);
+        var possessive = possessivePronoun(pronounRaw);
+        var english = englishPronouns(pronounRaw);
+        var displaySafe = display || name || subject;
+
+        mapping[slot.key + "_name"] = name || displaySafe;
+        mapping[slot.key + "_display"] = displaySafe;
+        mapping[slot.key + "_pronoun"] = subject;
+        mapping[slot.key + "_possessive"] = possessive;
+        mapping[slot.key + "_objective"] = subject;
+        mapping[slot.key + "_label"] = displaySafe;
+        mapping[slot.key + "_nameFull"] = displaySafe;
+        mapping[slot.key + "_nameDef"] = displaySafe;
+        mapping[slot.key + "_nameIndef"] = displaySafe;
+        mapping[slot.key + "_shortNameDef"] = displaySafe;
+        mapping[slot.key + "_factionName"] = "某个派系";
+
         mapping[slot.key + "_name_en"] = name || "someone";
         mapping[slot.key + "_display_en"] = name || "someone";
-        mapping[slot.key + "_pronoun_en"] = pronoun === "她" ? "she" : pronoun === "他" ? "he" : "they";
+        mapping[slot.key + "_pronoun_en"] = english.subject;
+        mapping[slot.key + "_possessive_en"] = english.possessive;
+        mapping[slot.key + "_objective_en"] = english.object;
+        mapping[slot.key + "_nameFull_en"] = name || "someone";
+        mapping[slot.key + "_nameDef_en"] = name || "someone";
+
         roleOrder.push(slot.key);
       } else if (slot.slot_type === "object") {
-        mapping[slot.key + "_name"] =
-          String(context.objects[slot.key] || "").trim() || pick(bundle.SLOT_SUGGESTIONS[slot.suggestion_type] || [""]);
-        mapping[slot.key + "_name_en"] = translateByType(slot.suggestion_type, mapping[slot.key + "_name"]);
+        var rawObject =
+          String(context.objects[slot.key] || "").trim() ||
+          pick(bundle.SLOT_SUGGESTIONS[slot.suggestion_type] || [""]);
+        var label = rawObject;
+        if (slot.key === "thing") label = normalizeThingLabel(rawObject, material);
+        var englishObject = translateByType(slot.suggestion_type, rawObject) || rawObject;
+        setObjectForms(mapping, slot.key, rawObject, label, englishObject, qualityShort, material);
       }
     });
 
-    mapping.quality = String(context.quality || "").trim() || pick(bundle.SLOT_SUGGESTIONS.quality || [""]);
-    mapping.quality_short = QUALITY_SHORT_MAP[mapping.quality] || mapping.quality;
-    mapping.quality_en = translateByType("quality", mapping.quality);
-    mapping.material = String(context.material || "").trim();
-    mapping.material_en = translateByType("material", mapping.material);
-    mapping.title = String(context.title || "").trim();
-    mapping.wound_verb = String(context.wound_verb || "").trim() || pick(bundle.SLOT_SUGGESTIONS.wound_verb || ["击伤"]);
+    mapping.quality = quality;
+    mapping.quality_short = qualityShort;
+    mapping.quality_en = translateByType("quality", quality) || quality;
+    mapping.material = material;
+    mapping.material_en = translateByType("material", material) || material;
+    mapping.title = title;
     mapping.date_text = String(context.date_text || "").trim() || pick(bundle.SLOT_SUGGESTIONS.date_text || ["某年某象某日"]);
     mapping.date_text_en = buildEnglishDateText(mapping.date_text);
-    mapping.scene_text =
-      String(context.scene_hint || "").trim() ||
-      nextFromPool(
-        "scene_" + schema.id,
-        uniqueItems((eventPack.scene_phrases || []).concat(bundle.TEXT_TEMPLATES.default_scene_phrases || [])),
-        selectionState
-      );
+    mapping.scene_text = String(context.scene_hint || "").trim();
     mapping.scene_fragment = mapping.scene_text ? "，" + mapping.scene_text : "";
+    mapping.DATE = mapping.date_text;
 
-    mapping.thing_phrase = buildItemPhrase(mapping.thing_name || "", mapping.quality, mapping.material);
-    mapping.object_phrase = buildItemPhrase(mapping.object_name || "", "", mapping.material);
-    mapping.book_display = wrapBookTitle(mapping.book_name || "");
-    mapping.weapon_name = mapping.weapon_name || pick(bundle.SLOT_SUGGESTIONS.weapon_name || [""]);
-    mapping.weapon_name_en = translateByType("weapon_name", mapping.weapon_name);
-    mapping.weapon_phrase = mapping.weapon_name ? "一把" + mapping.weapon_name : "一把武器";
-    mapping.weapon_phrase_en = mapping.weapon_name_en ? withArticle(mapping.weapon_name_en) : "a weapon";
+    if (mapping.thing_name || title) {
+      var thingLabel = mapping.thing_label || normalizeThingLabel(mapping.thing_name || "", material);
+      mapping.thing_label = thingLabel;
+      mapping.thing_definite = thingLabel;
+      mapping.thing_indefinite = thingLabel;
+      mapping.thing_nameDef = thingLabel;
+      mapping.thing_nameFull = thingLabel;
+      mapping.thing_title = title || mapping.thing_name || thingLabel;
+      mapping.thing_quality = qualityShort;
+      mapping.thing_phrase = thingLabel || buildItemPhrase(mapping.thing_name || "", quality, material);
+      mapping.thing_phrase_en = buildEnglishItemPhrase(
+        translateByType("thing_name", mapping.thing_name || mapping.thing_label || "item") || mapping.thing_name || mapping.thing_label || "item",
+        mapping.quality_en,
+        mapping.material_en
+      );
+    } else {
+      mapping.thing_phrase = buildItemPhrase("", quality, material);
+      mapping.thing_phrase_en = "an item";
+    }
+
+    if (mapping.object_name) {
+      mapping.object_phrase = mapping.object_label || mapping.object_name;
+      mapping.object_phrase_en = buildEnglishItemPhrase(
+        translateByType("object_name", mapping.object_name) || mapping.object_name,
+        "",
+        ""
+      );
+    } else {
+      mapping.object_phrase = "";
+      mapping.object_phrase_en = "an object";
+    }
+
+    if (mapping.book_name) {
+      mapping.book_title = wrapBookTitle(mapping.book_name);
+      mapping.book_display = mapping.book_title;
+      mapping.book_display_en = wrapEnglishBookTitle(translateByType("book_title", mapping.book_name) || mapping.book_name);
+    } else {
+      mapping.book_display = wrapBookTitle("");
+      mapping.book_display_en = wrapEnglishBookTitle("");
+    }
+
+    mapping.weapon_name = mapping.weapon_name || "";
+    mapping.weapon_label = mapping.weapon_label || mapping.weapon_name;
+    mapping.weapon_phrase = mapping.weapon_label ? "一把" + mapping.weapon_label : "一把武器";
+    mapping.weapon_phrase_en = buildEnglishItemPhrase(mapping.weapon_label || "weapon", "", "");
     mapping.project_name = mapping.project_name || "";
-    mapping.project_name_en = mapping.project_name;
     mapping.animal_name = mapping.animal_name || "";
-    mapping.animal_name_en = mapping.animal_name || "an animal";
     mapping.training_name = mapping.training_name || "";
-    mapping.training_name_en = translateByType("training_name", mapping.training_name) || mapping.training_name || "training";
     mapping.skill_name = mapping.skill_name || "";
-    mapping.skill_name_en = translateByType("skill_name", mapping.skill_name) || mapping.skill_name || "a skill";
-    mapping.material_name = mapping.material_name || "";
-    mapping.material_name_en = translateByType("material", mapping.material_name) || mapping.material_name || "a material";
+    mapping.material_name = mapping.material_name || material;
     mapping.game_name = mapping.game_name || "";
-    mapping.game_name_en = translateByType("game_name", mapping.game_name) || mapping.game_name || "a game";
     mapping.illness_name = mapping.illness_name || "";
+    mapping.game = mapping.game_label || mapping.game_name || "";
+    mapping.weapon = mapping.weapon_label || mapping.weapon_name || "";
+
+    mapping.project_name_en = translateByType("project_name", mapping.project_name) || mapping.project_name;
+    mapping.animal_name_en = translateByType("animal_name", mapping.animal_name) || mapping.animal_name || "an animal";
+    mapping.training_name_en = translateByType("training_name", mapping.training_name) || mapping.training_name || "training";
+    mapping.skill_name_en = translateByType("skill_name", mapping.skill_name) || mapping.skill_name || "a skill";
+    mapping.material_name_en = translateByType("material_name", mapping.material_name) || mapping.material_name || "a material";
+    mapping.game_name_en = translateByType("game_name", mapping.game_name) || mapping.game_name || "a game";
     mapping.illness_name_en = translateByType("illness_name", mapping.illness_name) || mapping.illness_name || "an illness";
-    mapping.thing_phrase_en = buildEnglishItemPhrase(mapping.thing_name_en || mapping.thing_name || "item", mapping.quality_en, mapping.material_en);
-    mapping.object_phrase_en = buildEnglishItemPhrase(mapping.object_name_en || mapping.object_name || "object", "", mapping.material_en);
-    mapping.book_display_en = wrapEnglishBookTitle(mapping.book_name_en || mapping.book_name || "Untitled Book");
     mapping.primary_role_display_en = roleOrder.length ? mapping[roleOrder[0] + "_display_en"] : "someone";
+    mapping.primary_role_display = roleOrder.length ? mapping[roleOrder[0] + "_display"] : "某人";
     return mapping;
   }
 
@@ -904,37 +976,72 @@
     });
   }
 
-  function buildChineseSentences(opening, detail, style, titleSentence, contextText, selectionState) {
-    var sentences = [ensureSentence(opening)];
-    var orderPattern = nextFromPool("cn_order_pattern", ["detail_style", "style_detail", "detail_then_connector", "style_then_connector"], selectionState);
-    var connector = nextFromPool("cn_style_connector", CN_STYLE_CONNECTORS, selectionState);
-    if (detail && style) {
-      if (orderPattern === "style_detail") {
-        sentences.push(ensureSentence(style));
-        sentences.push(ensureSentence(detail));
-      } else if (orderPattern === "detail_then_connector") {
-        sentences.push(ensureSentence(detail));
-        sentences.push(ensureSentence(connector + style));
-      } else if (orderPattern === "style_then_connector") {
-        sentences.push(ensureSentence(style));
-        sentences.push(ensureSentence(connector + detail));
-      } else {
-        sentences.push(ensureSentence(detail));
-        sentences.push(ensureSentence(style));
-      }
-    } else {
-      if (detail) sentences.push(ensureSentence(detail));
-      if (style) sentences.push(ensureSentence(style));
+  function prepareRootPools(localPools, context, mapping, bundle, includeContext, hasDetail, hasStyle) {
+    localPools.physical_description_root = (bundle.TEXT_TEMPLATES.carrier_openers[context.carrier_type] || []).slice();
+    localPools.context_sentence = (bundle.TEXT_TEMPLATES.context_sentences || []).slice();
+    localPools.DATE = [mapping.date_text];
+    if (context.carrier_type === "雕塑" && (!localPools.sculpture || !localPools.sculpture.length)) {
+      localPools.sculpture = LEGACY_SCULPTURE_POOL.slice();
     }
-    if (titleSentence) sentences.push(ensureSentence(titleSentence));
-    if (contextText) sentences.push(ensureSentence(contextText));
-    return sentences;
+    if (hasDetail && hasStyle) localPools.desc_sentence_group = ["[desc_sentence][style_group]"];
+    else if (hasDetail) localPools.desc_sentence_group = ["[desc_sentence]"];
+    else if (hasStyle) localPools.desc_sentence_group = ["[style_group]"];
+    else localPools.desc_sentence_group = [""];
+    localPools.r_art_description = [includeContext ? "[physical_description_root][context_sentence]" : "[physical_description_root]"];
   }
 
-  function buildGenericEnglishEventPhrase(schema, mapping, mode) {
+  function renderChineseFromPools(localPools, mapping, bundle, selectionState) {
+    var rootRule = nextFromPool("cn_root_rule", localPools.r_art_description || ["[physical_description_root]"], selectionState);
+    var resolved = resolveRuleTokens(rootRule, localPools, getArtGrammarPools(bundle), selectionState, 0);
+    return cleanChineseGeneratedText(renderTemplate(resolved, mapping));
+  }
+
+  function buildGrammarLocalPools(schema, context, mapping, eventPack, bundle) {
+    var localPools = deepClone(eventPack.grammar_pools);
+    if (context.scene_hint) localPools.circumstance_phrase = [String(context.scene_hint).trim()];
+    if (!localPools.circumstance_group && localPools.circumstance_phrase) localPools.circumstance_group = localPools.circumstance_phrase.slice();
+    if (localPools.title_sentence && !mapping.title) localPools.title_sentence = [""];
+    if (localPools.quality_sentence && !mapping.quality) localPools.quality_sentence = [""];
+    if (context.detail_hint) localPools.desc_sentence = [ensureSentence(context.detail_hint)];
+    if (context.style_hint) localPools.style_group = [ensureSentence(context.style_hint)];
+    var hasDetail = !!(context.include_detail && localPools.desc_sentence && localPools.desc_sentence.some(Boolean));
+    var hasStyle = !!(context.style_hint || context.include_style);
+    if (!context.include_detail && !context.detail_hint) localPools.desc_sentence = [""];
+    if (!hasStyle) localPools.style_group = [""];
+    prepareRootPools(localPools, context, mapping, bundle, !!context.include_context, hasDetail, hasStyle);
+    return localPools;
+  }
+
+  function buildLegacyLocalPools(schema, context, mapping, eventPack, bundle, selectionState) {
+    var localPools = {};
+    var detailCandidates = uniqueItems((eventPack.detail_sentences || []).concat(bundle.TEXT_TEMPLATES.default_detail_sentences || []));
+    var styleCandidates = uniqueItems((eventPack.style_sentences || []).concat(bundle.TEXT_TEMPLATES.default_style_sentences || []));
+    localPools.image = [nextFromPool(schema.id + "_legacy_image", eventPack.main_images || [], selectionState)];
+    if (context.include_context && eventPack.event_nouns && eventPack.event_nouns.length) {
+      localPools.tale_noun = [nextFromPool(schema.id + "_legacy_noun", eventPack.event_nouns, selectionState)];
+    }
+    if (context.detail_hint) localPools.desc_sentence = [ensureSentence(context.detail_hint)];
+    else if (context.include_detail && detailCandidates.length) localPools.desc_sentence = [ensureSentence(nextFromPool(schema.id + "_legacy_detail", detailCandidates, selectionState))];
+    else localPools.desc_sentence = [""];
+    if (context.style_hint) localPools.style_group = [ensureSentence(context.style_hint)];
+    else if (context.include_style && styleCandidates.length) localPools.style_group = [ensureSentence(nextFromPool(schema.id + "_legacy_style", styleCandidates, selectionState))];
+    else localPools.style_group = [""];
+    prepareRootPools(
+      localPools,
+      context,
+      mapping,
+      bundle,
+      !!context.include_context && !!localPools.tale_noun,
+      !!(localPools.desc_sentence && localPools.desc_sentence[0]),
+      !!(localPools.style_group && localPools.style_group[0])
+    );
+    return localPools;
+  }
+
+  function buildGenericEnglishEventPhrase(schema, mapping) {
     var actionMap = {
       crafted_art: "crafting",
-      finished_construction: "completing",
+      finished_construction: "completing construction on",
       finished_research: "researching",
       read_book: "reading",
       recruit_joiner: "recruiting",
@@ -947,31 +1054,31 @@
       pray: "praying",
       burial: "burying",
       party: "attending a party",
-      skill_mastery: "mastering a skill",
-      insult: "insulting someone",
-      escape_pod: "crashing in an escape pod",
+      skill_mastery: "mastering",
+      insult: "fighting with someone",
+      escape_pod: "landing in a drop pod",
       berserk_break: "falling into berserk rage",
-      despair_break: "collapsing in despair",
-      caravan_departure: "departing with a caravan",
-      surgery: "performing surgery",
-      birth: "giving birth",
+      despair_break: "giving up",
+      caravan_departure: "forming a caravan",
+      surgery: "performing surgery on",
+      birth: "giving birth to",
       mine_vein: "mining",
-      game_play: "playing a game",
-      drunkenness: "being drunk",
-      fire_panic: "burning in panic",
+      game_play: "playing",
+      drunkenness: "getting drunk",
+      fire_panic: "being on fire",
       nude_wander: "wandering nude",
       grave_visit: "visiting a grave",
       hunt_animal: "hunting",
-      capture_prisoner: "capturing a prisoner",
-      execution: "executing a prisoner",
-      kidnap: "abducting someone",
+      capture_prisoner: "capturing",
+      execution: "executing",
+      kidnap: "kidnapping",
       cryptosleep_enter: "entering cryptosleep",
       cryptosleep_place: "placing someone into cryptosleep",
-      lover_union: "becoming lovers",
-      breakup: "breaking up",
-      animal_bond: "forming a bond with an animal",
-      trade_deal: "making a trade",
-      strip_target: "stripping someone",
+      lover_union: "becoming lovers with",
+      breakup: "breaking up with",
+      animal_bond: "forming a bond with",
+      trade_deal: "trading with",
+      strip_target: "stripping",
       snowman_build: "building a snowman",
       meteorite_impact: "witnessing a meteorite impact",
       toxic_fallout: "enduring toxic fallout",
@@ -982,52 +1089,42 @@
       heatstroke: "suffering heatstroke",
       hypothermia: "suffering hypothermia",
       exhaustion_collapse: "collapsing from exhaustion",
-      cannibalism: "committing cannibalism",
+      cannibalism: "eating human meat",
       tox_buildup: "suffering toxic buildup",
-      message_received: "receiving a message",
+      message_received: "receiving a mysterious message",
       eclipse: "witnessing an eclipse",
       tornado: "facing a tornado",
       vomit: "vomiting",
-      cavein_escape: "escaping a cave-in",
-      caravan_ambush: "facing a caravan ambush",
-      ship_chunk_crash: "witnessing a ship chunk crash",
+      cavein_escape: "dodging a collapse",
+      caravan_ambush: "being ambushed on a caravan journey",
+      ship_chunk_crash: "witnessing a ship part crash",
       volcanic_winter: "enduring volcanic winter",
       disease_onset: "falling ill",
       recruit_failure: "failing to recruit someone",
-      animal_revenge: "facing an animal's revenge"
+      animal_revenge: "facing animal revenge"
     };
     var subject = mapping.primary_role_display_en || "someone";
     var objectPhrase =
-      mapping.thing_phrase_en ||
-      mapping.object_phrase_en ||
-      mapping.book_display_en ||
-      mapping.weapon_phrase_en ||
-      mapping.animal_name_en ||
-      mapping.project_name_en ||
-      mapping.skill_name_en ||
-      mapping.game_name_en ||
-      mapping.illness_name_en ||
+      (mapping.thing_name ? mapping.thing_phrase_en : "") ||
+      (mapping.object_name ? mapping.object_phrase_en : "") ||
+      (mapping.book_name ? mapping.book_display_en : "") ||
+      (mapping.weapon_name ? mapping.weapon_phrase_en : "") ||
+      (mapping.animal_name ? mapping.animal_name_en : "") ||
+      (mapping.project_name ? mapping.project_name_en : "") ||
+      (mapping.skill_name ? mapping.skill_name_en : "") ||
+      (mapping.game_name ? mapping.game_name_en : "") ||
+      (mapping.illness_name ? mapping.illness_name_en : "") ||
       "";
     var action = actionMap[schema.id] || schema.id.replace(/_/g, " ");
-    if (schema.id === "disease_onset" && mapping.illness_name_en) {
-      action = "falling ill with " + mapping.illness_name_en;
-    } else if (schema.id === "mine_vein" && mapping.material_name_en) {
-      action = "mining " + mapping.material_name_en;
-    } else if (schema.id === "game_play" && mapping.game_name_en) {
-      action = "playing " + mapping.game_name_en;
-    } else if (schema.id === "skill_mastery" && mapping.skill_name_en) {
-      action = "mastering " + mapping.skill_name_en;
-    } else if (schema.id === "train_animal" && mapping.animal_name_en && mapping.training_name_en) {
-      action = "training " + mapping.animal_name_en + " in " + mapping.training_name_en;
-    } else if (schema.id === "tame_animal" && mapping.animal_name_en) {
-      action = "taming " + mapping.animal_name_en;
-    } else if ((schema.id === "wound" || schema.id === "kill" || schema.id === "hunt_animal") && mapping.weapon_phrase_en) {
-      action = action + " with " + mapping.weapon_phrase_en;
-    } else if (objectPhrase && /crafting|completing|reading|researching|mining|playing|mastering|taming|training/.test(action)) {
-      action = action + " " + objectPhrase;
-    }
-    if (mode === "image") return subject + " " + action;
-    return subject + " " + action;
+    if (schema.id === "finished_construction" && mapping.object_name) action += " " + mapping.object_phrase_en;
+    else if (schema.id === "game_play" && mapping.game_name_en) action = "playing at " + withArticle(mapping.game_name_en);
+    else if (schema.id === "mine_vein" && mapping.material_name_en) action += " " + mapping.material_name_en;
+    else if (schema.id === "skill_mastery" && mapping.skill_name_en) action += " " + mapping.skill_name_en;
+    else if (schema.id === "tame_animal" && mapping.animal_name_en) action += " " + mapping.animal_name_en;
+    else if (schema.id === "train_animal" && mapping.animal_name_en) action += " " + mapping.animal_name_en;
+    else if (schema.id === "disease_onset" && mapping.illness_name_en) action += " with " + mapping.illness_name_en;
+    else if (objectPhrase && /crafting|researching|reading|performing surgery on|giving birth to|playing|mastering/.test(action)) action += " " + objectPhrase;
+    return (subject + " " + action).trim();
   }
 
   function buildEnglishDescriptionGroup(selectionState) {
@@ -1044,76 +1141,40 @@
 
   function generateEnglishReference(schema, context, mapping, selectionState) {
     var carrierOpeners = EN_CARRIER_OPENERS[context.carrier_type] || EN_CARRIER_OPENERS["雕塑"];
-    var mainImage = buildGenericEnglishEventPhrase(schema, mapping, "image");
-    var eventNoun = buildGenericEnglishEventPhrase(schema, mapping, "noun");
-    var opening = renderTemplate(nextFromPool("en_carrier_" + context.carrier_type, carrierOpeners, selectionState), mergeObjects(mapping, { main_image_en: mainImage }));
+    var mainImage = buildGenericEnglishEventPhrase(schema, mapping);
+    var opening = renderTemplate(nextFromPool("en_carrier_" + context.carrier_type, carrierOpeners, selectionState), {
+      main_image_en: mainImage
+    });
     var englishParts = [ensureEnglishSentence(opening)];
     var descGroup = buildEnglishDescriptionGroup(selectionState);
     if (descGroup) englishParts.push(descGroup);
     if (context.include_context) {
-      var contextText = renderTemplate(nextFromPool("en_context_sentence", EN_CONTEXT_SENTENCES, selectionState), mergeObjects(mapping, { event_noun_en: eventNoun }));
+      var contextText = renderTemplate(nextFromPool("en_context_sentence", EN_CONTEXT_SENTENCES, selectionState), {
+        event_noun_en: buildGenericEnglishEventPhrase(schema, mapping),
+        date_text_en: mapping.date_text_en
+      });
       englishParts.push(ensureEnglishSentence(contextText));
     }
     return normalizeEnglishOutput(englishParts.join(" "));
   }
 
+  function dedupeSignature(text) {
+    return String(text || "").replace(/[，。！？；：“”《》、\s]/g, "");
+  }
+
   function generateSingle(schema, context, templateMap, bundle, selectionState) {
     var eventPack = templateMap[schema.id];
-    var carrierOpeners = bundle.TEXT_TEMPLATES.carrier_openers[context.carrier_type];
-    var mapping = buildMapping(schema, context, eventPack, bundle, selectionState);
-    var titleSentence = mapping.title ? renderTemplate(nextFromPool("cn_title_sentence", bundle.TEXT_TEMPLATES.title_sentences, selectionState), mapping) : "";
-    var mainImage = "";
-    var detail = "";
-    var style = "";
-    var contextText = "";
-    if (eventPack.grammar_pools && eventPack.grammar_pools.image && eventPack.grammar_pools.tale_noun) {
-      var localPools = JSON.parse(JSON.stringify(eventPack.grammar_pools));
-      if (context.scene_hint) localPools.circumstance_phrase = [context.scene_hint];
-      if (!mapping.title && localPools.title_sentence) localPools.title_sentence = [""];
-      if (!mapping.quality && localPools.quality_sentence) localPools.quality_sentence = [""];
-      var mainRule = nextFromPool(schema.id + "_main_rule", localPools.image, selectionState);
-      mainImage = renderTemplate(resolveRuleTokens(mainRule, localPools, getArtGrammarPools(bundle), selectionState, 0), mapping);
-      if (context.include_detail) {
-        if (context.detail_hint) detail = context.detail_hint;
-        else if (localPools.desc_sentence && localPools.desc_sentence.length) {
-          detail = renderTemplate(resolveRuleTokens(nextFromPool(schema.id + "_desc_rule", localPools.desc_sentence, selectionState), localPools, getArtGrammarPools(bundle), selectionState, 0), mapping);
-        } else {
-          detail = renderTemplate(buildChineseArtExtra(bundle, selectionState, localPools), mapping);
-        }
-      }
-      if (context.include_style) {
-        style = renderTemplate(context.style_hint || buildChineseStyleGroup(bundle, selectionState, localPools), mapping);
-      }
-      if (context.include_context) {
-        var eventNounRule = nextFromPool(schema.id + "_noun_rule", localPools.tale_noun, selectionState);
-        var eventNoun = renderTemplate(resolveRuleTokens(eventNounRule, localPools, getArtGrammarPools(bundle), selectionState, 0), mapping);
-        contextText = renderChineseArtTemplate(nextFromPool("cn_context_sentence", bundle.TEXT_TEMPLATES.context_sentences, selectionState), mergeObjects(mapping, { event_noun: eventNoun }), selectionState);
-      }
-    } else {
-      mainImage = renderTemplate(nextFromPool(schema.id + "_main", eventPack.main_images, selectionState), mapping);
-      if (context.include_detail) {
-        var detailCandidates = uniqueItems((eventPack.detail_sentences || []).concat(bundle.TEXT_TEMPLATES.default_detail_sentences || []));
-        if (!context.detail_hint) detailCandidates.push(buildChineseArtExtra(bundle, selectionState));
-        detail = renderTemplate(context.detail_hint || nextFromPool(schema.id + "_detail", detailCandidates, selectionState), mapping);
-      }
-      if (context.include_style) {
-        var styleCandidates = uniqueItems((eventPack.style_sentences || []).concat(bundle.TEXT_TEMPLATES.default_style_sentences || []));
-        if (!context.style_hint) styleCandidates.push(buildChineseArtStyle(bundle, selectionState));
-        style = renderTemplate(context.style_hint || nextFromPool(schema.id + "_style", styleCandidates, selectionState), mapping);
-      }
-      if (context.include_context) {
-        var eventNounLegacy = renderTemplate(nextFromPool(schema.id + "_noun", eventPack.event_nouns, selectionState), mapping);
-        contextText = renderChineseArtTemplate(nextFromPool("cn_context_sentence", bundle.TEXT_TEMPLATES.context_sentences, selectionState), mergeObjects(mapping, { event_noun: eventNounLegacy }), selectionState);
-      }
-    }
-    var opening = renderChineseArtTemplate(nextFromPool("carrier_" + context.carrier_type, carrierOpeners, selectionState), mergeObjects(mapping, { main_image: mainImage }), selectionState);
-
-    var chinese = cleanChineseGeneratedText(buildChineseSentences(opening, detail, style, titleSentence, contextText, selectionState).join(""), mapping);
+    var mapping = buildMapping(schema, context, bundle);
+    var localPools =
+      eventPack.grammar_pools && eventPack.grammar_pools.image && eventPack.grammar_pools.tale_noun
+        ? buildGrammarLocalPools(schema, context, mapping, eventPack, bundle)
+        : buildLegacyLocalPools(schema, context, mapping, eventPack, bundle, selectionState);
+    var chinese = renderChineseFromPools(localPools, mapping, bundle, selectionState);
     var english = generateEnglishReference(schema, context, mapping, selectionState);
     return {
       chinese: chinese,
       english: english,
-      text: chinese + "\n\n[English Reference]\n" + english
+      text: chinese + (english ? "\n\n[English Reference]\n" + english : "")
     };
   }
 
@@ -1131,7 +1192,12 @@
       var signature = dedupeSignature(generated.chinese + generated.english);
       if (seen[signature]) continue;
       seen[signature] = true;
-      results.push({ text: generated.text, chinese: generated.chinese, english: generated.english, event_id: schema.id });
+      results.push({
+        text: generated.text,
+        chinese: generated.chinese,
+        english: generated.english,
+        event_id: schema.id
+      });
     }
     if (!results.length) {
       throw new Error("未能生成可用文本，请检查输入内容。");
@@ -1147,8 +1213,9 @@
   };
 })(window);
 
+
 // ===== index.js =====
-﻿;(function (global) {
+;(function (global) {
   var data = global.TynanArtData;
   var THEME_META = {
     light: "#eef2f7",
@@ -2066,29 +2133,29 @@
 
   var steps = [
     {
-      title: "载体开头句",
-      summary: "先根据载体选择开头句。",
-      detail: "雕塑、家具、近战武器、远程武器、棺材各自有不同的开头句池，用来决定文本第一句的整体口吻。",
+      title: "载体句根",
+      summary: "先选 physical_description_root。",
+      detail: "系统先按载体类型选择官方的 physical_description_root 规则。雕塑、家具、近战武器、远程武器、棺材各自使用不同的 RulePack 文本。",
     },
     {
-      title: "主体画面",
-      summary: "用 main_images 决定“谁在做什么”。",
-      detail: "这里通常会引用角色变量、对象变量和 scene_fragment，是整段艺术文本中最核心的句式池。",
+      title: "事件 RulePack",
+      summary: "再展开 TaleDef 的 image / tale_noun / circumstance_phrase / desc_sentence。",
+      detail: "内置事件现在优先读取本地 ChineseSimplified 的 TaleDef 译文规则，而不是手写句子。主画面、事件名词、场景状语和细节句都从对应 grammar pool 中抽取。",
     },
     {
-      title: "细节补句",
-      summary: "用 detail_sentences 描写动作外的细节。",
-      detail: "常用于补充背景、器物位置、动作夸张方式、构图压缩感等，让文本更接近游戏内风格。",
-    },
-    {
-      title: "风格/寓意句",
-      summary: "用 style_sentences 解释整体气质。",
-      detail: "这部分往往更抽象，会描述作品给人的压迫感、庄严感、哀伤感、滑稽感等。",
+      title: "全局艺术规则",
+      summary: "style_group 由全局艺术规则补上。",
+      detail: "作品的寓意、额外画面、构图、风格形容词等，来自 ArtDescriptionUtility_Global，而不是每个事件自己维护一套风格句。",
     },
     {
       title: "背景收束句",
-      summary: "用 event_nouns + context_sentences 把事件落到时间线上。",
-      detail: "也就是“这件作品讲述了……发生在……”这一类句式，让作品像是在回顾一件已发生之事。",
+      summary: "context_sentence + DATE 把事件落到时间线上。",
+      detail: "如果启用背景句，系统会按官方 context_sentence 规则，把 tale_noun 和日期拼成“这件描绘描述了发生在……的……”这类收束句。",
+    },
+    {
+      title: "槽位替换",
+      summary: "最后再把角色、对象、品质、标题等 token 实际填入。",
+      detail: "像 {pawn_nameFull}、{pawn_possessive}、{thing_title}、{thing_quality} 这类槽位会在 grammar 展开结束后统一替换，以贴近游戏中 pawn / thing / def 规则的组织方式。",
     },
   ];
 
@@ -2194,7 +2261,7 @@
       "<h2>" + esc(schema.label) + "</h2>" +
       "<p class=\"hint\">分类：" + esc(schema.category || "未分类") + " ｜ 载体：" + schema.carrier_types.map(esc).join(" / ") + "</p>" +
       "<div class=\"token-list\">" +
-      ["开头句：carrier_openers", "主画面：main_images", "细节句：detail_sentences", "风格句：style_sentences", "背景句：event_nouns"]
+      ["physical_description_root", "image", "desc_sentence", "style_group", "context_sentence"]
         .map(function (item) {
           return '<span class="token">' + esc(item) + "</span>";
         })
@@ -2215,9 +2282,9 @@
     var notes = document.createElement("details");
     notes.innerHTML =
       "<summary>深入说明</summary><ul>" +
-      "<li><code>{pawn_display}</code> / <code>{victim_display}</code> 由“称呼 + 姓名”自动展开。</li>" +
-      "<li><code>{scene_fragment}</code> 会自动加上逗号前缀，方便拼到主画面句尾。</li>" +
-      "<li><code>{event_noun}</code> 专门服务于背景句，用来概括“这件作品讲述了什么”。</li>" +
+      "<li><code>{pawn_nameFull}</code> / <code>{victim_nameDef}</code> 这类写法对应 TaleDef 中的 pawn token。</li>" +
+      "<li><code>{pawn_possessive}</code> / <code>{pawn_pronoun}</code> 会按你填写的代词自动展开成“他的 / 她的 / TA的”等形式。</li>" +
+      "<li><code>{thing_title}</code> / <code>{thing_quality}</code> 只在相关事件使用，来源对应游戏里的 thing / title / quality 规则。</li>" +
       "</ul>";
     box.appendChild(required);
     box.appendChild(optional);
@@ -2236,11 +2303,15 @@
     var box = document.createElement("section");
     box.className = "mechanism-event-box";
     box.innerHTML = "<h2>可能出现的句式</h2>";
-    box.appendChild(templateList("event_nouns 背景叙述", template.event_nouns, true));
-    box.appendChild(templateList("main_images 主画面", template.main_images, true));
-    box.appendChild(templateList("detail_sentences 细节句", template.detail_sentences, false));
-    box.appendChild(templateList("style_sentences 风格/寓意句", template.style_sentences, false));
-    box.appendChild(templateList("scene_phrases 场景短语", template.scene_phrases, false));
+    [
+      ["tale_noun 事件名词", template.event_nouns, true],
+      ["image 主画面", template.main_images, true],
+      ["desc_sentence 细节句", template.detail_sentences, false],
+      ["style_group / style_clause", template.style_sentences, false],
+      ["circumstance_phrase 场景状语", template.scene_phrases, false],
+    ].forEach(function (section) {
+      box.appendChild(templateList(section[0], section[1], section[2]));
+    });
     return box;
   }
 
@@ -2263,7 +2334,7 @@
 })();
 
 // ===== custom-event.js =====
-﻿;(function (global) {
+;(function (global) {
   var data = global.TynanArtData;
   var SLOT_SUGGESTIONS = data.SLOT_SUGGESTIONS;
 
