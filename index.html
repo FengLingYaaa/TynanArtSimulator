@@ -18,6 +18,7 @@
           <div class="header-actions-wrap">
             <span class="toolbar-label">快捷功能</span>
             <div class="header-actions">
+              <button id="openTutorialBtn" type="button" class="ghost utility-btn">使用指引</button>
               <button id="openPresetBtn" type="button" class="ghost utility-btn">人物预设</button>
               <button
                 id="themeToggleBtn"
@@ -81,6 +82,9 @@
                 <span>搜索事件</span>
                 <input id="eventSearch" type="text" placeholder="输入关键词筛选事件" />
               </label>
+              <div class="button-row compact-row">
+                <button id="openFavoriteManagerBtn" type="button" class="ghost" data-open-favorite-manager>管理收藏</button>
+              </div>
               <div id="eventList" class="event-list"></div>
             </aside>
 
@@ -113,6 +117,9 @@
                 <span>搜索事件</span>
                 <input id="mechanismSearch" type="text" placeholder="输入关键词筛选事件" />
               </label>
+              <div class="button-row compact-row">
+                <button type="button" class="ghost" data-open-favorite-manager>管理收藏</button>
+              </div>
               <div id="mechanismEventList" class="event-list"></div>
             </aside>
 
@@ -412,6 +419,10 @@
               <span>代词</span>
               <select id="presetPronoun"></select>
             </label>
+            <label class="checkbox-inline preset-checkbox">
+              <input id="presetAutoPrimary" type="checkbox" />
+              <span>设为默认主体人物</span>
+            </label>
             <div class="button-row">
               <button id="savePresetBtn" type="button">保存/更新预设</button>
               <button id="deletePresetBtn" type="button" class="secondary">删除选中</button>
@@ -422,11 +433,81 @@
       </div>
     </div>
 
+    <div id="favoriteManagerModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-head">
+          <div>
+            <h2>事件收藏夹</h2>
+            <p>可在事件右侧点击星标快速收藏，也可在这里批量调整收藏列表。</p>
+          </div>
+          <button id="closeFavoriteManagerBtn" type="button" class="ghost">关闭</button>
+        </div>
+        <label class="event-search">
+          <span>搜索事件</span>
+          <input id="favoriteManagerSearch" type="text" placeholder="输入关键词筛选事件" />
+        </label>
+        <div class="button-row compact-row">
+          <button id="favoriteSelectVisibleBtn" type="button">收藏当前筛选结果</button>
+          <button id="favoriteClearVisibleBtn" type="button" class="secondary">取消当前筛选结果</button>
+          <button id="favoriteClearAllBtn" type="button" class="ghost">清空全部收藏</button>
+        </div>
+        <div id="favoriteManagerList" class="favorite-manager-list"></div>
+      </div>
+    </div>
+
+    <div id="objectPickerModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-head">
+          <div>
+            <h2 id="objectPickerTitle">选择内容</h2>
+            <p>可直接点选常见项，也可搜索更具体的官方条目。</p>
+          </div>
+          <button id="closeObjectPickerBtn" type="button" class="ghost">关闭</button>
+        </div>
+        <label class="event-search">
+          <span>搜索条目</span>
+          <input id="objectPickerSearch" type="text" placeholder="输入关键词筛选可选内容" />
+        </label>
+        <div id="objectPickerQuick" class="object-picker-quick"></div>
+        <div id="objectPickerList" class="object-picker-list"></div>
+      </div>
+    </div>
+
+    <div id="tutorialOverlay" class="tutorial-overlay hidden" aria-hidden="true">
+      <div id="tutorialSpotlight" class="tutorial-spotlight" aria-hidden="true"></div>
+      <section id="tutorialCard" class="tutorial-card" aria-live="polite">
+        <div class="tutorial-progress">
+          <span id="tutorialStepLabel">步骤 1 / 4</span>
+          <button id="skipTutorialBtn" type="button" class="ghost">跳过教程</button>
+        </div>
+        <div id="tutorialDots" class="tutorial-dots" aria-label="教程步骤导航"></div>
+        <h2 id="tutorialTitle">使用指引</h2>
+        <p id="tutorialText" class="hint">这里会显示简短说明。</p>
+        <div class="tutorial-options">
+          <label class="checkbox-inline">
+            <input id="tutorialDontRemind" type="checkbox" checked />
+            <span>完成后不再提醒</span>
+          </label>
+          <button id="reenableTutorialBtn" type="button" class="ghost">重新启用教程</button>
+        </div>
+        <div class="button-row tutorial-actions">
+          <button id="prevTutorialBtn" type="button" class="ghost">上一步</button>
+          <button id="nextTutorialBtn" type="button">下一步</button>
+        </div>
+      </section>
+    </div>
+
     <div id="themeTransitionOverlay" class="theme-transition-overlay" aria-hidden="true"></div>
     <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
     <datalist id="roleTitleList"></datalist>
     <script src="./content-data.js"></script>
-    <script src="./app.js"></script>
+    <script src="./core.js"></script>
+    <script src="./favorites.js"></script>
+    <script src="./presets.js"></script>
+    <script src="./generator.js"></script>
+    <script src="./mechanism.js"></script>
+    <script src="./custom-event.js"></script>
+    <script src="./tutorial.js"></script>
   </body>
 </html>

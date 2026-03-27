@@ -92,7 +92,7 @@ window.TynanArtData = {
           "key": "object",
           "label": "对象名",
           "slot_type": "object",
-          "suggestion_type": "object_name"
+          "suggestion_type": "construction_object_name"
         }
       ],
       "optional_slots": [
@@ -1108,56 +1108,6 @@ window.TynanArtData = {
         "include_context"
       ],
       "category": "生存与状态"
-    },
-    {
-      "id": "mine_vein",
-      "label": "开采矿脉",
-      "carrier_types": [
-        "雕塑",
-        "家具",
-        "近战武器",
-        "远程武器",
-        "棺材"
-      ],
-      "required_slots": [
-        {
-          "key": "miner",
-          "label": "矿工",
-          "slot_type": "role",
-          "suggestion_type": "person_name"
-        },
-        {
-          "key": "material",
-          "label": "矿物",
-          "slot_type": "object",
-          "suggestion_type": "material_name"
-        }
-      ],
-      "optional_slots": [
-        {
-          "key": "date_text",
-          "label": "日期",
-          "slot_type": "meta",
-          "suggestion_type": "date_text"
-        }
-      ],
-      "simple_fields": [
-        "miner",
-        "material",
-        "date_text"
-      ],
-      "complete_fields": [
-        "miner",
-        "material",
-        "date_text",
-        "scene_hint",
-        "detail_hint",
-        "style_hint",
-        "include_detail",
-        "include_style",
-        "include_context"
-      ],
-      "category": "创作与成果"
     },
     {
       "id": "game_play",
@@ -2923,6 +2873,1007 @@ window.TynanArtData = {
         "include_context"
       ],
       "category": "战斗与冲突"
+    },
+    {
+      "defName": "CompletedLongCraftingProject",
+      "id": "finished_crafting",
+      "label": "完成长时间的制作项目",
+      "category": "创作与成果",
+      "required_slots": [
+        {
+          "key": "crafter",
+          "label": "制作者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "object",
+          "label": "对象名",
+          "slot_type": "object",
+          "suggestion_type": "craft_object_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        },
+        {
+          "key": "material",
+          "label": "材料",
+          "slot_type": "meta",
+          "suggestion_type": "material"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "crafter",
+        "object",
+        "date_text"
+      ],
+      "complete_fields": [
+        "crafter",
+        "object",
+        "date_text",
+        "material",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "GainedMasterSkillWithPassion",
+      "id": "skill_mastery_passion",
+      "label": "热衷的技能精通",
+      "category": "创作与成果",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "角色",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "skill",
+          "label": "技能",
+          "slot_type": "object",
+          "suggestion_type": "skill_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "skill",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "skill",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "CaravanMeeting",
+      "id": "caravan_meeting",
+      "label": "远行队相遇",
+      "category": "旅途与迁移",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "商队成员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "CaravanDemand",
+      "id": "caravan_demand",
+      "label": "远行队被勒索",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "商队成员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "CaravanAmbushedByManhunter",
+      "id": "caravan_ambush_manhunter",
+      "label": "远行队遭遇动物猎杀人类",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "商队成员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "CaravanRemoteMining",
+      "id": "caravan_remote_mining",
+      "label": "远行队野外开采",
+      "category": "旅途与迁移",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "远行者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "material",
+          "label": "矿物",
+          "slot_type": "object",
+          "suggestion_type": "material_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "material",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "material",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "CaravanAmbushDefeated",
+      "id": "caravan_ambush_defeated",
+      "label": "远行队战胜伏击",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "商队成员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "CaravanAssaultSuccessful",
+      "id": "caravan_assault_success",
+      "label": "远行队战斗胜利",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "商队成员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "CaravanFled",
+      "id": "caravan_fled",
+      "label": "远行队撤退",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "商队成员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "Raid",
+      "id": "raid",
+      "label": "袭击",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "防守者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "StruckMineable",
+      "id": "struck_mineable",
+      "label": "采矿",
+      "category": "创作与成果",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "矿工",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "object",
+          "label": "矿物",
+          "slot_type": "object",
+          "suggestion_type": "material_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "object",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "object",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "VacuumExposureRevealed",
+      "id": "vacuum_exposure",
+      "label": "暴露于真空",
+      "category": "生存与状态",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "经历者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "OrbitalDebris",
+      "id": "orbital_debris",
+      "label": "轨道碎片",
+      "category": "天象与灾害",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "目击者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "StudiedEntity",
+      "id": "studied_entity",
+      "label": "调查了实体",
+      "category": "心灵与仪式",
+      "required_slots": [
+        {
+          "key": "studier",
+          "label": "调查者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "entity",
+          "label": "实体",
+          "slot_type": "object",
+          "suggestion_type": "entity_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "studier",
+        "entity",
+        "date_text"
+      ],
+      "complete_fields": [
+        "studier",
+        "entity",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "DeathPall",
+      "id": "death_pall",
+      "label": "死灵迷雾",
+      "category": "天象与灾害",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "经历者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "UnnaturalDarkness",
+      "id": "unnatural_darkness",
+      "label": "异常黑暗",
+      "category": "天象与灾害",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "经历者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "ClosedTheVoid",
+      "id": "closed_void",
+      "label": "已关闭虚空节点",
+      "category": "心灵与仪式",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "执行者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "EmbracedTheVoid",
+      "id": "embraced_void",
+      "label": "拥抱虚空",
+      "category": "心灵与仪式",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "主角",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "PerformedPsychicRitual",
+      "id": "performed_psychic_ritual",
+      "label": "举行心灵仪式",
+      "category": "心灵与仪式",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "主持者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "AttendedConcert",
+      "id": "attended_concert",
+      "label": "参加音乐会",
+      "category": "生活与娱乐",
+      "required_slots": [
+        {
+          "key": "organizer",
+          "label": "表演者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "attender",
+          "label": "参与者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "organizer",
+        "attender",
+        "date_text"
+      ],
+      "complete_fields": [
+        "organizer",
+        "attender",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "HeldConcert",
+      "id": "held_concert",
+      "label": "举办音乐会",
+      "category": "生活与娱乐",
+      "required_slots": [
+        {
+          "key": "organizer",
+          "label": "举办者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "organizer",
+        "date_text"
+      ],
+      "complete_fields": [
+        "organizer",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "NoxiousHaze",
+      "id": "noxious_haze",
+      "label": "酸雾",
+      "category": "天象与灾害",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "经历者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
     }
   ],
   "SLOT_SUGGESTIONS": {
@@ -3243,6 +4194,81 @@ window.TynanArtData = {
       "13",
       "14",
       "15"
+    ],
+    "entity_name": [
+      "虚空节点",
+      "虚空结构",
+      "虚空巨石",
+      "扭曲方尖碑",
+      "腐化方尖碑",
+      "畸变方尖碑",
+      "夜光柱",
+      "电子阻滞器",
+      "收容平台",
+      "收容点",
+      "灰盒",
+      "灰色雕塑",
+      "无底深坑",
+      "蹒趚怪",
+      "食尸鬼",
+      "金属怪形",
+      "血棘巨人",
+      "吞噬兽",
+      "嵌合兽",
+      "血肉核心",
+      "苦痛之球",
+      "夜魇",
+      "幽魂",
+      "隐形魔",
+      "恶臭瘤兽",
+      "惊惧母兽",
+      "独爪兽",
+      "双爪兽",
+      "三爪兽",
+      "扭曲超凡支柱",
+      "虚空金属块",
+      "虚空金属墙",
+      "潜近探测器",
+      "碎片阻滞器",
+      "狂热诱发器",
+      "睡眠抑制器",
+      "大气升温器"
+    ],
+    "construction_object_name": [
+      "墙",
+      "栅栏",
+      "单人床",
+      "双人床",
+      "餐椅",
+      "扶手椅",
+      "书柜",
+      "小书柜",
+      "床头柜",
+      "矮柜",
+      "艺创台",
+      "基础研究台",
+      "高级研究台",
+      "精密装配台",
+      "药物实验台",
+      "电熔炼器",
+      "深钻井",
+      "工具柜",
+      "棺材",
+      "轨道交易信标"
+    ],
+    "craft_object_name": [
+      "左轮手枪",
+      "单分子剑",
+      "长剑",
+      "等离子剑",
+      "宙斯锤",
+      "电荷步枪",
+      "重型冲锋枪",
+      "防弹背心",
+      "零部件",
+      "高级零部件",
+      "海军装甲",
+      "斥候装甲"
     ]
   },
   "TEXT_TEMPLATES": {
@@ -4790,69 +5816,6 @@ window.TynanArtData = {
         },
         "source_def_name": "GaveBirth"
       },
-      "mine_vein": {
-        "event_nouns": [
-          "{miner_nameDef}开采储量丰富的{material_label}矿脉"
-        ],
-        "main_images": [
-          "{miner_nameFull}使用开采工具在蕴藏着{material_label}的岩壁前工作，[circumstance_group]",
-          "{miner_nameFull}占据了一大片{material_label}矿，[circumstance_group]",
-          "{miner_nameFull}靠在由{material_label}组成的墙上，,[circumstance_group]",
-          "{miner_nameFull}正在指挥挖掘队开采一条储量丰富的{material_label}矿脉，[circumstance_group]",
-          "{miner_nameFull}正在仔细勘察一条储量丰富的{material_label}矿脉，[circumstance_group]"
-        ],
-        "detail_sentences": [
-          "[Quantity_adjphrase][ally]提供了帮助。",
-          "[Quantity_adjphrase][Animal]在那里徘徊漫步。",
-          "背景中出现的社区是[Community]。",
-          "[Quantity_adjphrase]矿脉在可视距离内。",
-          "不远处能看到[TerrainFeature]。",
-          "工作让{miner_nameDef}变得浑身汗臭而且脏兮兮的。"
-        ],
-        "style_sentences": [],
-        "scene_phrases": [
-          "任凭汗水流淌",
-          "带着[AdjectiveFriendly]的表情",
-          "带着[AdjectiveFriendly]的表情",
-          "面带得意的微笑",
-          "{miner_possessive}看上去心满意足"
-        ],
-        "grammar_pools": {
-          "tale_noun": [
-            "{miner_nameDef}开采储量丰富的{material_label}矿脉"
-          ],
-          "image": [
-            "{miner_nameFull}使用开采工具在蕴藏着{material_label}的岩壁前工作，[circumstance_group]",
-            "{miner_nameFull}占据了一大片{material_label}矿，[circumstance_group]",
-            "{miner_nameFull}靠在由{material_label}组成的墙上，,[circumstance_group]",
-            "{miner_nameFull}正在指挥挖掘队开采一条储量丰富的{material_label}矿脉，[circumstance_group]",
-            "{miner_nameFull}正在仔细勘察一条储量丰富的{material_label}矿脉，[circumstance_group]"
-          ],
-          "circumstance_phrase": [
-            "任凭汗水流淌",
-            "带着[AdjectiveFriendly]的表情",
-            "带着[AdjectiveFriendly]的表情",
-            "面带得意的微笑",
-            "{miner_possessive}看上去心满意足"
-          ],
-          "desc_sentence": [
-            "[Quantity_adjphrase][ally]提供了帮助。",
-            "[Quantity_adjphrase][Animal]在那里徘徊漫步。",
-            "背景中出现的社区是[Community]。",
-            "[Quantity_adjphrase]矿脉在可视距离内。",
-            "不远处能看到[TerrainFeature]。",
-            "工作让{miner_nameDef}变得浑身汗臭而且脏兮兮的。"
-          ],
-          "circumstance_group": [
-            "任凭汗水流淌",
-            "带着[AdjectiveFriendly]的表情",
-            "带着[AdjectiveFriendly]的表情",
-            "面带得意的微笑",
-            "{miner_possessive}看上去心满意足"
-          ]
-        },
-        "source_def_name": "MinedValuable"
-      },
       "game_play": {
         "event_nouns": [
           "{pawn_nameDef}利用{game_label}进行放松",
@@ -5926,7 +6889,7 @@ window.TynanArtData = {
         ],
         "style_sentences": [],
         "scene_phrases": [
-          "头上带着[Quantity_adjphrase]风雪帽",
+          "身上裹着厚实的御寒衣物",
           "灰暗的天空下着小雪",
           "而{pawn_possessive}朋友们建造了一座堡垒",
           "而{pawn_possessive}朋友们建造了一个雪人家族"
@@ -5943,7 +6906,7 @@ window.TynanArtData = {
             "{pawn_nameFull}躺在雪地里，[circumstance_group]"
           ],
           "circumstance_phrase": [
-            "头上带着[Quantity_adjphrase]风雪帽",
+            "身上裹着厚实的御寒衣物",
             "灰暗的天空下着小雪",
             "而{pawn_possessive}朋友们建造了一座堡垒",
             "而{pawn_possessive}朋友们建造了一个雪人家族"
@@ -5955,7 +6918,7 @@ window.TynanArtData = {
             "被冰雪覆盖的[TerrainFeature]出现在远方。"
           ],
           "circumstance_group": [
-            "头上带着[Quantity_adjphrase]风雪帽",
+            "身上裹着厚实的御寒衣物",
             "灰暗的天空下着小雪",
             "而{pawn_possessive}朋友们建造了一座堡垒",
             "而{pawn_possessive}朋友们建造了一个雪人家族"
@@ -7460,6 +8423,1317 @@ window.TynanArtData = {
             "在画面右侧留白之间"
           ]
         }
+      },
+      "finished_crafting": {
+        "event_nouns": [
+          "{crafter_nameDef}完成了{object_label}的制作"
+        ],
+        "main_images": [
+          "{crafter_nameFull}正在装配{object_label}内部一个复杂的装置，[circumstance_group]",
+          "{crafter_nameFull}正在为{object_label}的表面抛光，[circumstance_group]",
+          "{crafter_nameFull}正在为{object_label}添加表面细节，[circumstance_group]",
+          "{crafter_nameFull}把自己的名字刻在{object_label}上，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "{object_label}泛着柔和的[Color]光。",
+          "{object_label}精雕细琢。",
+          "{crafter_nameDef}看上去毫不费力地举起{object_label}。",
+          "[Quantity_adjphrase][PersonJob]对作品赞叹不已。",
+          "[Quantity_adjphrase][PersonJob]投来敬畏的目光。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "{crafter_possessive}眼中闪烁着光芒",
+          "同时在擦拭头上的汗水",
+          "制作者浑身都是污渍",
+          "面带得意的微笑",
+          "{crafter_possessive}脸上带着满意的神情"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{crafter_nameDef}完成了{object_label}的制作"
+          ],
+          "image": [
+            "{crafter_nameFull}正在装配{object_label}内部一个复杂的装置，[circumstance_group]",
+            "{crafter_nameFull}正在为{object_label}的表面抛光，[circumstance_group]",
+            "{crafter_nameFull}正在为{object_label}添加表面细节，[circumstance_group]",
+            "{crafter_nameFull}把自己的名字刻在{object_label}上，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "{crafter_possessive}眼中闪烁着光芒",
+            "同时在擦拭头上的汗水",
+            "制作者浑身都是污渍",
+            "面带得意的微笑",
+            "{crafter_possessive}脸上带着满意的神情"
+          ],
+          "desc_sentence": [
+            "{object_label}泛着柔和的[Color]光。",
+            "{object_label}精雕细琢。",
+            "{crafter_nameDef}看上去毫不费力地举起{object_label}。",
+            "[Quantity_adjphrase][PersonJob]对作品赞叹不已。",
+            "[Quantity_adjphrase][PersonJob]投来敬畏的目光。"
+          ],
+          "circumstance_group": [
+            "{crafter_possessive}眼中闪烁着光芒",
+            "同时在擦拭头上的汗水",
+            "制作者浑身都是污渍",
+            "面带得意的微笑",
+            "{crafter_possessive}脸上带着满意的神情"
+          ]
+        },
+        "source_def_name": "CompletedLongCraftingProject"
+      },
+      "skill_mastery_passion": {
+        "event_nouns": [
+          "{pawn_nameDef}成为{skill_label}领域的大师"
+        ],
+        "main_images": [
+          "{pawn_nameFull}正在开心地练习{skill_label}，[circumstance_group]",
+          "{pawn_nameFull}正饶有兴致地阅读一本关于{skill_label}的书籍，[circumstance_group]",
+          "{pawn_nameFull}正在高兴地接受{skill_label}相关的训练，[circumstance_group]",
+          "{pawn_nameFull}狂热地工作，[circumstance_group]",
+          "{pawn_nameFull}完成了一个项目，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "现场堆放着[Quantity_adjphrase]失败作品。",
+          "现场堆放着[Quantity_adjphrase]书籍。",
+          "{pawn_possessive}技能发挥的作用立竿见影。",
+          "[Quantity_adjphrase][PersonJob]露出惊讶的表情。",
+          "[Quantity_adjphrase][Animal]露出惊讶的表情。",
+          "[Quantity_adjphrase]上古大师显灵并注视着这一切。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "带着[AdjectiveFriendly]的神情",
+          "带着喜悦的神情",
+          "显得非常[AdjectiveFriendly]",
+          "兴高采烈地呼喊",
+          "满身大汗",
+          "显得非常疲惫"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}成为{skill_label}领域的大师"
+          ],
+          "image": [
+            "{pawn_nameFull}正在开心地练习{skill_label}，[circumstance_group]",
+            "{pawn_nameFull}正饶有兴致地阅读一本关于{skill_label}的书籍，[circumstance_group]",
+            "{pawn_nameFull}正在高兴地接受{skill_label}相关的训练，[circumstance_group]",
+            "{pawn_nameFull}狂热地工作，[circumstance_group]",
+            "{pawn_nameFull}完成了一个项目，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "带着[AdjectiveFriendly]的神情",
+            "带着喜悦的神情",
+            "显得非常[AdjectiveFriendly]",
+            "兴高采烈地呼喊",
+            "满身大汗",
+            "显得非常疲惫"
+          ],
+          "desc_sentence": [
+            "现场堆放着[Quantity_adjphrase]失败作品。",
+            "现场堆放着[Quantity_adjphrase]书籍。",
+            "{pawn_possessive}技能发挥的作用立竿见影。",
+            "[Quantity_adjphrase][PersonJob]露出惊讶的表情。",
+            "[Quantity_adjphrase][Animal]露出惊讶的表情。",
+            "[Quantity_adjphrase]上古大师显灵并注视着这一切。"
+          ],
+          "circumstance_group": [
+            "带着[AdjectiveFriendly]的神情",
+            "带着喜悦的神情",
+            "显得非常[AdjectiveFriendly]",
+            "兴高采烈地呼喊",
+            "满身大汗",
+            "显得非常疲惫"
+          ]
+        },
+        "source_def_name": "GainedMasterSkillWithPassion"
+      },
+      "caravan_meeting": {
+        "event_nouns": [
+          "{pawn_nameDef}的远行队遇到了其他人"
+        ],
+        "main_images": [
+          "{pawn_nameFull}在问候一位[PersonJob]，[circumstance_group]",
+          "{pawn_nameFull}在检查一位[PersonJob]，[circumstance_group]",
+          "{pawn_nameFull}在向一位[PersonJob]喊话，[circumstance_group]",
+          "{pawn_nameFull}向一位[PersonJob]走去，[circumstance_group]",
+          "{pawn_nameFull}在轻声交谈，[circumstance_group]",
+          "{pawn_nameFull}在高声大喊，[circumstance_group]",
+          "{pawn_nameFull}和[PersonJob]一起玩[Game]，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][PersonJob]正在[event]。",
+          "[Quantity_adjphrase][PersonJob]正在[event]。",
+          "[Quantity_adjphrase][Animal]围在附近。",
+          "太阳落在[TerrainFeature]背后。",
+          "太阳从[TerrainFeature]背后升起。",
+          "一位[PersonJob]在远处观察。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "脸上带着[AdjectiveFriendly]的神情",
+          "脸上带着[AdjectiveFriendly]的神情",
+          "看上去十分[friendlyverb]",
+          "其他人在一旁围观"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}的远行队遇到了其他人"
+          ],
+          "image": [
+            "{pawn_nameFull}在问候一位[PersonJob]，[circumstance_group]",
+            "{pawn_nameFull}在检查一位[PersonJob]，[circumstance_group]",
+            "{pawn_nameFull}在向一位[PersonJob]喊话，[circumstance_group]",
+            "{pawn_nameFull}向一位[PersonJob]走去，[circumstance_group]",
+            "{pawn_nameFull}在轻声交谈，[circumstance_group]",
+            "{pawn_nameFull}在高声大喊，[circumstance_group]",
+            "{pawn_nameFull}和[PersonJob]一起玩[Game]，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "脸上带着[AdjectiveFriendly]的神情",
+            "脸上带着[AdjectiveFriendly]的神情",
+            "看上去十分[friendlyverb]",
+            "其他人在一旁围观"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][PersonJob]正在[event]。",
+            "[Quantity_adjphrase][PersonJob]正在[event]。",
+            "[Quantity_adjphrase][Animal]围在附近。",
+            "太阳落在[TerrainFeature]背后。",
+            "太阳从[TerrainFeature]背后升起。",
+            "一位[PersonJob]在远处观察。"
+          ],
+          "event": [
+            "举办派对",
+            "聚餐",
+            "讨论最近的事件",
+            "叙旧",
+            "犹豫不决"
+          ],
+          "circumstance_group": [
+            "脸上带着[AdjectiveFriendly]的神情",
+            "脸上带着[AdjectiveFriendly]的神情",
+            "看上去十分[friendlyverb]",
+            "其他人在一旁围观"
+          ]
+        },
+        "source_def_name": "CaravanMeeting"
+      },
+      "caravan_demand": {
+        "event_nouns": [
+          "{pawn_nameDef}的远行队被勒索",
+          "{pawn_nameDef}的远行队受到威胁"
+        ],
+        "main_images": [
+          "{pawn_nameFull}畏缩着，[circumstance_group]",
+          "{pawn_nameFull}高声喊话，[circumstance_group]",
+          "{pawn_nameFull}在思考，[circumstance_group]",
+          "{pawn_nameFull}怒目而视，[circumstance_group]",
+          "{pawn_nameFull}被[PersonJob]勒索，[circumstance_group]",
+          "{pawn_nameFull}挥舞着[Weapon]，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "{pawn_nameDef}几乎被[Enemy]包围。",
+          "[Quantity_adjphrase][Enemy]就在附近，[action]。",
+          "太阳落在[TerrainFeature]背后。",
+          "太阳从[TerrainFeature]背后升起。",
+          "一位[PersonJob]在远处监视着一切。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "脸上带着[AdjectiveBadass]的神情",
+          "脸上带着[AdjectiveAngsty]的神情",
+          "其他人在一旁围观",
+          "同时受到[Enemy]的威胁"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}的远行队被勒索",
+            "{pawn_nameDef}的远行队受到威胁"
+          ],
+          "image": [
+            "{pawn_nameFull}畏缩着，[circumstance_group]",
+            "{pawn_nameFull}高声喊话，[circumstance_group]",
+            "{pawn_nameFull}在思考，[circumstance_group]",
+            "{pawn_nameFull}怒目而视，[circumstance_group]",
+            "{pawn_nameFull}被[PersonJob]勒索，[circumstance_group]",
+            "{pawn_nameFull}挥舞着[Weapon]，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "脸上带着[AdjectiveBadass]的神情",
+            "脸上带着[AdjectiveAngsty]的神情",
+            "其他人在一旁围观",
+            "同时受到[Enemy]的威胁"
+          ],
+          "desc_sentence": [
+            "{pawn_nameDef}几乎被[Enemy]包围。",
+            "[Quantity_adjphrase][Enemy]就在附近，[action]。",
+            "太阳落在[TerrainFeature]背后。",
+            "太阳从[TerrainFeature]背后升起。",
+            "一位[PersonJob]在远处监视着一切。"
+          ],
+          "action": [
+            "准备好他们的武器",
+            "警戒四周",
+            "监控人质",
+            "等待决定",
+            "嘲讽{pawn_nameDef}"
+          ],
+          "circumstance_group": [
+            "脸上带着[AdjectiveBadass]的神情",
+            "脸上带着[AdjectiveAngsty]的神情",
+            "其他人在一旁围观",
+            "同时受到[Enemy]的威胁"
+          ]
+        },
+        "source_def_name": "CaravanDemand"
+      },
+      "caravan_ambush_manhunter": {
+        "event_nouns": [
+          "{pawn_nameDef}的远行队被伏击"
+        ],
+        "main_images": [
+          "{pawn_nameFull}畏缩着，[circumstance_group]",
+          "{pawn_nameFull}为了掩护队友快速移动，[circumstance_group]",
+          "{pawn_nameFull}移动射击，[circumstance_group]",
+          "{pawn_nameFull}发起进攻，[circumstance_group]",
+          "{pawn_nameFull}大声呼喊，[circumstance_group]",
+          "{pawn_nameFull}正在奔跑，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase]远处的动物从[TerrainFeature]后面接近。",
+          "遍地都是[Gore]。",
+          "地上铺满了被踩碎的[Gore]。",
+          "[Quantity_adjphrase][Animal]惊慌失措，纷纷逃离危险地带。",
+          "一位[PersonJob]在远处监视着一切。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "脸上带着[AdjectiveBadass]的神情",
+          "脸上带着[AdjectiveBadass]的神情",
+          "同时挥舞着{pawn_possessive}武器",
+          "同时汗流浃背",
+          "身上都是[Gore]"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}的远行队被伏击"
+          ],
+          "image": [
+            "{pawn_nameFull}畏缩着，[circumstance_group]",
+            "{pawn_nameFull}为了掩护队友快速移动，[circumstance_group]",
+            "{pawn_nameFull}移动射击，[circumstance_group]",
+            "{pawn_nameFull}发起进攻，[circumstance_group]",
+            "{pawn_nameFull}大声呼喊，[circumstance_group]",
+            "{pawn_nameFull}正在奔跑，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "脸上带着[AdjectiveBadass]的神情",
+            "脸上带着[AdjectiveBadass]的神情",
+            "同时挥舞着{pawn_possessive}武器",
+            "同时汗流浃背",
+            "身上都是[Gore]"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase]远处的动物从[TerrainFeature]后面接近。",
+            "遍地都是[Gore]。",
+            "地上铺满了被踩碎的[Gore]。",
+            "[Quantity_adjphrase][Animal]惊慌失措，纷纷逃离危险地带。",
+            "一位[PersonJob]在远处监视着一切。"
+          ],
+          "circumstance_group": [
+            "脸上带着[AdjectiveBadass]的神情",
+            "脸上带着[AdjectiveBadass]的神情",
+            "同时挥舞着{pawn_possessive}武器",
+            "同时汗流浃背",
+            "身上都是[Gore]"
+          ]
+        },
+        "source_def_name": "CaravanAmbushedByManhunter"
+      },
+      "caravan_remote_mining": {
+        "event_nouns": [
+          "{pawn_nameDef}在外乡开采储量丰富的{material_label}"
+        ],
+        "main_images": [
+          "{pawn_nameFull}正在用工具开采{material_label}，[circumstance_group]",
+          "{pawn_nameFull}高举一大块{material_label}，[circumstance_group]",
+          "{pawn_nameFull}靠在由{material_label}组成的墙上，[circumstance_group]",
+          "{pawn_nameFull}正在指挥挖掘队开采一条储量丰富的{material_label}矿脉，[circumstance_group]",
+          "{pawn_nameFull}正在仔细勘察一条储量丰富的{material_label}矿脉，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][ally]提供了帮助。",
+          "[Quantity_adjphrase][Animal]在那里徘徊漫步。",
+          "背景中出现了一个临时住所。",
+          "[Quantity_adjphrase]更多矿脉在可视距离内。",
+          "不远处能看到[TerrainFeature]。",
+          "工作让{pawn_nameDef}变得浑身汗臭而且脏兮兮的。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "任凭汗水流淌",
+          "眼中露出[AdjectiveFriendly]的神情",
+          "面带得意的微笑",
+          "{pawn_possessive}脸上带着满意的神情",
+          "同时环顾四周，警惕危险"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}在外乡开采储量丰富的{material_label}"
+          ],
+          "image": [
+            "{pawn_nameFull}正在用工具开采{material_label}，[circumstance_group]",
+            "{pawn_nameFull}高举一大块{material_label}，[circumstance_group]",
+            "{pawn_nameFull}靠在由{material_label}组成的墙上，[circumstance_group]",
+            "{pawn_nameFull}正在指挥挖掘队开采一条储量丰富的{material_label}矿脉，[circumstance_group]",
+            "{pawn_nameFull}正在仔细勘察一条储量丰富的{material_label}矿脉，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "任凭汗水流淌",
+            "眼中露出[AdjectiveFriendly]的神情",
+            "面带得意的微笑",
+            "{pawn_possessive}脸上带着满意的神情",
+            "同时环顾四周，警惕危险"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][ally]提供了帮助。",
+            "[Quantity_adjphrase][Animal]在那里徘徊漫步。",
+            "背景中出现了一个临时住所。",
+            "[Quantity_adjphrase]更多矿脉在可视距离内。",
+            "不远处能看到[TerrainFeature]。",
+            "工作让{pawn_nameDef}变得浑身汗臭而且脏兮兮的。"
+          ],
+          "circumstance_group": [
+            "任凭汗水流淌",
+            "眼中露出[AdjectiveFriendly]的神情",
+            "面带得意的微笑",
+            "{pawn_possessive}脸上带着满意的神情",
+            "同时环顾四周，警惕危险"
+          ]
+        },
+        "source_def_name": "CaravanRemoteMining"
+      },
+      "caravan_ambush_defeated": {
+        "event_nouns": [
+          "{pawn_nameDef}的远行队反伏击战成功",
+          "{pawn_nameDef}的远行队挫败了敌人的伏击"
+        ],
+        "main_images": [
+          "{pawn_nameFull}在组织抵抗，并[circumstance_group]",
+          "{pawn_nameFull}一边用[Weapon]防御，一边[circumstance_group]",
+          "{pawn_nameFull}使用{pawn_possessive}[Weapon]还击，同时[circumstance_group]",
+          "{pawn_nameFull}挺身而出，[circumstance_group]",
+          "{pawn_nameFull}露出[AdjectiveBadass]的神情，[circumstance_group]",
+          "{pawn_nameFull}露出[AdjectiveAngsty]的神情，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Enemy]挥动着[Weapon]向前推进。",
+          "大量[Enemy]挥舞着[Weapon]发起冲锋。",
+          "[Quantity_adjphrase][Enemy]向前推进，眼中充满了[AdjectiveBadass]的神情。",
+          "[Quantity_adjphrase][Enemy]向前推进，眼中充满了[AdjectiveAngsty]的神情。",
+          "[Quantity_adjphrase][Animal]冲锋，[Color]的眼睛散发出光芒。",
+          "[Quantity_adjphrase][Animal]冲上来，浑身沾满[Gore]。",
+          "遍地都是[Gore]。",
+          "[Quantity_adjphrase][PersonJob]选择逃离该地区。",
+          "[Quantity_adjphrase][Animal]选择逃离该地区。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "为冲在前面的同伴掩护",
+          "在远行队四周奔走",
+          "发出胜利的咆哮",
+          "挥舞着[Weapon]",
+          "无视身上沾满的[Gore]"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}的远行队反伏击战成功",
+            "{pawn_nameDef}的远行队挫败了敌人的伏击"
+          ],
+          "image": [
+            "{pawn_nameFull}在组织抵抗，并[circumstance_group]",
+            "{pawn_nameFull}一边用[Weapon]防御，一边[circumstance_group]",
+            "{pawn_nameFull}使用{pawn_possessive}[Weapon]还击，同时[circumstance_group]",
+            "{pawn_nameFull}挺身而出，[circumstance_group]",
+            "{pawn_nameFull}露出[AdjectiveBadass]的神情，[circumstance_group]",
+            "{pawn_nameFull}露出[AdjectiveAngsty]的神情，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "为冲在前面的同伴掩护",
+            "在远行队四周奔走",
+            "发出胜利的咆哮",
+            "挥舞着[Weapon]",
+            "无视身上沾满的[Gore]"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Enemy]挥动着[Weapon]向前推进。",
+            "大量[Enemy]挥舞着[Weapon]发起冲锋。",
+            "[Quantity_adjphrase][Enemy]向前推进，眼中充满了[AdjectiveBadass]的神情。",
+            "[Quantity_adjphrase][Enemy]向前推进，眼中充满了[AdjectiveAngsty]的神情。",
+            "[Quantity_adjphrase][Animal]冲锋，[Color]的眼睛散发出光芒。",
+            "[Quantity_adjphrase][Animal]冲上来，浑身沾满[Gore]。",
+            "遍地都是[Gore]。",
+            "[Quantity_adjphrase][PersonJob]选择逃离该地区。",
+            "[Quantity_adjphrase][Animal]选择逃离该地区。"
+          ],
+          "circumstance_group": [
+            "为冲在前面的同伴掩护",
+            "在远行队四周奔走",
+            "发出胜利的咆哮",
+            "挥舞着[Weapon]",
+            "无视身上沾满的[Gore]"
+          ]
+        },
+        "source_def_name": "CaravanAmbushDefeated"
+      },
+      "caravan_assault_success": {
+        "event_nouns": [
+          "{pawn_nameDef}的远行队摧毁了敌方据点"
+        ],
+        "main_images": [
+          "{pawn_nameFull}冲向[Enemy]，[circumstance_group]",
+          "{pawn_nameFull}紧握着[Weapon]，[circumstance_group]",
+          "{pawn_nameFull}挥舞着[Weapon]，[circumstance_group]",
+          "{pawn_nameFull}挺身而出，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Enemy]在战斗中被击退。",
+          "[Quantity_adjphrase][Enemy]落荒而逃。",
+          "[Quantity_adjphrase][Enemy]损失惨重。",
+          "远处的[Community]燃烧着。",
+          "远处的[Community]浓烟滚滚。",
+          "遍地都是[Gore]。",
+          "[Quantity_adjphrase][PersonJob]为了避难离开此地。",
+          "[Quantity_adjphrase][Animal]为了避难离开此地。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "{pawn_possessive}眼中充满了[AdjectiveBadass]的神情",
+          "{pawn_possessive}眼中充满了[AdjectiveAngsty]的神情",
+          "发出胜利的战吼",
+          "身上沾满了[Gore]"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}的远行队摧毁了敌方据点"
+          ],
+          "image": [
+            "{pawn_nameFull}冲向[Enemy]，[circumstance_group]",
+            "{pawn_nameFull}紧握着[Weapon]，[circumstance_group]",
+            "{pawn_nameFull}挥舞着[Weapon]，[circumstance_group]",
+            "{pawn_nameFull}挺身而出，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "{pawn_possessive}眼中充满了[AdjectiveBadass]的神情",
+            "{pawn_possessive}眼中充满了[AdjectiveAngsty]的神情",
+            "发出胜利的战吼",
+            "身上沾满了[Gore]"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Enemy]在战斗中被击退。",
+            "[Quantity_adjphrase][Enemy]落荒而逃。",
+            "[Quantity_adjphrase][Enemy]损失惨重。",
+            "远处的[Community]燃烧着。",
+            "远处的[Community]浓烟滚滚。",
+            "遍地都是[Gore]。",
+            "[Quantity_adjphrase][PersonJob]为了避难离开此地。",
+            "[Quantity_adjphrase][Animal]为了避难离开此地。"
+          ],
+          "circumstance_group": [
+            "{pawn_possessive}眼中充满了[AdjectiveBadass]的神情",
+            "{pawn_possessive}眼中充满了[AdjectiveAngsty]的神情",
+            "发出胜利的战吼",
+            "身上沾满了[Gore]"
+          ]
+        },
+        "source_def_name": "CaravanAssaultSuccessful"
+      },
+      "caravan_fled": {
+        "event_nouns": [
+          "{pawn_nameDef}的远行队脱险",
+          "{pawn_nameDef}的远行队脱离险境",
+          "{pawn_nameDef}的远行队侥幸脱险",
+          "{pawn_nameDef}的远行队被敌人赶跑"
+        ],
+        "main_images": [
+          "{pawn_nameFull}仓皇逃窜以[circumstance_group]",
+          "为了躲避[circumstance_group]，{pawn_nameFull}夺路而逃",
+          "{pawn_nameFull}隐藏在[TerrainFeature]中，躲避[circumstance_group]",
+          "{pawn_nameFull}用一场撤退战迎接[circumstance_group]",
+          "{pawn_nameFull}漫不经心地躲避[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "追击{pawn_nameDef}的家伙们挥舞着[Weapon]。",
+          "[Color]的烟雾将追杀{pawn_nameDef}的家伙们笼罩在其中。",
+          "以{pawn_nameDef}为目标的追击者露出[AdjectiveAngsty]的神情。",
+          "以{pawn_nameDef}为目标的追击者挥舞着[Weapon]。",
+          "{pawn_nameDef}满头大汗。",
+          "{pawn_nameDef}气喘吁吁。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "来自[Quantity_adjphrase][Enemy]的追踪",
+          "[Quantity_adjphrase][Enemy]的搜寻",
+          "[Quantity_adjphrase][Enemy]",
+          "来自[Quantity_adjphrase]的敌对[Animal]的猎杀",
+          "[AdjectiveLarge][Enemy]"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}的远行队脱险",
+            "{pawn_nameDef}的远行队脱离险境",
+            "{pawn_nameDef}的远行队侥幸脱险",
+            "{pawn_nameDef}的远行队被敌人赶跑"
+          ],
+          "image": [
+            "{pawn_nameFull}仓皇逃窜以[circumstance_group]",
+            "为了躲避[circumstance_group]，{pawn_nameFull}夺路而逃",
+            "{pawn_nameFull}隐藏在[TerrainFeature]中，躲避[circumstance_group]",
+            "{pawn_nameFull}用一场撤退战迎接[circumstance_group]",
+            "{pawn_nameFull}漫不经心地躲避[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "来自[Quantity_adjphrase][Enemy]的追踪",
+            "[Quantity_adjphrase][Enemy]的搜寻",
+            "[Quantity_adjphrase][Enemy]",
+            "来自[Quantity_adjphrase]的敌对[Animal]的猎杀",
+            "[AdjectiveLarge][Enemy]"
+          ],
+          "desc_sentence": [
+            "追击{pawn_nameDef}的家伙们挥舞着[Weapon]。",
+            "[Color]的烟雾将追杀{pawn_nameDef}的家伙们笼罩在其中。",
+            "以{pawn_nameDef}为目标的追击者露出[AdjectiveAngsty]的神情。",
+            "以{pawn_nameDef}为目标的追击者挥舞着[Weapon]。",
+            "{pawn_nameDef}满头大汗。",
+            "{pawn_nameDef}气喘吁吁。"
+          ],
+          "circumstance_group": [
+            "来自[Quantity_adjphrase][Enemy]的追踪",
+            "[Quantity_adjphrase][Enemy]的搜寻",
+            "[Quantity_adjphrase][Enemy]",
+            "来自[Quantity_adjphrase]的敌对[Animal]的猎杀",
+            "[AdjectiveLarge][Enemy]"
+          ]
+        },
+        "source_def_name": "CaravanFled"
+      },
+      "raid": {
+        "event_nouns": [
+          "{pawn_nameDef}所在的[Community]被袭击",
+          "{pawn_nameDef}所在的[Community]遭遇袭击",
+          "[Enemy]进攻{pawn_nameDef}所在的[Community]"
+        ],
+        "main_images": [
+          "[Quantity_adjphrase][Enemy][circumstance_phrase]",
+          "一支军队[circumstance_phrase]",
+          "压倒性的力量[circumstance_phrase]",
+          "侵略者[circumstance_phrase]",
+          "高举着[Color]旗帜的势力[circumstance_phrase]",
+          "大批[Enemy][circumstance_phrase]"
+        ],
+        "detail_sentences": [
+          "{pawn_nameDef}一边组织抵抗，一边[defender_circumstance]。",
+          "{pawn_nameDef}用[Weapon]进行防御，同时[defender_circumstance]。",
+          "{pawn_nameDef}受伤倒地。",
+          "{pawn_nameDef}用{pawn_possessive}[Weapon]还击，同时[defender_circumstance]。",
+          "{pawn_nameDef}挺身而出，同时[defender_circumstance]。",
+          "{pawn_nameDef}带着[AdjectiveBadass]的神情。",
+          "{pawn_nameDef}带着[AdjectiveAngsty]的神情。",
+          "地上到处都是[Gore]。",
+          "[Quantity_adjphrase][PersonJob]逃离该地区。",
+          "[Quantity_adjphrase][Animal]逃离该地区。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "正在穿越一片[TerrainFeature]",
+          "将[Community]团团围住",
+          "正在攻击[Quantity_adjphrase][PersonJob]",
+          "发出胜利的咆哮",
+          "挥舞着[Weapon]",
+          "浑身都是[Gore]"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}所在的[Community]被袭击",
+            "{pawn_nameDef}所在的[Community]遭遇袭击",
+            "[Enemy]进攻{pawn_nameDef}所在的[Community]"
+          ],
+          "image": [
+            "[Quantity_adjphrase][Enemy][circumstance_phrase]",
+            "一支军队[circumstance_phrase]",
+            "压倒性的力量[circumstance_phrase]",
+            "侵略者[circumstance_phrase]",
+            "高举着[Color]旗帜的势力[circumstance_phrase]",
+            "大批[Enemy][circumstance_phrase]"
+          ],
+          "circumstance_phrase": [
+            "正在穿越一片[TerrainFeature]",
+            "将[Community]团团围住",
+            "正在攻击[Quantity_adjphrase][PersonJob]",
+            "发出胜利的咆哮",
+            "挥舞着[Weapon]",
+            "浑身都是[Gore]"
+          ],
+          "desc_sentence": [
+            "{pawn_nameDef}一边组织抵抗，一边[defender_circumstance]。",
+            "{pawn_nameDef}用[Weapon]进行防御，同时[defender_circumstance]。",
+            "{pawn_nameDef}受伤倒地。",
+            "{pawn_nameDef}用{pawn_possessive}[Weapon]还击，同时[defender_circumstance]。",
+            "{pawn_nameDef}挺身而出，同时[defender_circumstance]。",
+            "{pawn_nameDef}带着[AdjectiveBadass]的神情。",
+            "{pawn_nameDef}带着[AdjectiveAngsty]的神情。",
+            "地上到处都是[Gore]。",
+            "[Quantity_adjphrase][PersonJob]逃离该地区。",
+            "[Quantity_adjphrase][Animal]逃离该地区。"
+          ],
+          "defender_circumstance": [
+            "高喊胜利",
+            "闪着[Color]的光",
+            "挑衅性地高举拳头",
+            "显示{pawn_possessive}肌肉"
+          ],
+          "circumstance_group": [
+            "正在穿越一片[TerrainFeature]",
+            "将[Community]团团围住",
+            "正在攻击[Quantity_adjphrase][PersonJob]",
+            "发出胜利的咆哮",
+            "挥舞着[Weapon]",
+            "浑身都是[Gore]"
+          ]
+        },
+        "source_def_name": "Raid"
+      },
+      "struck_mineable": {
+        "event_nouns": [
+          "{pawn_nameDef}开采{object_label}"
+        ],
+        "main_images": [
+          "{pawn_nameFull}[circumstance_group]采到了{object_label}"
+        ],
+        "detail_sentences": [
+          "{pawn_nameDef}用衣袖擦拭着额头。",
+          "{pawn_nameDef}高兴得蹦蹦跳跳。",
+          "{pawn_nameDef}和朋友击掌庆贺。",
+          "{pawn_nameDef}开心地大喊大叫。",
+          "{pawn_nameDef}抑制不住地大笑。",
+          "{pawn_nameDef}脸上都是汗水和尘土。",
+          "{pawn_nameDef}脸上都是汗水和尘土。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "在开采时",
+          "在挖掘时",
+          "在开凿时",
+          "出人意料地",
+          "不出意外地"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}开采{object_label}"
+          ],
+          "image": [
+            "{pawn_nameFull}[circumstance_group]采到了{object_label}"
+          ],
+          "circumstance_phrase": [
+            "在开采时",
+            "在挖掘时",
+            "在开凿时",
+            "出人意料地",
+            "不出意外地"
+          ],
+          "desc_sentence": [
+            "{pawn_nameDef}用衣袖擦拭着额头。",
+            "{pawn_nameDef}高兴得蹦蹦跳跳。",
+            "{pawn_nameDef}和朋友击掌庆贺。",
+            "{pawn_nameDef}开心地大喊大叫。",
+            "{pawn_nameDef}抑制不住地大笑。",
+            "{pawn_nameDef}脸上都是汗水和尘土。",
+            "{pawn_nameDef}脸上都是汗水和尘土。"
+          ],
+          "circumstance_group": [
+            "在开采时",
+            "在挖掘时",
+            "在开凿时",
+            "出人意料地",
+            "不出意外地"
+          ]
+        },
+        "source_def_name": "StruckMineable"
+      },
+      "vacuum_exposure": {
+        "event_nouns": [
+          "{pawn_nameDef}暴露在真空中",
+          "{pawn_nameDef}遭受真空暴露"
+        ],
+        "main_images": [
+          "{pawn_nameFull}从飞船漂离[circumstance_group]",
+          "{pawn_nameFull}在太空中漂流[circumstance_group]",
+          "{pawn_nameFull}在群星之间漂浮[circumstance_group]",
+          "{pawn_nameFull}踉跄地走出气闸[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "{pawn_nameDef}的眼睛逐渐变得无神。",
+          "无尽的黑暗包围着主角。",
+          "画面似乎发生在太空中。",
+          "破碎头盔下是死灰的双眼。",
+          "[Quantity_adjphrase]扭曲的星辰包围着画面。",
+          "{pawn_nameDef}穿着破损的真空服。",
+          "画面后方有一颗巨大的[Color]小行星。",
+          "画面后方是一颗巨大的[Color]行星。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "，{pawn_possessive}的脸慢慢变蓝",
+          "，{pawn_possessive}的唾液开始沸腾",
+          "，{pawn_possessive}的身体开始膨胀",
+          "，{pawn_possessive}的皮肤开始结冰",
+          "，默默无声地尖叫着",
+          "，并开始失去意识",
+          "，并拼命喘息"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}暴露在真空中",
+            "{pawn_nameDef}遭受真空暴露"
+          ],
+          "image": [
+            "{pawn_nameFull}从飞船漂离[circumstance_group]",
+            "{pawn_nameFull}在太空中漂流[circumstance_group]",
+            "{pawn_nameFull}在群星之间漂浮[circumstance_group]",
+            "{pawn_nameFull}踉跄地走出气闸[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "，{pawn_possessive}的脸慢慢变蓝",
+            "，{pawn_possessive}的唾液开始沸腾",
+            "，{pawn_possessive}的身体开始膨胀",
+            "，{pawn_possessive}的皮肤开始结冰",
+            "，默默无声地尖叫着",
+            "，并开始失去意识",
+            "，并拼命喘息"
+          ],
+          "desc_sentence": [
+            "{pawn_nameDef}的眼睛逐渐变得无神。",
+            "无尽的黑暗包围着主角。",
+            "画面似乎发生在太空中。",
+            "破碎头盔下是死灰的双眼。",
+            "[Quantity_adjphrase]扭曲的星辰包围着画面。",
+            "{pawn_nameDef}穿着破损的真空服。",
+            "画面后方有一颗巨大的[Color]小行星。",
+            "画面后方是一颗巨大的[Color]行星。"
+          ],
+          "circumstance_group": [
+            "，{pawn_possessive}的脸慢慢变蓝",
+            "，{pawn_possessive}的唾液开始沸腾",
+            "，{pawn_possessive}的身体开始膨胀",
+            "，{pawn_possessive}的皮肤开始结冰",
+            "，默默无声地尖叫着",
+            "，并开始失去意识",
+            "，并拼命喘息"
+          ]
+        },
+        "source_def_name": "VacuumExposureRevealed"
+      },
+      "orbital_debris": {
+        "event_nouns": [
+          "一场微型陨石风暴席卷了{pawn_nameDef}的[Community]",
+          "微型陨石碎片洒满了{pawn_nameDef}的[Community]周围"
+        ],
+        "main_images": [
+          "一串闪烁着[Color]火花的微型陨石[airborne_circumstance]",
+          "一片明亮发光的微型陨石[airborne_circumstance]",
+          "一场[Color]火花的流星雨，微型陨石在空中燃烧[airborne_circumstance]",
+          "一簇冒烟的冲击痕迹，[ground_circumstance]",
+          "一块[Color]烧焦的碎片，[ground_circumstance]",
+          "一堆[Color]的小石块，[ground_circumstance]"
+        ],
+        "detail_sentences": [
+          "{pawn_nameDef}敬畏地注视着流星雨。",
+          "{pawn_nameDef}惊奇地仰望天空。",
+          "{pawn_nameDef}被无休止的轰击吓了一跳。",
+          "[Quantity_adjphrase]人影从附近的[TerrainFeature]冒出来，寻找避难所。",
+          "[Quantity_adjphrase]人影匆忙收拾他们的物品。",
+          "[Quantity_adjphrase][Animal]在四处急忙奔跑，寻找掩护。",
+          "空间充满了诡异的能量。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [],
+        "grammar_pools": {
+          "tale_noun": [
+            "一场微型陨石风暴席卷了{pawn_nameDef}的[Community]",
+            "微型陨石碎片洒满了{pawn_nameDef}的[Community]周围"
+          ],
+          "image": [
+            "一串闪烁着[Color]火花的微型陨石[airborne_circumstance]",
+            "一片明亮发光的微型陨石[airborne_circumstance]",
+            "一场[Color]火花的流星雨，微型陨石在空中燃烧[airborne_circumstance]",
+            "一簇冒烟的冲击痕迹，[ground_circumstance]",
+            "一块[Color]烧焦的碎片，[ground_circumstance]",
+            "一堆[Color]的小石块，[ground_circumstance]"
+          ],
+          "airborne_circumstance": [
+            "划过天空",
+            "在光芒的飞舞中坠落",
+            "坠落时化作闪烁尘埃渐渐消散"
+          ],
+          "ground_circumstance": [
+            "被细微灰尘的薄雾所环绕",
+            "因余热而微微发光",
+            "嵌在龟裂地表的层毯中",
+            "散落在大地上",
+            "点缀在满是小陨坑的地表间"
+          ],
+          "desc_sentence": [
+            "{pawn_nameDef}敬畏地注视着流星雨。",
+            "{pawn_nameDef}惊奇地仰望天空。",
+            "{pawn_nameDef}被无休止的轰击吓了一跳。",
+            "[Quantity_adjphrase]人影从附近的[TerrainFeature]冒出来，寻找避难所。",
+            "[Quantity_adjphrase]人影匆忙收拾他们的物品。",
+            "[Quantity_adjphrase][Animal]在四处急忙奔跑，寻找掩护。",
+            "空间充满了诡异的能量。"
+          ]
+        },
+        "source_def_name": "OrbitalDebris"
+      },
+      "studied_entity": {
+        "event_nouns": [
+          "{studier_nameDef}正在调查{entity_nameIndef}"
+        ],
+        "main_images": [
+          "{studier_nameFull}[circumstance_group]，正在细细检查{entity_nameDef}",
+          "{studier_nameFull}[circumstance_group]，正在做实验，希望能够理解{entity_nameDef}的奥秘",
+          "{studier_nameFull}[circumstance_group]，力求理解{entity_nameDef}的本质"
+        ],
+        "detail_sentences": [
+          "背景中可以看到活铁采集器正在稳定工作。",
+          "殖民者对{entity_nameDef}的深深迷恋简直显而易见。",
+          "{studier_nameDef}完全沉浸于手头的调查。努力揭开{entity_nameDef}的秘密。",
+          "{entity_nameDef}仅仅只是在电子阻滞器的不懈运转下才得以勉强维生。",
+          "{entity_nameDef}似乎对{studier_nameDef}的努力毫无反应。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "眼神中几乎掩饰不住厌恶",
+          "在笔记本上涂涂写写",
+          "不时参阅古籍"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{studier_nameDef}正在调查{entity_nameIndef}"
+          ],
+          "image": [
+            "{studier_nameFull}[circumstance_group]，正在细细检查{entity_nameDef}",
+            "{studier_nameFull}[circumstance_group]，正在做实验，希望能够理解{entity_nameDef}的奥秘",
+            "{studier_nameFull}[circumstance_group]，力求理解{entity_nameDef}的本质"
+          ],
+          "circumstance_phrase": [
+            "眼神中几乎掩饰不住厌恶",
+            "在笔记本上涂涂写写",
+            "不时参阅古籍"
+          ],
+          "desc_sentence": [
+            "背景中可以看到活铁采集器正在稳定工作。",
+            "殖民者对{entity_nameDef}的深深迷恋简直显而易见。",
+            "{studier_nameDef}完全沉浸于手头的调查。努力揭开{entity_nameDef}的秘密。",
+            "{entity_nameDef}仅仅只是在电子阻滞器的不懈运转下才得以勉强维生。",
+            "{entity_nameDef}似乎对{studier_nameDef}的努力毫无反应。"
+          ],
+          "circumstance_group": [
+            "眼神中几乎掩饰不住厌恶",
+            "在笔记本上涂涂写写",
+            "不时参阅古籍"
+          ]
+        },
+        "source_def_name": "StudiedEntity"
+      },
+      "death_pall": {
+        "event_nouns": [
+          "{pawn_nameDef}正在面对步步逼近的死灵迷雾"
+        ],
+        "main_images": [
+          "{pawn_nameFull}惊恐地注视着死灵迷雾的阴霾笼罩大地，[circumstance_group]，死者再次苏醒",
+          "{pawn_nameFull}紧紧攥住{pawn_possessive}武器，[circumstance_group]，死灵迷雾步步紧逼，唤醒所到之处的死者",
+          "{pawn_nameFull}不安地颤抖着，[circumstance_group]，{pawn_pronoun}眼睁睁看着死灵迷雾迫近，它赋予了已死之人再次往生的权能",
+          "{pawn_nameFull}惊恐地看着死亡的阴霾笼罩着{pawn_pronoun}宁静的家园，[circumstance_group]，家园成了与亡者对抗的战场"
+        ],
+        "detail_sentences": [
+          "在死灵迷雾的中心。{pawn_nameDef}做好了战斗准备。",
+          "死灵迷雾的不断侵袭让{pawn_nameDef}的朋友们心生恐惧。",
+          "随着死亡阴霾的影响不断扩散，{pawn_nameDef}的脊背也在颤抖。",
+          "绝望的重担压迫着{pawn_nameDef}，考验着{pawn_pronoun}对抗惊惧之物的决心。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "在{pawn_pronoun}绝望的祈祷中",
+          "空气中弥漫着腐朽和绝望的气息",
+          "{pawn_pronoun}被一群蹒跚怪团团围困"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}正在面对步步逼近的死灵迷雾"
+          ],
+          "image": [
+            "{pawn_nameFull}惊恐地注视着死灵迷雾的阴霾笼罩大地，[circumstance_group]，死者再次苏醒",
+            "{pawn_nameFull}紧紧攥住{pawn_possessive}武器，[circumstance_group]，死灵迷雾步步紧逼，唤醒所到之处的死者",
+            "{pawn_nameFull}不安地颤抖着，[circumstance_group]，{pawn_pronoun}眼睁睁看着死灵迷雾迫近，它赋予了已死之人再次往生的权能",
+            "{pawn_nameFull}惊恐地看着死亡的阴霾笼罩着{pawn_pronoun}宁静的家园，[circumstance_group]，家园成了与亡者对抗的战场"
+          ],
+          "circumstance_phrase": [
+            "在{pawn_pronoun}绝望的祈祷中",
+            "空气中弥漫着腐朽和绝望的气息",
+            "{pawn_pronoun}被一群蹒跚怪团团围困"
+          ],
+          "desc_sentence": [
+            "在死灵迷雾的中心。{pawn_nameDef}做好了战斗准备。",
+            "死灵迷雾的不断侵袭让{pawn_nameDef}的朋友们心生恐惧。",
+            "随着死亡阴霾的影响不断扩散，{pawn_nameDef}的脊背也在颤抖。",
+            "绝望的重担压迫着{pawn_nameDef}，考验着{pawn_pronoun}对抗惊惧之物的决心。"
+          ],
+          "circumstance_group": [
+            "在{pawn_pronoun}绝望的祈祷中",
+            "空气中弥漫着腐朽和绝望的气息",
+            "{pawn_pronoun}被一群蹒跚怪团团围困"
+          ]
+        },
+        "source_def_name": "DeathPall"
+      },
+      "unnatural_darkness": {
+        "event_nouns": [
+          "{pawn_nameDef}直面异常黑暗现象。"
+        ],
+        "main_images": [
+          "{pawn_nameFull}看到世界被无法穿透的黑暗吞噬，惊愕地待在原地，[circumstance_group]",
+          "{pawn_nameFull}被从天而降的黑色柱子所包围，大地笼罩在一片黑暗之中，[circumstance_group]",
+          "{pawn_nameFull}在令人窒息的黑暗中寻找着前进方向，而夜魇紧随{pawn_possessive}身后，[circumstance_group]",
+          "{pawn_nameFull}目睹着世界被黑暗的深渊所侵蚀，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "甚至连远处微弱的灯光闪烁都看不到。",
+          "局势似乎已经完全无望了。",
+          "在黑暗的边缘可以瞄见影影绰绰的成群生物。",
+          "{pawn_nameDef}试图在黑暗中寻找一线希望。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "{pawn_possessive}朋友们拼命地想要回到光明的安全地带",
+          "四周回荡着刺耳的尖叫声",
+          "光明似乎无法将其阻挡",
+          "{pawn_pronoun}请求得到救赎"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}直面异常黑暗现象。"
+          ],
+          "image": [
+            "{pawn_nameFull}看到世界被无法穿透的黑暗吞噬，惊愕地待在原地，[circumstance_group]",
+            "{pawn_nameFull}被从天而降的黑色柱子所包围，大地笼罩在一片黑暗之中，[circumstance_group]",
+            "{pawn_nameFull}在令人窒息的黑暗中寻找着前进方向，而夜魇紧随{pawn_possessive}身后，[circumstance_group]",
+            "{pawn_nameFull}目睹着世界被黑暗的深渊所侵蚀，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "{pawn_possessive}朋友们拼命地想要回到光明的安全地带",
+            "四周回荡着刺耳的尖叫声",
+            "光明似乎无法将其阻挡",
+            "{pawn_pronoun}请求得到救赎"
+          ],
+          "desc_sentence": [
+            "甚至连远处微弱的灯光闪烁都看不到。",
+            "局势似乎已经完全无望了。",
+            "在黑暗的边缘可以瞄见影影绰绰的成群生物。",
+            "{pawn_nameDef}试图在黑暗中寻找一线希望。"
+          ],
+          "circumstance_group": [
+            "{pawn_possessive}朋友们拼命地想要回到光明的安全地带",
+            "四周回荡着刺耳的尖叫声",
+            "光明似乎无法将其阻挡",
+            "{pawn_pronoun}请求得到救赎"
+          ]
+        },
+        "source_def_name": "UnnaturalDarkness"
+      },
+      "closed_void": {
+        "event_nouns": [
+          "{pawn_nameDef}正在关闭虚空节点。"
+        ],
+        "main_images": [
+          "{pawn_nameFull}[circumstance_group]，正在关闭与虚空的链接，以确保殖民地的安全",
+          "{pawn_nameFull}[circumstance_group]，不屑地站在虚空节点前，决心保护殖民地"
+        ],
+        "detail_sentences": [
+          "灰暗的金属从四面八方压迫而来。",
+          "其他殖民者在[side_position]的方向。焦急地等待{pawn_nameDef}的归来。",
+          "{pawn_nameDef}的表情暴露了{pawn_pronoun}正在为眼前的选择而苦恼。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "伴随着心灵能量噼啪作响",
+          "虚空节点散发出一阵强烈的光芒",
+          "身后似有虚空在低语"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}正在关闭虚空节点。"
+          ],
+          "image": [
+            "{pawn_nameFull}[circumstance_group]，正在关闭与虚空的链接，以确保殖民地的安全",
+            "{pawn_nameFull}[circumstance_group]，不屑地站在虚空节点前，决心保护殖民地"
+          ],
+          "circumstance_phrase": [
+            "伴随着心灵能量噼啪作响",
+            "虚空节点散发出一阵强烈的光芒",
+            "身后似有虚空在低语"
+          ],
+          "desc_sentence": [
+            "灰暗的金属从四面八方压迫而来。",
+            "其他殖民者在[side_position]的方向。焦急地等待{pawn_nameDef}的归来。",
+            "{pawn_nameDef}的表情暴露了{pawn_pronoun}正在为眼前的选择而苦恼。"
+          ],
+          "circumstance_group": [
+            "伴随着心灵能量噼啪作响",
+            "虚空节点散发出一阵强烈的光芒",
+            "身后似有虚空在低语"
+          ]
+        },
+        "source_def_name": "ClosedTheVoid"
+      },
+      "embraced_void": {
+        "event_nouns": [
+          "{pawn_nameDef}正拥抱虚空"
+        ],
+        "main_images": [
+          "{pawn_nameFull}利用虚空的禁忌知识，超脱凡人的局限性，[circumstance_group]",
+          "{pawn_nameFull}在虚空的诱惑下沉沦，[circumstance_group]",
+          "{pawn_nameFull}屈服于虚空的邪恶低语，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "{pawn_nameDef}浑身散发出一种不祥的力量，正是虚空与{pawn_possessive}契约。",
+          "{pawn_nameDef}的眼睛开始闪烁着超凡的光芒。",
+          "其他殖民者正在[side_position]的方向，质疑{pawn_nameDef}的选择是否明智。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "{pawn_possessive}四肢被暗黑能量的卷须缠绕着",
+          "深陷于心灵漩涡之中",
+          "面上还带着诡异的微笑"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}正拥抱虚空"
+          ],
+          "image": [
+            "{pawn_nameFull}利用虚空的禁忌知识，超脱凡人的局限性，[circumstance_group]",
+            "{pawn_nameFull}在虚空的诱惑下沉沦，[circumstance_group]",
+            "{pawn_nameFull}屈服于虚空的邪恶低语，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "{pawn_possessive}四肢被暗黑能量的卷须缠绕着",
+            "深陷于心灵漩涡之中",
+            "面上还带着诡异的微笑"
+          ],
+          "desc_sentence": [
+            "{pawn_nameDef}浑身散发出一种不祥的力量，正是虚空与{pawn_possessive}契约。",
+            "{pawn_nameDef}的眼睛开始闪烁着超凡的光芒。",
+            "其他殖民者正在[side_position]的方向，质疑{pawn_nameDef}的选择是否明智。"
+          ],
+          "circumstance_group": [
+            "{pawn_possessive}四肢被暗黑能量的卷须缠绕着",
+            "深陷于心灵漩涡之中",
+            "面上还带着诡异的微笑"
+          ]
+        },
+        "source_def_name": "EmbracedTheVoid"
+      },
+      "performed_psychic_ritual": {
+        "event_nouns": [
+          "{pawn_nameDef}正主持心灵仪式"
+        ],
+        "main_images": [
+          "{pawn_nameFull}[circumstance_group]，引导在自身周围跳动的能量，同时编织着这一强大的心灵仪式",
+          "{pawn_nameFull}[circumstance_group]，念诵暗黑咒语，借助神秘力量举行心灵仪式",
+          "{pawn_nameFull}[circumstance_group]，聚精会神地进行心灵仪式",
+          "{pawn_nameFull}[circumstance_group]，在空气中描画着复杂的符号，利用潜在的心灵能量来展现心灵仪式"
+        ],
+        "detail_sentences": [
+          "可以看见[side_position]边的一些吟诵者也参与其中，给予支持",
+          "当{pawn_nameDef}完成心灵仪式时，空气中闪烁着光芒。",
+          "背景中的巨石闪闪发光。",
+          "周围的蜡烛在心灵漩涡中忽明忽暗。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "集中于面前的咒术书",
+          "以专注的决心，展示{pawn_pronoun}对心灵之术的精通",
+          "面上带着一丝残忍的笑意",
+          "的声音透过能量的轰鸣声奋力呐喊"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}正主持心灵仪式"
+          ],
+          "image": [
+            "{pawn_nameFull}[circumstance_group]，引导在自身周围跳动的能量，同时编织着这一强大的心灵仪式",
+            "{pawn_nameFull}[circumstance_group]，念诵暗黑咒语，借助神秘力量举行心灵仪式",
+            "{pawn_nameFull}[circumstance_group]，聚精会神地进行心灵仪式",
+            "{pawn_nameFull}[circumstance_group]，在空气中描画着复杂的符号，利用潜在的心灵能量来展现心灵仪式"
+          ],
+          "circumstance_phrase": [
+            "集中于面前的咒术书",
+            "以专注的决心，展示{pawn_pronoun}对心灵之术的精通",
+            "面上带着一丝残忍的笑意",
+            "的声音透过能量的轰鸣声奋力呐喊"
+          ],
+          "desc_sentence": [
+            "可以看见[side_position]边的一些吟诵者也参与其中，给予支持",
+            "当{pawn_nameDef}完成心灵仪式时，空气中闪烁着光芒。",
+            "背景中的巨石闪闪发光。",
+            "周围的蜡烛在心灵漩涡中忽明忽暗。"
+          ],
+          "circumstance_group": [
+            "集中于面前的咒术书",
+            "以专注的决心，展示{pawn_pronoun}对心灵之术的精通",
+            "面上带着一丝残忍的笑意",
+            "的声音透过能量的轰鸣声奋力呐喊"
+          ]
+        },
+        "source_def_name": "PerformedPsychicRitual"
+      },
+      "attended_concert": {
+        "event_nouns": [
+          "{attender_nameDef}正在参加{organizer_nameDef}举办的音乐会",
+          "{attender_nameDef}在听{organizer_nameDef}的音乐表演"
+        ],
+        "main_images": [
+          "{attender_nameFull}静静地听着，[circumstance_group]",
+          "{attender_nameFull}在欣赏{organizer_nameFull}的音乐表演，[circumstance_group]",
+          "{attender_nameFull}随着节奏而动，[circumstance_group]",
+          "{attender_nameFull}沉浸在音乐中，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][PersonJob]在一旁跳起舞来。",
+          "[Quantity_adjphrase][Animal]专注地听。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "同时伴随着掌声"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{attender_nameDef}正在参加{organizer_nameDef}举办的音乐会",
+            "{attender_nameDef}在听{organizer_nameDef}的音乐表演"
+          ],
+          "image": [
+            "{attender_nameFull}静静地听着，[circumstance_group]",
+            "{attender_nameFull}在欣赏{organizer_nameFull}的音乐表演，[circumstance_group]",
+            "{attender_nameFull}随着节奏而动，[circumstance_group]",
+            "{attender_nameFull}沉浸在音乐中，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "同时伴随着掌声"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][PersonJob]在一旁跳起舞来。",
+            "[Quantity_adjphrase][Animal]专注地听。"
+          ],
+          "circumstance_group": [
+            "同时伴随着掌声"
+          ]
+        },
+        "source_def_name": "AttendedConcert"
+      },
+      "held_concert": {
+        "event_nouns": [
+          "{organizer_nameDef}正在举办一场音乐会"
+        ],
+        "main_images": [
+          "{organizer_nameFull}正在演奏{organizer__pronoun}的成名曲，[circumstance_group]",
+          "{organizer_nameFull}正在邀请现场观众一起演唱",
+          "{organizer_nameFull}正在演唱一首热门歌曲",
+          "{organizer_nameFull}正在进行高难度的表演，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][PersonJob]在一旁欣赏。",
+          "[Quantity_adjphrase][Animal]在一旁聆听。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "带着强烈的感情"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{organizer_nameDef}正在举办一场音乐会"
+          ],
+          "image": [
+            "{organizer_nameFull}正在演奏{organizer__pronoun}的成名曲，[circumstance_group]",
+            "{organizer_nameFull}正在邀请现场观众一起演唱",
+            "{organizer_nameFull}正在演唱一首热门歌曲",
+            "{organizer_nameFull}正在进行高难度的表演，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "带着强烈的感情"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][PersonJob]在一旁欣赏。",
+            "[Quantity_adjphrase][Animal]在一旁聆听。"
+          ],
+          "circumstance_group": [
+            "带着强烈的感情"
+          ]
+        },
+        "source_def_name": "HeldConcert"
+      },
+      "noxious_haze": {
+        "event_nouns": [
+          "酸雾席卷了{pawn_nameDef}的[Community]",
+          "{pawn_nameDef}的[Community]附近的气候开始变得充满毒性"
+        ],
+        "main_images": [
+          "不一样的天空，[circumstance_group]",
+          "空气变得稠密，且[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "{pawn_nameDef}在[TerrainFeature]附近藏起来，带着[AdjectiveAngsty]的表情凝视着外面。",
+          "{pawn_nameDef}用布包裹着{pawn_possessive}脸。",
+          "[Quantity_adjphrase]死亡的[Animal]躺在地上。",
+          "[Quantity_adjphrase]正迈向死亡的[Animal]躺在地上。",
+          "[Quantity_adjphrase]窒息的[Animal]躺在地上。",
+          "[Quantity_adjphrase][Animal]逃离。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "看不到任何活物",
+          "正等待着酸雾的消散",
+          "看着动物们逃离"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "酸雾席卷了{pawn_nameDef}的[Community]",
+            "{pawn_nameDef}的[Community]附近的气候开始变得充满毒性"
+          ],
+          "image": [
+            "不一样的天空，[circumstance_group]",
+            "空气变得稠密，且[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "看不到任何活物",
+            "正等待着酸雾的消散",
+            "看着动物们逃离"
+          ],
+          "desc_sentence": [
+            "{pawn_nameDef}在[TerrainFeature]附近藏起来，带着[AdjectiveAngsty]的表情凝视着外面。",
+            "{pawn_nameDef}用布包裹着{pawn_possessive}脸。",
+            "[Quantity_adjphrase]死亡的[Animal]躺在地上。",
+            "[Quantity_adjphrase]正迈向死亡的[Animal]躺在地上。",
+            "[Quantity_adjphrase]窒息的[Animal]躺在地上。",
+            "[Quantity_adjphrase][Animal]逃离。"
+          ],
+          "circumstance_group": [
+            "看不到任何活物",
+            "正等待着酸雾的消散",
+            "看着动物们逃离"
+          ]
+        },
+        "source_def_name": "NoxiousHaze"
       }
     },
     "art_grammar_pools": {
@@ -9238,6 +11512,308 @@ window.TynanArtData = {
         "绝望",
         "沮丧"
       ]
+    },
+    "object_picker_options": {
+      "crafted_art:thing": {
+        "title": "选择常见艺术作品",
+        "quick": [
+          "小雕塑",
+          "大雕塑",
+          "宏伟雕塑",
+          "扶手椅",
+          "餐椅"
+        ],
+        "all": [
+          "小雕塑",
+          "大雕塑",
+          "宏伟雕塑",
+          "扶手椅",
+          "餐椅",
+          "棺材",
+          "左轮手枪"
+        ]
+      },
+      "finished_construction:object": {
+        "title": "选择常见建造项目",
+        "quick": [
+          "墙",
+          "栅栏",
+          "单人床",
+          "双人床",
+          "餐椅"
+        ],
+        "all": [
+          "墙",
+          "栅栏",
+          "单人床",
+          "双人床",
+          "餐椅",
+          "扶手椅",
+          "书柜",
+          "小书柜",
+          "床头柜",
+          "矮柜",
+          "艺创台",
+          "基础研究台",
+          "高级研究台",
+          "精密装配台",
+          "药物实验台",
+          "电熔炼器",
+          "深钻井",
+          "工具柜",
+          "棺材",
+          "轨道交易信标"
+        ]
+      },
+      "finished_crafting:object": {
+        "title": "选择常见制作项目",
+        "quick": [
+          "左轮手枪",
+          "单分子剑",
+          "长剑",
+          "等离子剑",
+          "宙斯锤"
+        ],
+        "all": [
+          "左轮手枪",
+          "单分子剑",
+          "长剑",
+          "等离子剑",
+          "宙斯锤",
+          "电荷步枪",
+          "重型冲锋枪",
+          "防弹背心",
+          "零部件",
+          "高级零部件",
+          "海军装甲",
+          "斥候装甲"
+        ]
+      },
+      "finished_research:project": {
+        "title": "选择研究项目",
+        "quick": [
+          "微电子基础",
+          "电力",
+          "深钻井",
+          "仿生学",
+          "星际航行基础"
+        ],
+        "all": [
+          "酿酒",
+          "地毯铺设",
+          "可可树",
+          "复杂衣物",
+          "复杂家具",
+          "恶魔菇",
+          "成瘾品生产",
+          "活力水制作",
+          "巨弓",
+          "长剑",
+          "蒸发制冷器",
+          "干肉饼",
+          "佩诺西林制作",
+          "板甲",
+          "精神药物提炼",
+          "精神叶冲调",
+          "反曲弓",
+          "锻造",
+          "岩石切割",
+          "植树",
+          "清醒丸制作",
+          "空调",
+          "自动门",
+          "蓄电池",
+          "精炼技术",
+          "反冲系统",
+          "改进照明",
+          "电力",
+          "泡沫灭火器",
+          "防弹衣",
+          "灭火炮塔",
+          "气动系统",
+          "地热能",
+          "枪械制作",
+          "自动机枪塔",
+          "水栽培",
+          "简易爆炸装置",
+          "机械加工",
+          "迫击炮",
+          "营养膏合成机",
+          "包装生存食物",
+          "简易假体",
+          "烟罐包",
+          "太阳能板",
+          "无菌材料",
+          "显像管电视",
+          "水轮发电机",
+          "深钻井",
+          "平板电视",
+          "地质扫描仪",
+          "自动加农炮塔",
+          "医疗床",
+          "远距离矿物扫描仪",
+          "医药生产",
+          "微电子基础",
+          "排水泵",
+          "多管武器",
+          "精准步枪",
+          "护盾",
+          "运输舱",
+          "高级精密装配",
+          "仿生学",
+          "电荷弹",
+          "低温休眠舱",
+          "精密装配",
+          "多元分析仪",
+          "海军装甲",
+          "斥候装甲",
+          "集群火箭发射器",
+          "铀弹加农炮塔",
+          "生命体征监测仪",
+          "星际航行基础",
+          "飞船电脑核心",
+          "飞船低温休眠舱",
+          "飞船推进器",
+          "飞船反应堆",
+          "飞船传感器",
+          "高级逆重科技",
+          "基础逆重科技",
+          "能量武器",
+          "钓鱼",
+          "重型桥梁",
+          "猎手无人机",
+          "轨道生存科技",
+          "穿梭机",
+          "标准逆重科技",
+          "高级心灵仪式",
+          "大气升温器",
+          "虚空扰动",
+          "活铁提取",
+          "活铁发电机",
+          "活铁采集",
+          "活铁武器",
+          "活铁塑造",
+          "极乐切脑",
+          "血怒之雨",
+          "洗脑",
+          "时间吞噬",
+          "死灵尘",
+          "死亡回避",
+          "眩光照明弹",
+          "汲电器",
+          "实体收容",
+          "狂热诱发器",
+          "食尸鬼假体",
+          "食尸鬼植入",
+          "食尸鬼复活",
+          "心灵错乱武器",
+          "强力血清",
+          "钢血血清",
+          "思滞血清",
+          "突变武器",
+          "焦虑脉冲",
+          "学识汲取",
+          "愉悦脉冲",
+          "潜近探测器",
+          "嗜灵反应",
+          "幽魂隐形",
+          "血清合成",
+          "折跃绑架",
+          "睡眠抑制器",
+          "吸引动物",
+          "召唤血肉兽",
+          "召唤巨坑",
+          "吸引蹒跚怪",
+          "虚空雕塑",
+          "安全大门",
+          "炮塔背包",
+          "生体递归",
+          "生体塑形",
+          "神经超频",
+          "骑士装甲",
+          "枪械联控器",
+          "跳跃背包",
+          "贵族衣物",
+          "皇家衣物",
+          "人工代谢",
+          "大脑链接",
+          "作息节律",
+          "紧凑武器",
+          "躯体整形",
+          "愈合因子",
+          "分子分析",
+          "神经计算",
+          "皮肤硬化",
+          "专业肢体",
+          "毒素合成",
+          "竖琴",
+          "大键琴",
+          "钢琴",
+          "基础机械科技",
+          "高级机械科技",
+          "标准机械科技",
+          "极致机械科技",
+          "垃圾分解器",
+          "超凡遗传学",
+          "死眠设备",
+          "生育规范",
+          "基因处理器",
+          "培育舱",
+          "滤毒器",
+          "毒气",
+          "污染性发电",
+          "异种遗传学"
+        ]
+      },
+      "studied_entity:entity": {
+        "title": "选择异象实体",
+        "quick": [
+          "虚空节点",
+          "扭曲方尖碑",
+          "腐化方尖碑",
+          "夜魇",
+          "金属怪形"
+        ],
+        "all": [
+          "虚空节点",
+          "虚空结构",
+          "虚空巨石",
+          "扭曲方尖碑",
+          "腐化方尖碑",
+          "畸变方尖碑",
+          "夜光柱",
+          "电子阻滞器",
+          "收容平台",
+          "收容点",
+          "灰盒",
+          "灰色雕塑",
+          "无底深坑",
+          "蹒趚怪",
+          "食尸鬼",
+          "金属怪形",
+          "血棘巨人",
+          "吞噬兽",
+          "嵌合兽",
+          "血肉核心",
+          "苦痛之球",
+          "夜魇",
+          "幽魂",
+          "隐形魔",
+          "恶臭瘤兽",
+          "惊惧母兽",
+          "独爪兽",
+          "双爪兽",
+          "三爪兽",
+          "扭曲超凡支柱",
+          "虚空金属块",
+          "虚空金属墙",
+          "潜近探测器",
+          "碎片阻滞器",
+          "狂热诱发器",
+          "睡眠抑制器",
+          "大气升温器"
+        ]
+      }
     }
   }
 };
