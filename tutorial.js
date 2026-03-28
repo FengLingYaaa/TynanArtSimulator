@@ -9,8 +9,6 @@
     dots: document.querySelector('#tutorialDots'),
     title: document.querySelector('#tutorialTitle'),
     text: document.querySelector('#tutorialText'),
-    dontRemind: document.querySelector('#tutorialDontRemind'),
-    reenableBtn: document.querySelector('#reenableTutorialBtn'),
     prevBtn: document.querySelector('#prevTutorialBtn'),
     nextBtn: document.querySelector('#nextTutorialBtn'),
     skipBtn: document.querySelector('#skipTutorialBtn'),
@@ -58,24 +56,16 @@
     refs.prevBtn.addEventListener('click', prevStep);
     refs.nextBtn.addEventListener('click', nextStep);
     refs.skipBtn.addEventListener('click', function () {
-      finishTutorial('skipped');
-    });
-    refs.reenableBtn.addEventListener('click', function () {
-      TynanStorage.saveTutorialState('show_again');
-      refs.reenableBtn.textContent = '下次将再次显示';
+      finishTutorial();
     });
     global.addEventListener('resize', repositionTutorial);
     global.addEventListener('scroll', repositionTutorial, true);
 
     var tutorialState = TynanStorage.loadTutorialState();
     renderDots();
-    if (tutorialState === 'show_again') {
-      global.setTimeout(function () {
-        openTutorial(false);
-      }, 420);
-    } else if (!tutorialState) {
+    if (!tutorialState) {
       if (TynanStorage.hasExistingUserData()) {
-        TynanStorage.saveTutorialState('legacy_hidden');
+        TynanStorage.saveTutorialState('done');
       } else {
         global.setTimeout(function () {
           openTutorial(false);
@@ -89,8 +79,6 @@
     state.index = 0;
     refs.overlay.classList.remove('hidden');
     refs.overlay.setAttribute('aria-hidden', 'false');
-    refs.dontRemind.checked = TynanStorage.loadTutorialState() !== 'show_again';
-    refs.reenableBtn.textContent = '重新启用教程';
     if (manual) {
       refs.skipBtn.textContent = '关闭教程';
     } else {
@@ -105,9 +93,8 @@
     refs.overlay.setAttribute('aria-hidden', 'true');
   }
 
-  function finishTutorial(result) {
-    var value = refs.dontRemind && refs.dontRemind.checked ? (result || 'done') : 'show_again';
-    TynanStorage.saveTutorialState(value);
+  function finishTutorial() {
+    TynanStorage.saveTutorialState('done');
     closeTutorial();
   }
 
@@ -119,7 +106,7 @@
 
   function nextStep() {
     if (state.index >= steps.length - 1) {
-      finishTutorial('done');
+      finishTutorial();
       return;
     }
     state.index += 1;

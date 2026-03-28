@@ -14,8 +14,13 @@
       draggingId: "",
       overId: "",
       insertAfter: false,
-      placeholderEl: null,
+      mode: "",
+      pointerId: null,
+      moved: false,
     };
+    var pointerSortingBound = false;
+
+    bindPointerSorting();
 
     function uniq(items) {
       var out = [];
@@ -67,6 +72,7 @@
     }
 
     function closeFavoriteManager() {
+      clearFavoriteDragState();
       refs.favoriteManagerModal.classList.add("hidden");
       refs.favoriteManagerModal.setAttribute("aria-hidden", "true");
     }
@@ -106,6 +112,7 @@
 
     function renderFavoriteManagerList() {
       if (!refs.favoriteManagerList) return;
+      clearFavoriteDragState();
       var items = getFavoriteManagerItems();
       refs.favoriteManagerList.innerHTML = "";
       if (!items.length) {
@@ -127,12 +134,12 @@
       });
     }
 
-    function ensurePlaceholder() {
-      if (!dragState.placeholderEl) {
-        dragState.placeholderEl = document.createElement("div");
-        dragState.placeholderEl.className = "favorite-drop-placeholder";
-      }
-      return dragState.placeholderEl;
+    function bindPointerSorting() {
+      if (pointerSortingBound || !globalObject.document) return;
+      pointerSortingBound = true;
+      globalObject.document.addEventListener("pointermove", handlePointerSortMove);
+      globalObject.document.addEventListener("pointerup", handlePointerSortEnd);
+      globalObject.document.addEventListener("pointercancel", handlePointerSortEnd);
     }
 
     function bindFavoriteGridDrag(grid) {
@@ -142,30 +149,22 @@
         var target = event.target.closest(".favorite-manager-item.sortable");
         if (!target || target.dataset.eventId === dragState.draggingId) {
           clearGridDragOver(grid);
-          if (event.target === grid || event.target === ensurePlaceholder()) {
-            if (ensurePlaceholder().parentNode !== grid || ensurePlaceholder().nextSibling) {
-              grid.appendChild(ensurePlaceholder());
-            }
-          }
+          dragState.overId = "";
           return;
         }
         var insertAfter = shouldInsertAfter(target, event);
-        if (
-          dragState.overId === target.dataset.eventId &&
-          dragState.insertAfter === insertAfter &&
-          ensurePlaceholder().parentNode === grid
-        ) {
+        if (dragState.overId === target.dataset.eventId && dragState.insertAfter === insertAfter) {
           return;
         }
         dragState.overId = target.dataset.eventId;
         dragState.insertAfter = insertAfter;
         clearGridDragOver(grid);
         target.classList.add(insertAfter ? "drag-over-after" : "drag-over-before");
-        grid.insertBefore(ensurePlaceholder(), insertAfter ? target.nextSibling : target);
       });
       grid.addEventListener("dragleave", function (event) {
         if (!grid.contains(event.relatedTarget)) {
           clearGridDragOver(grid);
+          dragState.overId = "";
         }
       });
       grid.addEventListener("drop", function (event) {
@@ -219,10 +218,15 @@
         handle.setAttribute("title", "拖拽调整收藏顺序");
         handle.dataset.hint = "拖拽排序";
         handle.textContent = "⋮⋮";
+        handle.addEventListener("pointerdown", function (event) {
+          startPointerSort(event, row, item.id);
+        });
         row.appendChild(handle);
 
         row.addEventListener("dragstart", function (event) {
           dragState.draggingId = item.id;
+          dragState.mode = "html5";
+          dragState.moved = true;
           row.classList.add("dragging");
           if (event.dataTransfer) {
             event.dataTransfer.effectAllowed = "move";
@@ -230,13 +234,80 @@
           }
         });
         row.addEventListener("dragend", function () {
-          dragState.draggingId = "";
-          dragState.overId = "";
           clearFavoriteDragState();
         });
       }
 
       return row;
+    }
+
+    function startPointerSort(event, row, eventId) {
+      if (!event || event.pointerType === "mouse") return;
+      if (event.button !== undefined && event.button !== 0) return;
+      clearFavoriteDragState();
+      dragState.draggingId = eventId;
+      dragState.overId = "";
+      dragState.insertAfter = false;
+      dragState.mode = "pointer";
+      dragState.pointerId = event.pointerId;
+      dragState.moved = false;
+      row.classList.add("dragging");
+      if (event.currentTarget && event.currentTarget.setPointerCapture) {
+        try {
+          event.currentTarget.setPointerCapture(event.pointerId);
+        } catch (_error) {}
+      }
+      event.preventDefault();
+    }
+
+    function handlePointerSortMove(event) {
+      if (dragState.mode !== "pointer") return;
+      if (dragState.pointerId !== null && event.pointerId !== dragState.pointerId) return;
+      dragState.moved = true;
+      if (event.cancelable) event.preventDefault();
+      updatePointerDragTarget(event.clientX, event.clientY);
+    }
+
+    function handlePointerSortEnd(event) {
+      if (dragState.mode !== "pointer") return;
+      if (dragState.pointerId !== null && event.pointerId !== dragState.pointerId) return;
+      var dragId = dragState.draggingId;
+      var dropInfo = getDropTargetAt(event.clientX, event.clientY);
+      var overId = dragState.overId;
+      var insertAfter = dragState.insertAfter;
+      clearFavoriteDragState();
+      if (!dragId) return;
+      if (overId && overId !== dragId) {
+        reorderFavorite(dragId, overId, insertAfter);
+        return;
+      }
+      if (dropInfo.grid && !dropInfo.item) {
+        reorderFavoriteToEnd(dragId);
+      }
+    }
+
+    function updatePointerDragTarget(clientX, clientY) {
+      if (!refs.favoriteManagerList || !globalObject.document) return;
+      clearFavoriteDragIndicators();
+      var target = getDropTargetAt(clientX, clientY).item;
+      if (!target || target.dataset.eventId === dragState.draggingId) {
+        dragState.overId = "";
+        return;
+      }
+      var insertAfter = shouldInsertAfter(target, { clientX: clientX });
+      dragState.overId = target.dataset.eventId;
+      dragState.insertAfter = insertAfter;
+      target.classList.add(insertAfter ? "drag-over-after" : "drag-over-before");
+    }
+
+    function getDropTargetAt(clientX, clientY) {
+      var node = globalObject.document && globalObject.document.elementFromPoint
+        ? globalObject.document.elementFromPoint(clientX, clientY)
+        : null;
+      return {
+        item: node ? node.closest(".favorite-manager-item.sortable") : null,
+        grid: node ? node.closest(".favorite-manager-grid.favorite-sortable") : null,
+      };
     }
 
     function clearGridDragOver(grid) {
@@ -254,14 +325,27 @@
       return offsetX > rect.width / 2;
     }
 
+    function clearFavoriteDragIndicators() {
+      if (!refs.favoriteManagerList) return;
+      Array.prototype.forEach.call(refs.favoriteManagerList.querySelectorAll(".favorite-manager-item"), function (item) {
+        item.classList.remove("drag-over", "drag-over-before", "drag-over-after");
+      });
+    }
+
     function clearFavoriteDragState() {
+      dragState.draggingId = "";
+      dragState.overId = "";
+      dragState.insertAfter = false;
+      dragState.mode = "";
+      dragState.pointerId = null;
+      dragState.moved = false;
       if (!refs.favoriteManagerList) return;
       Array.prototype.forEach.call(refs.favoriteManagerList.querySelectorAll(".favorite-manager-item"), function (item) {
         item.classList.remove("dragging", "drag-over", "drag-over-before", "drag-over-after");
       });
-      if (dragState.placeholderEl && dragState.placeholderEl.parentNode) {
-        dragState.placeholderEl.parentNode.removeChild(dragState.placeholderEl);
-      }
+      Array.prototype.forEach.call(refs.favoriteManagerList.querySelectorAll(".favorite-manager-grid.favorite-sortable"), function (grid) {
+        clearGridDragOver(grid);
+      });
     }
 
     function reorderFavorite(dragId, targetId, insertAfter) {

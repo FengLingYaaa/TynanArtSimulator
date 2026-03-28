@@ -376,6 +376,14 @@
       "传奇级": "legendary"
     },
     material: {
+      "木": "wood",
+      "钢": "steel",
+      "金": "gold",
+      "银": "silver",
+      "石": "stone",
+      "布": "cloth",
+      "皮革": "leather",
+      "超织物": "hyperweave",
       "钢铁": "steel",
       "钢制": "steel",
       "黄金": "gold",
@@ -383,12 +391,17 @@
       "白银": "silver",
       "银制": "silver",
       "翡翠": "jade",
+      "翡翠制": "jade",
       "玉制": "jade",
       "玻璃钢": "plasteel",
       "玻璃钢制": "plasteel",
       "活铁": "bioferrite",
+      "活铁制": "bioferrite",
       "木材": "wood",
       "木制": "wooden",
+      "布制": "cloth",
+      "皮革制": "leather",
+      "超织物制": "hyperweave",
       "石制": "stone",
       "花岗岩": "granite",
       "花岗岩制": "granite"
@@ -399,8 +412,24 @@
       "宏伟雕塑": "grand sculpture",
       "扶手椅": "armchair",
       "餐椅": "dining chair",
+      "单人床": "single bed",
+      "双人床": "double bed",
+      "床头柜": "end table",
+      "书柜": "bookcase",
+      "小书柜": "small bookcase",
       "棺材": "sarcophagus",
-      "左轮手枪": "revolver"
+      "长剑": "longsword",
+      "单分子剑": "monosword",
+      "等离子剑": "plasmasword",
+      "宙斯锤": "zeushammer",
+      "左轮手枪": "revolver",
+      "电荷步枪": "charge rifle",
+      "重型冲锋枪": "heavy SMG",
+      "突击步枪": "assault rifle",
+      "精准步枪": "precision rifle",
+      "防弹背心": "flak vest",
+      "海军装甲": "marine armor",
+      "斥候装甲": "recon armor"
     },
     object_name: {
       "墙": "wall",
@@ -450,6 +479,19 @@
       "烹饪": "cooking",
       "医疗": "medicine",
       "研究": "research"
+    },
+    capacity_name: {
+      "血液过滤": "blood filtration",
+      "血液循环": "blood pumping",
+      "呼吸能力": "breathing",
+      "意识": "consciousness",
+      "进食能力": "eating",
+      "听觉能力": "hearing",
+      "操作能力": "manipulation",
+      "消化能力": "metabolism",
+      "移动能力": "moving",
+      "视觉能力": "sight",
+      "语言能力": "talking"
     },
     game_name: {
       "台球桌": "billiards table",
@@ -598,9 +640,27 @@
     material = String(material || "").trim();
     if (!name) return "";
     if (!material) return name;
-    var prefix = material.endsWith("制") ? material : material + "制";
-    if (name.indexOf(material) !== -1 || name.indexOf(prefix) !== -1) return name;
-    return prefix + name;
+    var aliases = {
+      "木材": "木",
+      "钢铁": "钢",
+      "钢制": "钢",
+      "黄金": "金",
+      "金制": "金",
+      "白银": "银",
+      "银制": "银",
+      "石制": "石",
+      "玉": "翡翠",
+      "玉制": "翡翠",
+      "翡翠制": "翡翠",
+      "玻璃钢制": "玻璃钢",
+      "活铁制": "活铁",
+      "布制": "布",
+      "皮革制": "皮革",
+      "超织物制": "超织物",
+    };
+    material = aliases[material] || material;
+    if (name.indexOf(material) === 0) return name;
+    return material + name;
   }
 
   function buildItemPhrase(name, quality, material) {
@@ -935,7 +995,12 @@
           String(context.objects[slot.key] || "").trim() ||
           pick(bundle.SLOT_SUGGESTIONS[slot.suggestion_type] || [""]);
         var label = rawObject;
-        if (slot.key === "thing") label = normalizeThingLabel(rawObject, material);
+        if (
+          slot.key === "thing" ||
+          (slot.key === "object" && (schema.id === "finished_construction" || schema.id === "finished_crafting"))
+        ) {
+          label = normalizeThingLabel(rawObject, material);
+        }
         var englishObject = translateByType(slot.suggestion_type, rawObject) || rawObject;
         setObjectForms(mapping, slot.key, rawObject, label, englishObject, qualityShort, material);
       }
@@ -1013,6 +1078,8 @@
     mapping.training_name_en = translateByType("training_name", mapping.training_name) || mapping.training_name || "training";
     mapping.skill_name_en = translateByType("skill_name", mapping.skill_name) || mapping.skill_name || "a skill";
     mapping.material_name_en = translateByType("material_name", mapping.material_name) || mapping.material_name || "a material";
+    mapping.entity_name_en = translateByType("entity_name", mapping.entity_name) || mapping.entity_name || "an entity";
+    mapping.capacity_name_en = translateByType("capacity_name", mapping.capacity_name) || mapping.capacity_name || "a capacity";
     mapping.game_name_en = translateByType("game_name", mapping.game_name) || mapping.game_name || "a game";
     mapping.illness_name_en = translateByType("illness_name", mapping.illness_name) || mapping.illness_name || "an illness";
     mapping.primary_role_display_en = roleOrder.length ? mapping[roleOrder[0] + "_display_en"] : "someone";
@@ -1109,9 +1176,18 @@
       recruit_joiner: "recruiting",
       tame_animal: "taming",
       train_animal: "training",
+      increased_menagerie: "taming yet another animal",
       marriage: "marrying",
+      downed: "downing",
       wound: "wounding",
       kill: "killing",
+      sold_prisoner: "selling a prisoner",
+      launched_ship: "launching a ship",
+      killed_capacity: "killing by destroying the capacity for",
+      killed_long_range: "killing from long range",
+      killed_major_threat: "eliminating a major threat",
+      killed_melee: "killing in melee",
+      killed_mortar: "killing with a mortar",
       meditate: "meditating",
       pray: "praying",
       burial: "burying",
@@ -1163,11 +1239,13 @@
       message_received: "receiving a mysterious message",
       eclipse: "witnessing an eclipse",
       tornado: "facing a tornado",
+      tornado_from_item: "unleashing a tornado",
       vomit: "vomiting",
       cavein_escape: "dodging a collapse",
       caravan_ambush: "being ambushed on a caravan journey",
       ship_chunk_crash: "witnessing a ship part crash",
       volcanic_winter: "enduring volcanic winter",
+      mined_valuable: "mining a rich vein of",
       vacuum_exposure: "being exposed to vacuum",
       orbital_debris: "witnessing orbital debris",
       studied_entity: "studying an entity",
@@ -1198,12 +1276,14 @@
     var action = actionMap[schema.id] || schema.id.replace(/_/g, " ");
     if ((schema.id === "finished_construction" || schema.id === "finished_crafting") && mapping.object_name) action += " " + mapping.object_phrase_en;
     else if (schema.id === "game_play" && mapping.game_name_en) action = "playing at " + withArticle(mapping.game_name_en);
-    else if ((schema.id === "struck_mineable" || schema.id === "caravan_remote_mining") && mapping.material_name_en) action += " " + mapping.material_name_en;
+    else if ((schema.id === "struck_mineable" || schema.id === "caravan_remote_mining" || schema.id === "mined_valuable") && mapping.material_name_en) action += " " + mapping.material_name_en;
     else if (schema.id === "skill_mastery" && mapping.skill_name_en) action += " " + mapping.skill_name_en;
     else if (schema.id === "skill_mastery_passion" && mapping.skill_name_en) action += " " + mapping.skill_name_en;
-    else if (schema.id === "tame_animal" && mapping.animal_name_en) action += " " + mapping.animal_name_en;
+    else if ((schema.id === "tame_animal" || schema.id === "increased_menagerie") && mapping.animal_name_en) action += " " + mapping.animal_name_en;
     else if (schema.id === "train_animal" && mapping.animal_name_en) action += " " + mapping.animal_name_en;
     else if (schema.id === "disease_onset" && mapping.illness_name_en) action += " with " + mapping.illness_name_en;
+    else if (schema.id === "killed_capacity" && mapping.capacity_name_en) action += " " + mapping.capacity_name_en;
+    else if (schema.id === "studied_entity" && mapping.entity_name_en) action += " " + mapping.entity_name_en;
     else if (objectPhrase && /crafting|researching|reading|performing surgery on|giving birth to|playing|mastering/.test(action)) action += " " + objectPhrase;
     return (subject + " " + action).trim();
   }

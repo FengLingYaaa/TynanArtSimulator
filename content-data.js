@@ -53,6 +53,8 @@ window.TynanArtData = {
       "simple_fields": [
         "maker",
         "thing",
+        "quality",
+        "material",
         "date_text"
       ],
       "complete_fields": [
@@ -329,6 +331,57 @@ window.TynanArtData = {
       "category": "动物与自然"
     },
     {
+      "defName": "IncreasedMenagerie",
+      "id": "increased_menagerie",
+      "label": "驯服动物",
+      "category": "动物与自然",
+      "required_slots": [
+        {
+          "key": "tamer",
+          "label": "驯兽者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "animal",
+          "label": "动物",
+          "slot_type": "object",
+          "suggestion_type": "animal_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "tamer",
+        "animal",
+        "date_text"
+      ],
+      "complete_fields": [
+        "tamer",
+        "animal",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
       "id": "train_animal",
       "label": "训练",
       "carrier_types": [
@@ -501,6 +554,64 @@ window.TynanArtData = {
       "category": "战斗与冲突"
     },
     {
+      "defName": "Downed",
+      "id": "downed",
+      "label": "击倒",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "attacker",
+          "label": "攻击者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "victim",
+          "label": "倒地者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "weapon",
+          "label": "武器",
+          "slot_type": "object",
+          "suggestion_type": "weapon_name"
+        },
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "attacker",
+        "victim",
+        "date_text"
+      ],
+      "complete_fields": [
+        "attacker",
+        "victim",
+        "weapon",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
       "id": "kill",
       "label": "死亡",
       "carrier_types": [
@@ -556,6 +667,297 @@ window.TynanArtData = {
         "include_context"
       ],
       "category": "战斗与冲突"
+    },
+    {
+      "defName": "KilledCapacity",
+      "id": "killed_capacity",
+      "label": "击杀",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "killer",
+          "label": "击杀者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "victim",
+          "label": "死者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "capacity",
+          "label": "能力",
+          "slot_type": "object",
+          "suggestion_type": "capacity_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "weapon",
+          "label": "武器",
+          "slot_type": "object",
+          "suggestion_type": "weapon_name"
+        },
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "killer",
+        "victim",
+        "capacity",
+        "date_text"
+      ],
+      "complete_fields": [
+        "killer",
+        "victim",
+        "capacity",
+        "weapon",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "KilledLongRange",
+      "id": "killed_long_range",
+      "label": "远距离击杀",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "killer",
+          "label": "击杀者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "victim",
+          "label": "死者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "weapon",
+          "label": "武器",
+          "slot_type": "object",
+          "suggestion_type": "weapon_name"
+        },
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "killer",
+        "victim",
+        "date_text"
+      ],
+      "complete_fields": [
+        "killer",
+        "victim",
+        "weapon",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "KilledMajorThreat",
+      "id": "killed_major_threat",
+      "label": "排除重大威胁",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "killer",
+          "label": "击杀者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "victim",
+          "label": "重大威胁",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "weapon",
+          "label": "武器",
+          "slot_type": "object",
+          "suggestion_type": "weapon_name"
+        },
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "killer",
+        "victim",
+        "date_text"
+      ],
+      "complete_fields": [
+        "killer",
+        "victim",
+        "weapon",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "KilledMelee",
+      "id": "killed_melee",
+      "label": "近距离击杀",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "killer",
+          "label": "击杀者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "victim",
+          "label": "死者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "weapon",
+          "label": "武器",
+          "slot_type": "object",
+          "suggestion_type": "weapon_name"
+        },
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "killer",
+        "victim",
+        "date_text"
+      ],
+      "complete_fields": [
+        "killer",
+        "victim",
+        "weapon",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
+      "defName": "KilledMortar",
+      "id": "killed_mortar",
+      "label": "用迫击炮击杀",
+      "category": "战斗与冲突",
+      "required_slots": [
+        {
+          "key": "killer",
+          "label": "炮手",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "victim",
+          "label": "死者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "killer",
+        "victim",
+        "date_text"
+      ],
+      "complete_fields": [
+        "killer",
+        "victim",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
     },
     {
       "id": "meditate",
@@ -1835,6 +2237,65 @@ window.TynanArtData = {
       "category": "社交与关系"
     },
     {
+      "defName": "SoldPrisoner",
+      "id": "sold_prisoner",
+      "label": "贩卖囚犯",
+      "category": "社交与关系",
+      "required_slots": [
+        {
+          "key": "seller",
+          "label": "卖方",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "prisoner",
+          "label": "囚犯",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "trader",
+          "label": "商人",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "seller",
+        "prisoner",
+        "trader",
+        "date_text"
+      ],
+      "complete_fields": [
+        "seller",
+        "prisoner",
+        "trader",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
       "id": "strip_target",
       "label": "扒光衣服",
       "carrier_types": [
@@ -2431,6 +2892,49 @@ window.TynanArtData = {
       "category": "旅途与迁移"
     },
     {
+      "defName": "LaunchedShip",
+      "id": "launched_ship",
+      "label": "发射飞船",
+      "category": "旅途与迁移",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "乘员",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
       "id": "eclipse",
       "label": "日蚀",
       "carrier_types": [
@@ -2513,6 +3017,57 @@ window.TynanArtData = {
         "include_context"
       ],
       "category": "天象与灾害"
+    },
+    {
+      "defName": "TornadoFromItem",
+      "id": "tornado_from_item",
+      "label": "tornado",
+      "category": "天象与灾害",
+      "required_slots": [
+        {
+          "key": "attacker",
+          "label": "施放者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "colonist",
+          "label": "殖民者",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "attacker",
+        "colonist",
+        "date_text"
+      ],
+      "complete_fields": [
+        "attacker",
+        "colonist",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
     },
     {
       "id": "vomit",
@@ -3387,6 +3942,57 @@ window.TynanArtData = {
       ]
     },
     {
+      "defName": "MinedValuable",
+      "id": "mined_valuable",
+      "label": "开采矿脉",
+      "category": "创作与成果",
+      "required_slots": [
+        {
+          "key": "pawn",
+          "label": "矿工",
+          "slot_type": "role",
+          "suggestion_type": "person_name"
+        },
+        {
+          "key": "material",
+          "label": "矿物",
+          "slot_type": "object",
+          "suggestion_type": "material_name"
+        }
+      ],
+      "optional_slots": [
+        {
+          "key": "date_text",
+          "label": "日期",
+          "slot_type": "meta",
+          "suggestion_type": "date_text"
+        }
+      ],
+      "carrier_types": [
+        "雕塑",
+        "家具",
+        "近战武器",
+        "远程武器",
+        "棺材"
+      ],
+      "simple_fields": [
+        "pawn",
+        "material",
+        "date_text"
+      ],
+      "complete_fields": [
+        "pawn",
+        "material",
+        "date_text",
+        "scene_hint",
+        "detail_hint",
+        "style_hint",
+        "include_detail",
+        "include_style",
+        "include_context"
+      ]
+    },
+    {
       "defName": "VacuumExposureRevealed",
       "id": "vacuum_exposure",
       "label": "暴露于真空",
@@ -3907,10 +4513,26 @@ window.TynanArtData = {
       "小雕塑",
       "大雕塑",
       "宏伟雕塑",
+      "长剑",
+      "单分子剑",
+      "等离子剑",
+      "宙斯锤",
+      "左轮手枪",
+      "电荷步枪",
+      "重型冲锋枪",
+      "突击步枪",
+      "精准步枪",
+      "防弹背心",
+      "海军装甲",
+      "斥候装甲",
       "扶手椅",
       "餐椅",
-      "棺材",
-      "左轮手枪"
+      "单人床",
+      "双人床",
+      "床头柜",
+      "书柜",
+      "小书柜",
+      "棺材"
     ],
     "object_name": [
       "墙",
@@ -3948,13 +4570,18 @@ window.TynanArtData = {
       "等离子剑"
     ],
     "animal_name": [
-      "驼鹿",
-      "阿尔法敲击兽",
-      "野猪",
-      "森林狼",
-      "乳齿象",
-      "驯鹿",
-      "大熊猫"
+      "??",
+      "??????",
+      "??",
+      "???",
+      "???",
+      "??",
+      "???",
+      "??",
+      "?",
+      "?",
+      "?",
+      "??"
     ],
     "training_name": [
       "服从",
@@ -4009,14 +4636,18 @@ window.TynanArtData = {
       "传奇级"
     ],
     "material": [
-      "木制",
-      "花岗岩制",
       "钢制",
-      "银制",
       "金制",
-      "玉制",
+      "银制",
+      "翡翠",
+      "玻璃钢",
+      "活铁",
+      "木制",
       "石制",
-      "玻璃钢制"
+      "花岗岩制",
+      "布制",
+      "皮革制",
+      "超织物制"
     ],
     "art_title": [
       "《晨光之手》",
@@ -4196,43 +4827,14 @@ window.TynanArtData = {
       "15"
     ],
     "entity_name": [
-      "虚空节点",
-      "虚空结构",
-      "虚空巨石",
-      "扭曲方尖碑",
-      "腐化方尖碑",
-      "畸变方尖碑",
-      "夜光柱",
-      "电子阻滞器",
-      "收容平台",
-      "收容点",
-      "灰盒",
-      "灰色雕塑",
-      "无底深坑",
-      "蹒趚怪",
-      "食尸鬼",
-      "金属怪形",
-      "血棘巨人",
-      "吞噬兽",
-      "嵌合兽",
-      "血肉核心",
-      "苦痛之球",
-      "夜魇",
-      "幽魂",
-      "隐形魔",
-      "恶臭瘤兽",
-      "惊惧母兽",
-      "独爪兽",
-      "双爪兽",
-      "三爪兽",
-      "扭曲超凡支柱",
-      "虚空金属块",
-      "虚空金属墙",
-      "潜近探测器",
-      "碎片阻滞器",
-      "狂热诱发器",
-      "睡眠抑制器",
-      "大气升温器"
+      "??",
+      "??",
+      "????",
+      "????",
+      "???",
+      "???",
+      "???",
+      "???"
     ],
     "construction_object_name": [
       "墙",
@@ -4269,6 +4871,19 @@ window.TynanArtData = {
       "高级零部件",
       "海军装甲",
       "斥候装甲"
+    ],
+    "capacity_name": [
+      "血液过滤",
+      "血液循环",
+      "呼吸能力",
+      "意识",
+      "进食能力",
+      "听觉能力",
+      "操作能力",
+      "消化能力",
+      "移动能力",
+      "视觉能力",
+      "语言能力"
     ]
   },
   "TEXT_TEMPLATES": {
@@ -9734,6 +10349,867 @@ window.TynanArtData = {
           ]
         },
         "source_def_name": "NoxiousHaze"
+      },
+      "sold_prisoner": {
+        "event_nouns": [
+          "{prisoner_nameDef}被卖给商人",
+          "{seller_nameDef}将{prisoner_nameDef}作为奴隶出售",
+          "{prisoner_nameDef}像奴隶一样被{seller_nameDef}出售"
+        ],
+        "main_images": [
+          "{trader_nameFull}正从{seller_nameFull}手中买下{prisoner_nameFull}，[circumstance_group]",
+          "{seller_nameFull}将{prisoner_nameFull}出售给{trader_nameFull}，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "{trader_nameDef}发出过分的笑声。",
+          "{seller_nameDef}病态地大笑。",
+          "{seller_nameDef}不情愿地将{prisoner_nameDef}交给商人。",
+          "{prisoner_nameDef}挑衅地瞪着{prisoner_possessive}新主人。",
+          "{trader_nameDef}拽着{prisoner_nameDef}身上的锁链将{prisoner_possessive}拖走。",
+          "{prisoner_nameDef}瞪着{seller_nameDef}，心中盘算着复仇。",
+          "{prisoner_nameDef}无助地哭喊着。",
+          "{prisoner_nameDef}对着{seller_nameDef}的脸啐了口唾沫。",
+          "{prisoner_nameDef}的背影消逝在大地远方。",
+          "{seller_nameDef}用力将束缚{prisoner_nameDef}的锁链交到{trader_nameDef}手中。",
+          "场景中弥漫着绝望的气氛。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "同时其他殖民者在一旁不满地围观",
+          "而{seller_nameDef}埋头数着钱",
+          "而{prisoner_nameDef}在苦苦哀求",
+          "同时{prisoner_nameDef}十分气愤"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{prisoner_nameDef}被卖给商人",
+            "{seller_nameDef}将{prisoner_nameDef}作为奴隶出售",
+            "{prisoner_nameDef}像奴隶一样被{seller_nameDef}出售"
+          ],
+          "image": [
+            "{trader_nameFull}正从{seller_nameFull}手中买下{prisoner_nameFull}，[circumstance_group]",
+            "{seller_nameFull}将{prisoner_nameFull}出售给{trader_nameFull}，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "同时其他殖民者在一旁不满地围观",
+            "而{seller_nameDef}埋头数着钱",
+            "而{prisoner_nameDef}在苦苦哀求",
+            "同时{prisoner_nameDef}十分气愤"
+          ],
+          "desc_sentence": [
+            "{trader_nameDef}发出过分的笑声。",
+            "{seller_nameDef}病态地大笑。",
+            "{seller_nameDef}不情愿地将{prisoner_nameDef}交给商人。",
+            "{prisoner_nameDef}挑衅地瞪着{prisoner_possessive}新主人。",
+            "{trader_nameDef}拽着{prisoner_nameDef}身上的锁链将{prisoner_possessive}拖走。",
+            "{prisoner_nameDef}瞪着{seller_nameDef}，心中盘算着复仇。",
+            "{prisoner_nameDef}无助地哭喊着。",
+            "{prisoner_nameDef}对着{seller_nameDef}的脸啐了口唾沫。",
+            "{prisoner_nameDef}的背影消逝在大地远方。",
+            "{seller_nameDef}用力将束缚{prisoner_nameDef}的锁链交到{trader_nameDef}手中。",
+            "场景中弥漫着绝望的气氛。"
+          ],
+          "circumstance_group": [
+            "同时其他殖民者在一旁不满地围观",
+            "而{seller_nameDef}埋头数着钱",
+            "而{prisoner_nameDef}在苦苦哀求",
+            "同时{prisoner_nameDef}十分气愤"
+          ]
+        },
+        "source_def_name": "SoldPrisoner"
+      },
+      "launched_ship": {
+        "event_nouns": [
+          "{pawn_nameDef}逃离星球",
+          "{pawn_nameDef}的宇宙飞船起飞"
+        ],
+        "main_images": [
+          "[circumstance_group]，{pawn_nameFull}向目标星系进发",
+          "[circumstance_group]，{pawn_nameFull}飞向天空",
+          "[circumstance_group]，{pawn_nameFull}正加速到逃逸速度",
+          "[circumstance_group]，{pawn_nameFull}驾驶火箭升空"
+        ],
+        "detail_sentences": [
+          "{pawn_pronoun}集中精力进行操控。",
+          "{pawn_pronoun}闭上眼睛，看上去十分自信。",
+          "{pawn_pronoun}安心地闭上眼睛，睡着了。",
+          "{pawn_pronoun}的笑容令人不寒而栗。",
+          "看上去一切都在{pawn_pronoun}的掌控之中。",
+          "飞船尾部拖着火焰。",
+          "一只在附近的[Animal]抬着头，对这一幕感到惊讶。",
+          "一只[Animal]因为害怕而从发射现场逃离。",
+          "背景中是一片[TerrainFeature]。",
+          "一位[PersonJob]远远的目睹了这一切。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "在一片[TerrainFeature]前",
+          "通过不可思议的力量",
+          "在四周满是灰尘和石头环境中",
+          "伴随火箭喷出猛烈的火焰",
+          "经过精确计算"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}逃离星球",
+            "{pawn_nameDef}的宇宙飞船起飞"
+          ],
+          "image": [
+            "[circumstance_group]，{pawn_nameFull}向目标星系进发",
+            "[circumstance_group]，{pawn_nameFull}飞向天空",
+            "[circumstance_group]，{pawn_nameFull}正加速到逃逸速度",
+            "[circumstance_group]，{pawn_nameFull}驾驶火箭升空"
+          ],
+          "circumstance_phrase": [
+            "在一片[TerrainFeature]前",
+            "通过不可思议的力量",
+            "在四周满是灰尘和石头环境中",
+            "伴随火箭喷出猛烈的火焰",
+            "经过精确计算"
+          ],
+          "desc_sentence": [
+            "{pawn_pronoun}集中精力进行操控。",
+            "{pawn_pronoun}闭上眼睛，看上去十分自信。",
+            "{pawn_pronoun}安心地闭上眼睛，睡着了。",
+            "{pawn_pronoun}的笑容令人不寒而栗。",
+            "看上去一切都在{pawn_pronoun}的掌控之中。",
+            "飞船尾部拖着火焰。",
+            "一只在附近的[Animal]抬着头，对这一幕感到惊讶。",
+            "一只[Animal]因为害怕而从发射现场逃离。",
+            "背景中是一片[TerrainFeature]。",
+            "一位[PersonJob]远远的目睹了这一切。"
+          ],
+          "circumstance_group": [
+            "在一片[TerrainFeature]前",
+            "通过不可思议的力量",
+            "在四周满是灰尘和石头环境中",
+            "伴随火箭喷出猛烈的火焰",
+            "经过精确计算"
+          ]
+        },
+        "source_def_name": "LaunchedShip"
+      },
+      "downed": {
+        "event_nouns": [
+          "{attacker_nameDef}[wound_name_present]{victim_nameDef}",
+          "{attacker_nameDef}用{weapon_label}[wound_name_present]{victim_nameDef}",
+          "{victim_nameDef}被{attacker_nameDef}[wound_name_present]",
+          "{victim_nameDef}被人用{weapon_label}[wound_name_present]",
+          "{victim_nameDef}被[wound_name_present]"
+        ],
+        "main_images": [
+          "{victim_nameFull}被[wound_name_past]，{attacker_nameFull}[with_weapon_optional]",
+          "{attacker_nameFull}将{victim_nameFull}[wound_name_present]，[with_weapon_optional]",
+          "{attacker_nameFull}粗暴地[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+          "{victim_nameFull}被[wound_name_past]，行凶者[with_weapon_optional]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Animal]在一旁围观。",
+          "一位[PersonJob]在[side_position]静观其变。",
+          "{victim_nameDef}看上去[AdjectiveAngsty]。",
+          "{victim_nameDef}的眼睛闭着。",
+          "{attacker_nameDef}咧开嘴，露出{attacker_possessive}牙齿。",
+          "{attacker_nameDef}似乎很满意。",
+          "{attacker_nameDef}面对{attacker_pronoun}自己的所作所为，感到十分痛苦。",
+          "{attacker_nameDef}看上去对这一切很满意。",
+          "{attacker_nameDef}露出胜利者的姿态。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "毫不留情",
+          "冷酷无情",
+          "怒不可歇",
+          "身手敏捷",
+          "面无表情",
+          "已经放弃希望",
+          "看上去很害怕，不得已的选择"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{attacker_nameDef}[wound_name_present]{victim_nameDef}",
+            "{attacker_nameDef}用{weapon_label}[wound_name_present]{victim_nameDef}",
+            "{victim_nameDef}被{attacker_nameDef}[wound_name_present]",
+            "{victim_nameDef}被人用{weapon_label}[wound_name_present]",
+            "{victim_nameDef}被[wound_name_present]"
+          ],
+          "image": [
+            "{victim_nameFull}被[wound_name_past]，{attacker_nameFull}[with_weapon_optional]",
+            "{attacker_nameFull}将{victim_nameFull}[wound_name_present]，[with_weapon_optional]",
+            "{attacker_nameFull}粗暴地[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+            "{victim_nameFull}被[wound_name_past]，行凶者[with_weapon_optional]"
+          ],
+          "wound_name_past": [
+            "打昏",
+            "弄坏了",
+            "打得不省人事",
+            "打残"
+          ],
+          "wound_name_present": [
+            "打昏",
+            "弄坏了",
+            "打晕",
+            "打残"
+          ],
+          "with_weapon_optional": [
+            "使用的是{weapon_label}，[circumstance_group]",
+            "[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "毫不留情",
+            "冷酷无情",
+            "怒不可歇",
+            "身手敏捷",
+            "面无表情",
+            "已经放弃希望",
+            "看上去很害怕，不得已的选择"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Animal]在一旁围观。",
+            "一位[PersonJob]在[side_position]静观其变。",
+            "{victim_nameDef}看上去[AdjectiveAngsty]。",
+            "{victim_nameDef}的眼睛闭着。",
+            "{attacker_nameDef}咧开嘴，露出{attacker_possessive}牙齿。",
+            "{attacker_nameDef}似乎很满意。",
+            "{attacker_nameDef}面对{attacker_pronoun}自己的所作所为，感到十分痛苦。",
+            "{attacker_nameDef}看上去对这一切很满意。",
+            "{attacker_nameDef}露出胜利者的姿态。"
+          ],
+          "circumstance_group": [
+            "毫不留情",
+            "冷酷无情",
+            "怒不可歇",
+            "身手敏捷",
+            "面无表情",
+            "已经放弃希望",
+            "看上去很害怕，不得已的选择"
+          ]
+        },
+        "source_def_name": "Downed"
+      },
+      "killed_capacity": {
+        "event_nouns": [
+          "{killer_nameDef}[wound_name_present]{victim_nameDef}",
+          "{killer_nameDef}用{weapon_label}[wound_name_present]{victim_nameDef}"
+        ],
+        "main_images": [
+          "{killer_nameFull}[cap_removal]了{victim_nameFull}的{capacity_label}，[with_weapon_optional]",
+          "{killer_nameFull}通过[cap_removal]{capacity_label}[wound_name_present]{victim_nameFull}，[with_weapon_optional]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Animal]在一旁围观。",
+          "一位[PersonJob]在[side_position]默默地看着这一切。",
+          "{victim_nameDef}看上去[AdjectiveAngsty]。",
+          "{victim_nameDef}的眼睛闭着。",
+          "{killer_nameDef}似乎很满意。",
+          "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+          "{killer_nameDef}看上去对这一切很满意。",
+          "{killer_nameDef}露出胜利者的姿态。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "毫不留情",
+          "冷酷无情",
+          "身手敏捷",
+          "面无表情"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{killer_nameDef}[wound_name_present]{victim_nameDef}",
+            "{killer_nameDef}用{weapon_label}[wound_name_present]{victim_nameDef}"
+          ],
+          "image": [
+            "{killer_nameFull}[cap_removal]了{victim_nameFull}的{capacity_label}，[with_weapon_optional]",
+            "{killer_nameFull}通过[cap_removal]{capacity_label}[wound_name_present]{victim_nameFull}，[with_weapon_optional]"
+          ],
+          "cap_removal": [
+            "破坏",
+            "消除",
+            "结束"
+          ],
+          "wound_name_past": [
+            "杀死",
+            "处决",
+            "暗杀",
+            "排除"
+          ],
+          "wound_name_present": [
+            "杀死",
+            "处决",
+            "暗杀",
+            "排除"
+          ],
+          "with_weapon_optional": [
+            "使用的是{weapon_label}，[circumstance_group]",
+            "[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "毫不留情",
+            "冷酷无情",
+            "身手敏捷",
+            "面无表情"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Animal]在一旁围观。",
+            "一位[PersonJob]在[side_position]默默地看着这一切。",
+            "{victim_nameDef}看上去[AdjectiveAngsty]。",
+            "{victim_nameDef}的眼睛闭着。",
+            "{killer_nameDef}似乎很满意。",
+            "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+            "{killer_nameDef}看上去对这一切很满意。",
+            "{killer_nameDef}露出胜利者的姿态。"
+          ],
+          "circumstance_group": [
+            "毫不留情",
+            "冷酷无情",
+            "身手敏捷",
+            "面无表情"
+          ]
+        },
+        "source_def_name": "KilledCapacity"
+      },
+      "killed_long_range": {
+        "event_nouns": [
+          "{killer_nameDef}在极限距离[wound_name_present]{victim_nameDef}",
+          "{killer_nameDef}使用{weapon_label}在极限距离[wound_name_present]{victim_nameDef}",
+          "{victim_nameDef}被{killer_nameDef}远距离[wound_name_present]",
+          "{victim_nameDef}被{killer_nameDef}用{weapon_label}在远距离[wound_name_present]"
+        ],
+        "main_images": [
+          "{killer_nameFull}正在瞄准{victim_nameFull}，[with_weapon_optional]",
+          "{killer_nameFull}[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+          "{killer_nameFull}冷酷地[wound_name_present]{victim_nameFull}，[with_weapon_optional]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Animal]在一旁围观。",
+          "一位[PersonJob]在[side_position]默默地看着这一切。",
+          "{victim_nameDef}看上去[AdjectiveAngsty]。",
+          "{victim_nameDef}的眼睛闭着。",
+          "{victim_nameDef}浑身都是[Gore]。",
+          "{killer_nameDef}咧开嘴，露出{killer_possessive}牙齿。",
+          "{killer_nameDef}似乎很满意。",
+          "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+          "{killer_nameDef}看上去对这一切很满意。",
+          "{killer_nameDef}露出胜利者的姿态。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "毫不留情",
+          "冷酷无情",
+          "距离目标很远",
+          "从高处瞄准",
+          "面无表情",
+          "看上去很害怕，不得已的选择"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{killer_nameDef}在极限距离[wound_name_present]{victim_nameDef}",
+            "{killer_nameDef}使用{weapon_label}在极限距离[wound_name_present]{victim_nameDef}",
+            "{victim_nameDef}被{killer_nameDef}远距离[wound_name_present]",
+            "{victim_nameDef}被{killer_nameDef}用{weapon_label}在远距离[wound_name_present]"
+          ],
+          "image": [
+            "{killer_nameFull}正在瞄准{victim_nameFull}，[with_weapon_optional]",
+            "{killer_nameFull}[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+            "{killer_nameFull}冷酷地[wound_name_present]{victim_nameFull}，[with_weapon_optional]"
+          ],
+          "wound_name_past": [
+            "杀掉",
+            "击杀",
+            "干掉",
+            "消灭"
+          ],
+          "wound_name_present": [
+            "杀掉",
+            "击杀",
+            "干掉",
+            "消灭"
+          ],
+          "with_weapon_optional": [
+            "使用的是{weapon_label}，[circumstance_group]",
+            "[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "毫不留情",
+            "冷酷无情",
+            "距离目标很远",
+            "从高处瞄准",
+            "面无表情",
+            "看上去很害怕，不得已的选择"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Animal]在一旁围观。",
+            "一位[PersonJob]在[side_position]默默地看着这一切。",
+            "{victim_nameDef}看上去[AdjectiveAngsty]。",
+            "{victim_nameDef}的眼睛闭着。",
+            "{victim_nameDef}浑身都是[Gore]。",
+            "{killer_nameDef}咧开嘴，露出{killer_possessive}牙齿。",
+            "{killer_nameDef}似乎很满意。",
+            "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+            "{killer_nameDef}看上去对这一切很满意。",
+            "{killer_nameDef}露出胜利者的姿态。"
+          ],
+          "circumstance_group": [
+            "毫不留情",
+            "冷酷无情",
+            "距离目标很远",
+            "从高处瞄准",
+            "面无表情",
+            "看上去很害怕，不得已的选择"
+          ]
+        },
+        "source_def_name": "KilledLongRange"
+      },
+      "killed_major_threat": {
+        "event_nouns": [
+          "{killer_nameDef}[wound_name_present]{victim_nameDef}",
+          "{killer_nameDef}用{weapon_label}[wound_name_present]{victim_nameDef}",
+          "{victim_nameDef}被{killer_nameDef}[wound_name_present]",
+          "{victim_nameDef}被{killer_nameDef}用{weapon_label}[wound_name_present]"
+        ],
+        "main_images": [
+          "{victim_nameFull}被{killer_nameFull}[wound_name_past]，终结者[with_weapon_optional]",
+          "{killer_nameFull}[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+          "{killer_nameFull}残暴地[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+          "{victim_nameFull}被[wound_name_past]，终结者[with_weapon_optional]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Animal]在一旁围观。",
+          "一位[PersonJob]在[side_position]默默地看着这一切。",
+          "{victim_nameDef}看上去[AdjectiveAngsty]。",
+          "{victim_nameDef}的眼睛闭着。",
+          "{victim_nameDef}浑身都是[Gore]。",
+          "{victim_nameDef}和{killer_nameDef}的身上都是[Gore]。",
+          "{victim_nameDef}的尸体倒在{killer_nameDef}身上。",
+          "{victim_nameDef}巨大的身躯倒在了[TerrainFeature]上。",
+          "{victim_nameDef}的眼睛闪着[Color]的光。",
+          "{killer_nameDef}浑身都是[Gore]。",
+          "{killer_nameDef}露出{killer_possessive}牙齿。",
+          "{killer_nameDef}似乎很满意。",
+          "{killer_nameDef}露出胜利者的姿态。",
+          "{killer_nameDef}看上去很[AdjectiveBadass]。",
+          "{killer_nameDef}闪耀着英雄的光辉。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "冷酷无情",
+          "身手敏捷",
+          "面无表情",
+          "英勇无比",
+          "犹如天神下凡"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{killer_nameDef}[wound_name_present]{victim_nameDef}",
+            "{killer_nameDef}用{weapon_label}[wound_name_present]{victim_nameDef}",
+            "{victim_nameDef}被{killer_nameDef}[wound_name_present]",
+            "{victim_nameDef}被{killer_nameDef}用{weapon_label}[wound_name_present]"
+          ],
+          "image": [
+            "{victim_nameFull}被{killer_nameFull}[wound_name_past]，终结者[with_weapon_optional]",
+            "{killer_nameFull}[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+            "{killer_nameFull}残暴地[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+            "{victim_nameFull}被[wound_name_past]，终结者[with_weapon_optional]"
+          ],
+          "wound_name_past": [
+            "击杀",
+            "打败",
+            "击败"
+          ],
+          "wound_name_present": [
+            "击杀",
+            "打败",
+            "击败"
+          ],
+          "with_weapon_optional": [
+            "使用的是{weapon_label}，[circumstance_group]",
+            "[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "冷酷无情",
+            "身手敏捷",
+            "面无表情",
+            "英勇无比",
+            "犹如天神下凡"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Animal]在一旁围观。",
+            "一位[PersonJob]在[side_position]默默地看着这一切。",
+            "{victim_nameDef}看上去[AdjectiveAngsty]。",
+            "{victim_nameDef}的眼睛闭着。",
+            "{victim_nameDef}浑身都是[Gore]。",
+            "{victim_nameDef}和{killer_nameDef}的身上都是[Gore]。",
+            "{victim_nameDef}的尸体倒在{killer_nameDef}身上。",
+            "{victim_nameDef}巨大的身躯倒在了[TerrainFeature]上。",
+            "{victim_nameDef}的眼睛闪着[Color]的光。",
+            "{killer_nameDef}浑身都是[Gore]。",
+            "{killer_nameDef}露出{killer_possessive}牙齿。",
+            "{killer_nameDef}似乎很满意。",
+            "{killer_nameDef}露出胜利者的姿态。",
+            "{killer_nameDef}看上去很[AdjectiveBadass]。",
+            "{killer_nameDef}闪耀着英雄的光辉。"
+          ],
+          "circumstance_group": [
+            "冷酷无情",
+            "身手敏捷",
+            "面无表情",
+            "英勇无比",
+            "犹如天神下凡"
+          ]
+        },
+        "source_def_name": "KilledMajorThreat"
+      },
+      "killed_melee": {
+        "event_nouns": [
+          "{killer_nameDef}在近战中[wound_name_present]{victim_nameDef}",
+          "{killer_nameDef}在混战中用{weapon_label}[wound_name_present]{victim_nameDef}",
+          "{victim_nameDef}被{killer_nameDef}[wound_name_present]",
+          "{victim_nameDef}在近战中被{killer_nameDef}用{weapon_label}[wound_name_present]"
+        ],
+        "main_images": [
+          "{victim_nameFull}被[wound_name_past]，{killer_nameFull}[with_weapon_optional]",
+          "{killer_nameFull}[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+          "{killer_nameFull}残暴地[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+          "{victim_nameFull}被[wound_name_past]，杀手[with_weapon_optional]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Animal]在一旁围观。",
+          "一位[PersonJob]在[side_position]默默地看着这一切。",
+          "{victim_nameDef}看上去[AdjectiveAngsty]。",
+          "{victim_nameDef}的眼睛闭着。",
+          "{victim_nameDef}浑身都是[Gore]。",
+          "{victim_nameDef}和{killer_nameDef}的身上都是[Gore]。",
+          "{killer_nameDef}浑身都是[Gore]。",
+          "{killer_nameDef}咧开嘴，露出{killer_possessive}牙齿。",
+          "{killer_nameDef}似乎很满意。",
+          "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+          "{killer_nameDef}看上去对这一切很满意。",
+          "{killer_nameDef}露出胜利者的姿态。",
+          "{killer_nameDef}带着野兽般的表情。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "毫不留情",
+          "冷酷无情",
+          "身手敏捷",
+          "面无表情",
+          "看上去很害怕，不得已的选择"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{killer_nameDef}在近战中[wound_name_present]{victim_nameDef}",
+            "{killer_nameDef}在混战中用{weapon_label}[wound_name_present]{victim_nameDef}",
+            "{victim_nameDef}被{killer_nameDef}[wound_name_present]",
+            "{victim_nameDef}在近战中被{killer_nameDef}用{weapon_label}[wound_name_present]"
+          ],
+          "image": [
+            "{victim_nameFull}被[wound_name_past]，{killer_nameFull}[with_weapon_optional]",
+            "{killer_nameFull}[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+            "{killer_nameFull}残暴地[wound_name_present]{victim_nameFull}，[with_weapon_optional]",
+            "{victim_nameFull}被[wound_name_past]，杀手[with_weapon_optional]"
+          ],
+          "wound_name_past": [
+            "杀掉",
+            "击杀",
+            "干掉",
+            "消灭"
+          ],
+          "wound_name_present": [
+            "杀掉",
+            "击杀",
+            "干掉",
+            "消灭"
+          ],
+          "with_weapon_optional": [
+            "使用的是{weapon_label}，[circumstance_group]",
+            "[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "毫不留情",
+            "冷酷无情",
+            "身手敏捷",
+            "面无表情",
+            "看上去很害怕，不得已的选择"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Animal]在一旁围观。",
+            "一位[PersonJob]在[side_position]默默地看着这一切。",
+            "{victim_nameDef}看上去[AdjectiveAngsty]。",
+            "{victim_nameDef}的眼睛闭着。",
+            "{victim_nameDef}浑身都是[Gore]。",
+            "{victim_nameDef}和{killer_nameDef}的身上都是[Gore]。",
+            "{killer_nameDef}浑身都是[Gore]。",
+            "{killer_nameDef}咧开嘴，露出{killer_possessive}牙齿。",
+            "{killer_nameDef}似乎很满意。",
+            "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+            "{killer_nameDef}看上去对这一切很满意。",
+            "{killer_nameDef}露出胜利者的姿态。",
+            "{killer_nameDef}带着野兽般的表情。"
+          ],
+          "circumstance_group": [
+            "毫不留情",
+            "冷酷无情",
+            "身手敏捷",
+            "面无表情",
+            "看上去很害怕，不得已的选择"
+          ]
+        },
+        "source_def_name": "KilledMelee"
+      },
+      "killed_mortar": {
+        "event_nouns": [
+          "{killer_nameDef}用迫击炮[wound_name_present]{victim_nameDef}",
+          "{victim_nameDef}被{killer_nameDef}用炮击杀死"
+        ],
+        "main_images": [
+          "{killer_nameFull}正在仔细调整发射角度，[circumstance_group]",
+          "{killer_nameFull}望着远方，[circumstance_group]",
+          "{killer_nameFull}在纸上做着精确计算，[circumstance_group]",
+          "{killer_nameFull}正在测试风向，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][Animal]在一旁围观。",
+          "一位[PersonJob]在[side_position]默默地看着这一切。",
+          "{victim_nameDef}看上去[AdjectiveAngsty]。",
+          "{victim_nameDef}浑身都是[Gore]。",
+          "{victim_nameDef}被爆炸声包围。",
+          "{victim_nameDef}的周围都是弹坑。",
+          "{killer_nameDef}似乎很满意。",
+          "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+          "{killer_nameDef}看上去对这一切很满意。",
+          "{killer_nameDef}露出胜利者的姿态。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "而{victim_nameFull}将葬身于巨大的爆炸之中",
+          "弧线下坠的炮弹飞向{victim_nameFull}",
+          "同时{victim_nameFull}则在毫无防备的四处闲逛",
+          "而{victim_nameFull}正在冲锋"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{killer_nameDef}用迫击炮[wound_name_present]{victim_nameDef}",
+            "{victim_nameDef}被{killer_nameDef}用炮击杀死"
+          ],
+          "image": [
+            "{killer_nameFull}正在仔细调整发射角度，[circumstance_group]",
+            "{killer_nameFull}望着远方，[circumstance_group]",
+            "{killer_nameFull}在纸上做着精确计算，[circumstance_group]",
+            "{killer_nameFull}正在测试风向，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "而{victim_nameFull}将葬身于巨大的爆炸之中",
+            "弧线下坠的炮弹飞向{victim_nameFull}",
+            "同时{victim_nameFull}则在毫无防备的四处闲逛",
+            "而{victim_nameFull}正在冲锋"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][Animal]在一旁围观。",
+            "一位[PersonJob]在[side_position]默默地看着这一切。",
+            "{victim_nameDef}看上去[AdjectiveAngsty]。",
+            "{victim_nameDef}浑身都是[Gore]。",
+            "{victim_nameDef}被爆炸声包围。",
+            "{victim_nameDef}的周围都是弹坑。",
+            "{killer_nameDef}似乎很满意。",
+            "{killer_nameDef}面对{killer_pronoun}自己的所作所为，感到十分痛苦。",
+            "{killer_nameDef}看上去对这一切很满意。",
+            "{killer_nameDef}露出胜利者的姿态。"
+          ],
+          "circumstance_group": [
+            "而{victim_nameFull}将葬身于巨大的爆炸之中",
+            "弧线下坠的炮弹飞向{victim_nameFull}",
+            "同时{victim_nameFull}则在毫无防备的四处闲逛",
+            "而{victim_nameFull}正在冲锋"
+          ]
+        },
+        "source_def_name": "KilledMortar"
+      },
+      "tornado_from_item": {
+        "event_nouns": [
+          "龙卷风在{colonist_nameDef}所在的[Community]附近登陆",
+          "{colonist_nameDef}所在的[Community]受到恶劣天气侵袭"
+        ],
+        "main_images": [
+          "[behavior]锥形气旋[circumstance_phrase]",
+          "[behavior]龙卷风[circumstance_phrase]",
+          "[behavior]飓风[circumstance_phrase]",
+          "[behavior][Color]云柱[circumstance_phrase]"
+        ],
+        "detail_sentences": [
+          "{colonist_nameDef}十分震惊地望着这一幕。",
+          "{colonist_nameDef}望着这一切，{colonist_possessive}脸上充满恐惧。",
+          "{attacker_nameDef}望着这一切，{attacker_possessive}脸上充满恐惧。",
+          "{colonist_nameDef}正在协调人手抵御灾害。",
+          "{attacker_nameDef}发出狂笑。",
+          "[Quantity_adjphrase][PersonJob]匆忙准备。",
+          "[Quantity_adjphrase][Animal]逃离该地区。",
+          "所有动物都逃离了该地区。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "卷起碎片",
+          "穿过一片[TerrainFeature]",
+          "席卷了整片[TerrainFeature]",
+          "笼罩了整片[TerrainFeature]"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "龙卷风在{colonist_nameDef}所在的[Community]附近登陆",
+            "{colonist_nameDef}所在的[Community]受到恶劣天气侵袭"
+          ],
+          "image": [
+            "[behavior]锥形气旋[circumstance_phrase]",
+            "[behavior]龙卷风[circumstance_phrase]",
+            "[behavior]飓风[circumstance_phrase]",
+            "[behavior][Color]云柱[circumstance_phrase]"
+          ],
+          "behavior": [
+            "加强的",
+            "附近的",
+            "快速移动的",
+            "高速旋转的"
+          ],
+          "circumstance_phrase": [
+            "卷起碎片",
+            "穿过一片[TerrainFeature]",
+            "席卷了整片[TerrainFeature]",
+            "笼罩了整片[TerrainFeature]"
+          ],
+          "desc_sentence": [
+            "{colonist_nameDef}十分震惊地望着这一幕。",
+            "{colonist_nameDef}望着这一切，{colonist_possessive}脸上充满恐惧。",
+            "{attacker_nameDef}望着这一切，{attacker_possessive}脸上充满恐惧。",
+            "{colonist_nameDef}正在协调人手抵御灾害。",
+            "{attacker_nameDef}发出狂笑。",
+            "[Quantity_adjphrase][PersonJob]匆忙准备。",
+            "[Quantity_adjphrase][Animal]逃离该地区。",
+            "所有动物都逃离了该地区。"
+          ],
+          "circumstance_group": [
+            "卷起碎片",
+            "穿过一片[TerrainFeature]",
+            "席卷了整片[TerrainFeature]",
+            "笼罩了整片[TerrainFeature]"
+          ]
+        },
+        "source_def_name": "TornadoFromItem"
+      },
+      "increased_menagerie": {
+        "event_nouns": [
+          "{tamer_nameDef}为[AnimalGroup]增加了新成员",
+          "{tamer_nameDef}的身边被[AnimalGroup]围绕",
+          "{tamer_nameDef}驯服{animal_nameDef}"
+        ],
+        "main_images": [
+          "{tamer_nameFull}尝试驯服{animal_nameFull}，[circumstance_group]",
+          "{tamer_nameFull}为{animal_nameFull}准备了一些食物，[circumstance_group]",
+          "{tamer_nameFull}在难以驾驭的{animal_label}身边低声耳语，[circumstance_group]",
+          "{tamer_nameFull}正在安抚一只野生{animal_label}，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "{tamer_nameDef}被数不清的[Animal]包围。",
+          "{animal_nameDef}正在向[AnimalGroup]走去并加入它们。",
+          "现场到处都是[Animal]和[Animal]。",
+          "一排数不清的[Animal]等待被{tamer_nameDef}驯服。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "同时小心翼翼",
+          "并面带微笑",
+          "疲惫但十分快乐",
+          "背景中出现了[AnimalGroup]"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{tamer_nameDef}为[AnimalGroup]增加了新成员",
+            "{tamer_nameDef}的身边被[AnimalGroup]围绕",
+            "{tamer_nameDef}驯服{animal_nameDef}"
+          ],
+          "image": [
+            "{tamer_nameFull}尝试驯服{animal_nameFull}，[circumstance_group]",
+            "{tamer_nameFull}为{animal_nameFull}准备了一些食物，[circumstance_group]",
+            "{tamer_nameFull}在难以驾驭的{animal_label}身边低声耳语，[circumstance_group]",
+            "{tamer_nameFull}正在安抚一只野生{animal_label}，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "同时小心翼翼",
+            "并面带微笑",
+            "疲惫但十分快乐",
+            "背景中出现了[AnimalGroup]"
+          ],
+          "desc_sentence": [
+            "{tamer_nameDef}被数不清的[Animal]包围。",
+            "{animal_nameDef}正在向[AnimalGroup]走去并加入它们。",
+            "现场到处都是[Animal]和[Animal]。",
+            "一排数不清的[Animal]等待被{tamer_nameDef}驯服。"
+          ],
+          "circumstance_group": [
+            "同时小心翼翼",
+            "并面带微笑",
+            "疲惫但十分快乐",
+            "背景中出现了[AnimalGroup]"
+          ]
+        },
+        "source_def_name": "IncreasedMenagerie"
+      },
+      "mined_valuable": {
+        "event_nouns": [
+          "{pawn_nameDef}开采储量丰富的{material_label}矿脉"
+        ],
+        "main_images": [
+          "{pawn_nameFull}使用开采工具在蕴藏着{material_label}的岩壁前工作，[circumstance_group]",
+          "{pawn_nameFull}占据了一大片{material_label}矿，[circumstance_group]",
+          "{pawn_nameFull}靠在由{material_label}组成的墙上，,[circumstance_group]",
+          "{pawn_nameFull}正在指挥挖掘队开采一条储量丰富的{material_label}矿脉，[circumstance_group]",
+          "{pawn_nameFull}正在仔细勘察一条储量丰富的{material_label}矿脉，[circumstance_group]"
+        ],
+        "detail_sentences": [
+          "[Quantity_adjphrase][ally]提供了帮助。",
+          "[Quantity_adjphrase][Animal]在那里徘徊漫步。",
+          "背景中出现的社区是[Community]。",
+          "[Quantity_adjphrase]矿脉在可视距离内。",
+          "不远处能看到[TerrainFeature]。",
+          "工作让{pawn_nameDef}变得浑身汗臭而且脏兮兮的。"
+        ],
+        "style_sentences": [],
+        "scene_phrases": [
+          "任凭汗水流淌",
+          "带着[AdjectiveFriendly]的表情",
+          "面带得意的微笑",
+          "{pawn_possessive}看上去心满意足"
+        ],
+        "grammar_pools": {
+          "tale_noun": [
+            "{pawn_nameDef}开采储量丰富的{material_label}矿脉"
+          ],
+          "image": [
+            "{pawn_nameFull}使用开采工具在蕴藏着{material_label}的岩壁前工作，[circumstance_group]",
+            "{pawn_nameFull}占据了一大片{material_label}矿，[circumstance_group]",
+            "{pawn_nameFull}靠在由{material_label}组成的墙上，,[circumstance_group]",
+            "{pawn_nameFull}正在指挥挖掘队开采一条储量丰富的{material_label}矿脉，[circumstance_group]",
+            "{pawn_nameFull}正在仔细勘察一条储量丰富的{material_label}矿脉，[circumstance_group]"
+          ],
+          "circumstance_phrase": [
+            "任凭汗水流淌",
+            "带着[AdjectiveFriendly]的表情",
+            "面带得意的微笑",
+            "{pawn_possessive}看上去心满意足"
+          ],
+          "desc_sentence": [
+            "[Quantity_adjphrase][ally]提供了帮助。",
+            "[Quantity_adjphrase][Animal]在那里徘徊漫步。",
+            "背景中出现的社区是[Community]。",
+            "[Quantity_adjphrase]矿脉在可视距离内。",
+            "不远处能看到[TerrainFeature]。",
+            "工作让{pawn_nameDef}变得浑身汗臭而且脏兮兮的。"
+          ],
+          "circumstance_group": [
+            "任凭汗水流淌",
+            "带着[AdjectiveFriendly]的表情",
+            "面带得意的微笑",
+            "{pawn_possessive}看上去心满意足"
+          ]
+        },
+        "source_def_name": "MinedValuable"
       }
     },
     "art_grammar_pools": {
@@ -11515,42 +12991,137 @@ window.TynanArtData = {
     },
     "object_picker_options": {
       "crafted_art:thing": {
-        "title": "选择常见艺术作品",
-        "quick": [
-          "小雕塑",
-          "大雕塑",
-          "宏伟雕塑",
-          "扶手椅",
-          "餐椅"
+        "title": "选择艺术作品",
+        "groups": [
+          {
+            "label": "雕塑类",
+            "items": [
+              "小雕塑",
+              "大雕塑",
+              "宏伟雕塑"
+            ]
+          },
+          {
+            "label": "近战武器",
+            "items": [
+              "长剑",
+              "单分子剑",
+              "等离子剑",
+              "宙斯锤"
+            ]
+          },
+          {
+            "label": "远程武器",
+            "items": [
+              "左轮手枪",
+              "电荷步枪",
+              "重型冲锋枪",
+              "突击步枪",
+              "精准步枪"
+            ]
+          },
+          {
+            "label": "护甲与服饰",
+            "items": [
+              "防弹背心",
+              "海军装甲",
+              "斥候装甲"
+            ]
+          },
+          {
+            "label": "家具类",
+            "items": [
+              "扶手椅",
+              "餐椅",
+              "单人床",
+              "双人床",
+              "床头柜",
+              "书柜",
+              "小书柜",
+              "棺材"
+            ]
+          }
         ],
         "all": [
           "小雕塑",
           "大雕塑",
           "宏伟雕塑",
+          "长剑",
+          "单分子剑",
+          "等离子剑",
+          "宙斯锤",
+          "左轮手枪",
+          "电荷步枪",
+          "重型冲锋枪",
+          "突击步枪",
+          "精准步枪",
+          "防弹背心",
+          "海军装甲",
+          "斥候装甲",
           "扶手椅",
           "餐椅",
-          "棺材",
-          "左轮手枪"
+          "单人床",
+          "双人床",
+          "床头柜",
+          "书柜",
+          "小书柜",
+          "棺材"
         ]
       },
       "finished_construction:object": {
-        "title": "选择常见建造项目",
-        "quick": [
-          "墙",
-          "栅栏",
-          "单人床",
-          "双人床",
-          "餐椅"
+        "title": "选择建造对象",
+        "groups": [
+          {
+            "label": "基础设施",
+            "items": [
+              "墙",
+              "栅栏",
+              "轨道交易信标",
+              "深钻井",
+              "工具柜"
+            ]
+          },
+          {
+            "label": "居住家具",
+            "items": [
+              "单人床",
+              "双人床",
+              "餐椅",
+              "扶手椅",
+              "床头柜",
+              "矮柜"
+            ]
+          },
+          {
+            "label": "工作设施",
+            "items": [
+              "艺创台",
+              "基础研究台",
+              "高级研究台",
+              "精密装配台",
+              "药物实验台",
+              "电熔炼器"
+            ]
+          },
+          {
+            "label": "收纳与纪念",
+            "items": [
+              "书柜",
+              "小书柜",
+              "棺材"
+            ]
+          }
         ],
         "all": [
           "墙",
           "栅栏",
+          "轨道交易信标",
+          "深钻井",
+          "工具柜",
           "单人床",
           "双人床",
           "餐椅",
           "扶手椅",
-          "书柜",
-          "小书柜",
           "床头柜",
           "矮柜",
           "艺创台",
@@ -11559,51 +13130,141 @@ window.TynanArtData = {
           "精密装配台",
           "药物实验台",
           "电熔炼器",
-          "深钻井",
-          "工具柜",
-          "棺材",
-          "轨道交易信标"
+          "书柜",
+          "小书柜",
+          "棺材"
         ]
       },
       "finished_crafting:object": {
-        "title": "选择常见制作项目",
-        "quick": [
-          "左轮手枪",
-          "单分子剑",
-          "长剑",
-          "等离子剑",
-          "宙斯锤"
+        "title": "??????",
+        "groups": [
+          {
+            "label": "????",
+            "items": [
+              "??",
+              "???",
+              "????"
+            ]
+          },
+          {
+            "label": "????",
+            "items": [
+              "??",
+              "???",
+              "????",
+              "?????"
+            ]
+          },
+          {
+            "label": "?????",
+            "items": [
+              "T??",
+              "??",
+              "????",
+              "???"
+            ]
+          },
+          {
+            "label": "???????",
+            "items": [
+              "????",
+              "??????",
+              "?????"
+            ]
+          },
+          {
+            "label": "????????",
+            "items": [
+              "???",
+              "?????",
+              "????",
+              "??",
+              "??????",
+              "???????"
+            ]
+          },
+          {
+            "label": "???????",
+            "items": [
+              "??",
+              "????",
+              "???"
+            ]
+          }
         ],
         "all": [
-          "左轮手枪",
-          "单分子剑",
-          "长剑",
-          "等离子剑",
-          "宙斯锤",
-          "电荷步枪",
-          "重型冲锋枪",
-          "防弹背心",
-          "零部件",
-          "高级零部件",
-          "海军装甲",
-          "斥候装甲"
+          "??",
+          "???",
+          "????",
+          "?????",
+          "T??",
+          "??????",
+          "???????",
+          "EMP???"
         ]
       },
       "finished_research:project": {
         "title": "选择研究项目",
-        "quick": [
+        "all": [
           "微电子基础",
           "电力",
+          "机械加工",
+          "精炼技术",
           "深钻井",
+          "地热能",
+          "太阳能板",
+          "水轮发电机",
+          "排水泵",
+          "枪械制作",
+          "锻造",
+          "精密装配",
+          "高级精密装配",
+          "复杂家具",
+          "复杂衣物",
+          "自动门",
+          "水栽培",
+          "岩石切割",
+          "医药生产",
+          "简易假体",
           "仿生学",
-          "星际航行基础"
-        ],
-        "all": [
+          "医疗床",
+          "无菌材料",
+          "生命体征监测仪",
+          "低温休眠舱",
+          "多元分析仪",
+          "电荷弹",
+          "多管武器",
+          "精准步枪",
+          "防弹衣",
+          "护盾",
+          "迫击炮",
+          "自动机枪塔",
+          "自动加农炮塔",
+          "灭火炮塔",
+          "铀弹加农炮塔",
+          "星际航行基础",
+          "飞船电脑核心",
+          "飞船低温休眠舱",
+          "飞船推进器",
+          "飞船反应堆",
+          "飞船传感器",
+          "基础逆重科技",
+          "标准逆重科技",
+          "高级逆重科技",
+          "穿梭机",
+          "高级心灵仪式",
+          "基础机械科技",
+          "高级机械科技",
+          "标准机械科技",
+          "极致机械科技",
+          "超凡遗传学",
+          "异种遗传学",
+          "虚空扰动",
+          "实体收容",
+          "活铁武器",
           "酿酒",
           "地毯铺设",
           "可可树",
-          "复杂衣物",
-          "复杂家具",
           "恶魔菇",
           "成瘾品生产",
           "活力水制作",
@@ -11616,82 +13277,35 @@ window.TynanArtData = {
           "精神药物提炼",
           "精神叶冲调",
           "反曲弓",
-          "锻造",
-          "岩石切割",
           "植树",
           "清醒丸制作",
           "空调",
-          "自动门",
           "蓄电池",
-          "精炼技术",
           "反冲系统",
           "改进照明",
-          "电力",
           "泡沫灭火器",
-          "防弹衣",
-          "灭火炮塔",
           "气动系统",
-          "地热能",
-          "枪械制作",
-          "自动机枪塔",
-          "水栽培",
           "简易爆炸装置",
-          "机械加工",
-          "迫击炮",
           "营养膏合成机",
           "包装生存食物",
-          "简易假体",
           "烟罐包",
-          "太阳能板",
-          "无菌材料",
           "显像管电视",
-          "水轮发电机",
-          "深钻井",
           "平板电视",
           "地质扫描仪",
-          "自动加农炮塔",
-          "医疗床",
           "远距离矿物扫描仪",
-          "医药生产",
-          "微电子基础",
-          "排水泵",
-          "多管武器",
-          "精准步枪",
-          "护盾",
           "运输舱",
-          "高级精密装配",
-          "仿生学",
-          "电荷弹",
-          "低温休眠舱",
-          "精密装配",
-          "多元分析仪",
           "海军装甲",
           "斥候装甲",
           "集群火箭发射器",
-          "铀弹加农炮塔",
-          "生命体征监测仪",
-          "星际航行基础",
-          "飞船电脑核心",
-          "飞船低温休眠舱",
-          "飞船推进器",
-          "飞船反应堆",
-          "飞船传感器",
-          "高级逆重科技",
-          "基础逆重科技",
           "能量武器",
           "钓鱼",
           "重型桥梁",
           "猎手无人机",
           "轨道生存科技",
-          "穿梭机",
-          "标准逆重科技",
-          "高级心灵仪式",
           "大气升温器",
-          "虚空扰动",
           "活铁提取",
           "活铁发电机",
           "活铁采集",
-          "活铁武器",
           "活铁塑造",
           "极乐切脑",
           "血怒之雨",
@@ -11701,7 +13315,6 @@ window.TynanArtData = {
           "死亡回避",
           "眩光照明弹",
           "汲电器",
-          "实体收容",
           "狂热诱发器",
           "食尸鬼假体",
           "食尸鬼植入",
@@ -11749,69 +13362,720 @@ window.TynanArtData = {
           "竖琴",
           "大键琴",
           "钢琴",
-          "基础机械科技",
-          "高级机械科技",
-          "标准机械科技",
-          "极致机械科技",
           "垃圾分解器",
-          "超凡遗传学",
           "死眠设备",
           "生育规范",
           "基因处理器",
           "培育舱",
           "滤毒器",
           "毒气",
-          "污染性发电",
-          "异种遗传学"
+          "污染性发电"
+        ],
+        "groups": [
+          {
+            "label": "????",
+            "items": []
+          },
+          {
+            "label": "???",
+            "items": []
+          },
+          {
+            "label": "????",
+            "items": [
+              "微电子基础",
+              "电力",
+              "机械加工",
+              "精炼技术",
+              "深钻井",
+              "地热能",
+              "太阳能板",
+              "水轮发电机",
+              "排水泵",
+              "枪械制作",
+              "锻造",
+              "精密装配",
+              "高级精密装配",
+              "复杂家具",
+              "复杂衣物",
+              "自动门",
+              "水栽培",
+              "岩石切割",
+              "医药生产",
+              "简易假体",
+              "仿生学",
+              "医疗床",
+              "无菌材料",
+              "生命体征监测仪",
+              "低温休眠舱",
+              "多元分析仪",
+              "电荷弹",
+              "多管武器",
+              "精准步枪",
+              "防弹衣",
+              "护盾",
+              "迫击炮",
+              "自动机枪塔",
+              "自动加农炮塔",
+              "灭火炮塔",
+              "铀弹加农炮塔",
+              "星际航行基础",
+              "飞船电脑核心",
+              "飞船低温休眠舱",
+              "飞船推进器",
+              "飞船反应堆",
+              "飞船传感器",
+              "基础逆重科技",
+              "标准逆重科技",
+              "高级逆重科技",
+              "穿梭机",
+              "高级心灵仪式",
+              "基础机械科技",
+              "高级机械科技",
+              "标准机械科技",
+              "极致机械科技",
+              "超凡遗传学",
+              "异种遗传学",
+              "虚空扰动",
+              "实体收容",
+              "活铁武器",
+              "酿酒",
+              "地毯铺设",
+              "可可树",
+              "恶魔菇",
+              "成瘾品生产",
+              "活力水制作",
+              "巨弓",
+              "长剑",
+              "蒸发制冷器",
+              "干肉饼",
+              "佩诺西林制作",
+              "板甲",
+              "精神药物提炼",
+              "精神叶冲调",
+              "反曲弓",
+              "植树",
+              "清醒丸制作",
+              "空调",
+              "蓄电池",
+              "反冲系统",
+              "改进照明",
+              "泡沫灭火器",
+              "气动系统",
+              "简易爆炸装置",
+              "营养膏合成机",
+              "包装生存食物",
+              "烟罐包",
+              "显像管电视",
+              "平板电视",
+              "地质扫描仪",
+              "远距离矿物扫描仪",
+              "运输舱",
+              "海军装甲",
+              "斥候装甲",
+              "集群火箭发射器",
+              "能量武器",
+              "钓鱼",
+              "重型桥梁",
+              "猎手无人机",
+              "轨道生存科技",
+              "大气升温器",
+              "活铁提取",
+              "活铁发电机",
+              "活铁采集",
+              "活铁塑造",
+              "极乐切脑",
+              "血怒之雨",
+              "洗脑",
+              "时间吞噬",
+              "死灵尘",
+              "死亡回避",
+              "眩光照明弹",
+              "汲电器",
+              "狂热诱发器",
+              "食尸鬼假体",
+              "食尸鬼植入",
+              "食尸鬼复活",
+              "心灵错乱武器",
+              "强力血清",
+              "钢血血清",
+              "思滞血清",
+              "突变武器",
+              "焦虑脉冲",
+              "学识汲取",
+              "愉悦脉冲",
+              "潜近探测器",
+              "嗜灵反应",
+              "幽魂隐形",
+              "血清合成",
+              "折跃绑架",
+              "睡眠抑制器",
+              "吸引动物",
+              "召唤血肉兽",
+              "召唤巨坑",
+              "吸引蹒跚怪",
+              "虚空雕塑",
+              "安全大门",
+              "炮塔背包",
+              "生体递归",
+              "生体塑形",
+              "神经超频",
+              "骑士装甲",
+              "枪械联控器",
+              "跳跃背包",
+              "贵族衣物",
+              "皇家衣物",
+              "人工代谢",
+              "大脑链接",
+              "作息节律",
+              "紧凑武器",
+              "躯体整形",
+              "愈合因子",
+              "分子分析",
+              "神经计算",
+              "皮肤硬化",
+              "专业肢体",
+              "毒素合成",
+              "竖琴",
+              "大键琴",
+              "钢琴",
+              "垃圾分解器",
+              "死眠设备",
+              "生育规范",
+              "基因处理器",
+              "培育舱",
+              "滤毒器",
+              "毒气",
+              "污染性发电"
+            ]
+          },
+          {
+            "label": "????",
+            "items": []
+          },
+          {
+            "label": "????",
+            "items": []
+          },
+          {
+            "label": "????",
+            "items": []
+          }
         ]
       },
       "studied_entity:entity": {
-        "title": "选择异象实体",
-        "quick": [
-          "虚空节点",
-          "扭曲方尖碑",
-          "腐化方尖碑",
-          "夜魇",
-          "金属怪形"
+        "title": "???????",
+        "groups": [
+          {
+            "label": "???????",
+            "items": [
+              "???",
+              "??",
+              "????"
+            ]
+          },
+          {
+            "label": "????????",
+            "items": [
+              "???",
+              "????"
+            ]
+          },
+          {
+            "label": "??????",
+            "items": [
+              "????"
+            ]
+          }
         ],
         "all": [
-          "虚空节点",
-          "虚空结构",
-          "虚空巨石",
-          "扭曲方尖碑",
-          "腐化方尖碑",
-          "畸变方尖碑",
-          "夜光柱",
-          "电子阻滞器",
-          "收容平台",
-          "收容点",
-          "灰盒",
-          "灰色雕塑",
-          "无底深坑",
-          "蹒趚怪",
-          "食尸鬼",
-          "金属怪形",
-          "血棘巨人",
-          "吞噬兽",
-          "嵌合兽",
-          "血肉核心",
-          "苦痛之球",
-          "夜魇",
-          "幽魂",
-          "隐形魔",
-          "恶臭瘤兽",
-          "惊惧母兽",
-          "独爪兽",
-          "双爪兽",
-          "三爪兽",
-          "扭曲超凡支柱",
-          "虚空金属块",
-          "虚空金属墙",
-          "潜近探测器",
-          "碎片阻滞器",
-          "狂热诱发器",
-          "睡眠抑制器",
-          "大气升温器"
+          "???",
+          "??",
+          "????"
+        ]
+      },
+      "animal_name": {
+        "title": "????",
+        "groups": [
+          {
+            "label": "????",
+            "items": [
+              "灰熊",
+              "灰熊幼崽",
+              "幼年灰熊",
+              "北极熊",
+              "北极熊幼崽",
+              "幼年北极熊",
+              "鹤鸵",
+              "鹤鸵仔",
+              "幼年鹤鸵",
+              "鸸鹋",
+              "鸸鹋仔",
+              "幼年鸸鹋",
+              "鸵鸟",
+              "鸵鸟仔",
+              "幼年鸵鸟",
+              "美洲狮",
+              "美洲狮幼崽",
+              "幼年美洲狮",
+              "猞猁",
+              "猞猁幼崽",
+              "幼年猞猁",
+              "黑豹",
+              "黑豹幼崽",
+              "幼年黑豹",
+              "猫",
+              "小猫崽",
+              "幼年猫",
+              "豚鼠",
+              "哈士奇犬",
+              "哈士奇犬幼崽",
+              "幼年哈士奇犬",
+              "拉布拉多犬",
+              "拉布拉多犬幼崽",
+              "幼年拉布拉多犬",
+              "猴",
+              "幼猴",
+              "幼年猴",
+              "约克夏犬",
+              "约克夏犬幼崽",
+              "幼年约克夏犬",
+              "鸡",
+              "鸡仔",
+              "幼年鸡",
+              "鸭",
+              "鸭仔",
+              "鹅",
+              "火鸡",
+              "火鸡仔",
+              "幼年火鸡",
+              "野牛",
+              "幼年野牛",
+              "爆炸羊",
+              "爆炸羊幼崽",
+              "幼年爆炸羊",
+              "驯鹿",
+              "驯鹿幼崽",
+              "幼年驯鹿",
+              "牛",
+              "牛犊",
+              "幼年牛",
+              "驴",
+              "驴驹",
+              "单峰骆驼",
+              "单峰骆驼幼崽",
+              "幼年单峰骆驼",
+              "象",
+              "象幼崽",
+              "幼年象",
+              "马鹿",
+              "马鹿幼崽",
+              "幼年马鹿",
+              "山羊",
+              "幼年山羊",
+              "马",
+              "马驹",
+              "雪牛",
+              "雪牛犊",
+              "幼年雪牛",
+              "犀牛",
+              "犀牛幼崽",
+              "幼年犀牛",
+              "牦牛",
+              "幼年牦牛",
+              "野兔",
+              "野兔幼崽",
+              "幼年野兔",
+              "雪兔",
+              "雪兔幼崽",
+              "幼年雪兔",
+              "巨型甲虫",
+              "巨型甲虫幼体",
+              "巨型甲虫成长体",
+              "巨型蜘蛛",
+              "巨型蜘蛛幼体",
+              "巨型蜘蛛成长体",
+              "洞穴阔步虫",
+              "洞穴阔步虫幼体",
+              "洞穴阔步虫成长体",
+              "阿尔法海狸",
+              "阿尔法海狸幼崽",
+              "幼年阿尔法海狸",
+              "眼镜蛇",
+              "眼镜蛇幼崽",
+              "幼年眼镜蛇",
+              "敲击兽",
+              "敲击兽幼崽",
+              "幼年敲击兽",
+              "乌龟",
+              "乌龟幼崽",
+              "幼年乌龟",
+              "栗鼠",
+              "栗鼠幼崽",
+              "幼年栗鼠",
+              "鹿",
+              "鹿幼崽",
+              "幼年鹿",
+              "瞪羚",
+              "瞪羚幼崽",
+              "幼年瞪羚",
+              "野山羊",
+              "野山羊羔",
+              "幼年野山羊",
+              "猪",
+              "乳猪",
+              "幼年猪",
+              "野猪",
+              "野猪幼崽",
+              "幼年野猪",
+              "羊驼",
+              "羊驼幼崽",
+              "幼年羊驼",
+              "水豚",
+              "水豚幼崽",
+              "幼年水豚",
+              "大地懒",
+              "大地懒幼崽",
+              "幼年大地懒",
+              "绵羊",
+              "幼年绵羊",
+              "爆炸鼠",
+              "爆炸鼠幼崽",
+              "幼年爆炸鼠",
+              "鬣蜥",
+              "鬣蜥幼崽",
+              "幼年鬣蜥",
+              "浣熊",
+              "浣熊幼崽",
+              "幼年浣熊",
+              "老鼠",
+              "老鼠幼崽",
+              "幼年老鼠",
+              "松鼠",
+              "松鼠幼崽",
+              "幼年松鼠",
+              "座狼",
+              "座狼幼崽",
+              "幼年座狼",
+              "北极狐",
+              "北极狐幼崽",
+              "幼年北极狐",
+              "耳廓狐",
+              "耳廓狐幼崽",
+              "幼年耳廓狐",
+              "赤狐",
+              "赤狐幼崽",
+              "幼年赤狐",
+              "北极狼",
+              "北极狼幼崽",
+              "幼年北极狼",
+              "森林狼",
+              "森林狼幼崽",
+              "幼年森林狼",
+              "短吻鳄",
+              "阿尔法敲击兽",
+              "阿尔法敲击兽幼崽",
+              "犰狳",
+              "獾",
+              "沼泽猎犬",
+              "沼泽猎犬幼崽",
+              "牛蛙",
+              "锯齿虎",
+              "巨蟾",
+              "大猩猩",
+              "河马",
+              "岩浆蜗牛",
+              "乳齿象",
+              "乳齿象幼崽",
+              "巨鼬",
+              "水貂",
+              "巨蜥",
+              "驼鹿",
+              "驼鹿幼崽",
+              "麝牛",
+              "麝牛犊",
+              "大熊猫",
+              "豪猪",
+              "土拨鼠",
+              "老虎",
+              "巨狼",
+              "巨狼幼崽",
+              "狼獾",
+              "蓝鸲",
+              "乌鸦",
+              "火烈鸟",
+              "苍鹭",
+              "金刚鹦鹉",
+              "孔雀",
+              "企鹅",
+              "鹌鹑",
+              "麻雀",
+              "天鹅",
+              "秃鹫",
+              "寄居蟹",
+              "水獭",
+              "海豹",
+              "幼海豹",
+              "海狮",
+              "幼海狮",
+              "海龟",
+              "石蟹",
+              "海象",
+              "幼海象",
+              "虫后",
+              "幼虫",
+              "蝗虫",
+              "盾皮树精",
+              "幼年树精",
+              "蜜果树精",
+              "协运树精",
+              "利爪树精",
+              "共生树精",
+              "药师树精",
+              "供木树精",
+              "毒爆羊",
+              "毒爆羊幼崽",
+              "污鼠"
+            ]
+          }
+        ],
+        "all": [
+          "灰熊",
+          "灰熊幼崽",
+          "幼年灰熊",
+          "北极熊",
+          "北极熊幼崽",
+          "幼年北极熊",
+          "鹤鸵",
+          "鹤鸵仔",
+          "幼年鹤鸵",
+          "鸸鹋",
+          "鸸鹋仔",
+          "幼年鸸鹋",
+          "鸵鸟",
+          "鸵鸟仔",
+          "幼年鸵鸟",
+          "美洲狮",
+          "美洲狮幼崽",
+          "幼年美洲狮",
+          "猞猁",
+          "猞猁幼崽",
+          "幼年猞猁",
+          "黑豹",
+          "黑豹幼崽",
+          "幼年黑豹",
+          "猫",
+          "小猫崽",
+          "幼年猫",
+          "豚鼠",
+          "哈士奇犬",
+          "哈士奇犬幼崽",
+          "幼年哈士奇犬",
+          "拉布拉多犬",
+          "拉布拉多犬幼崽",
+          "幼年拉布拉多犬",
+          "猴",
+          "幼猴",
+          "幼年猴",
+          "约克夏犬",
+          "约克夏犬幼崽",
+          "幼年约克夏犬",
+          "鸡",
+          "鸡仔",
+          "幼年鸡",
+          "鸭",
+          "鸭仔",
+          "鹅",
+          "火鸡",
+          "火鸡仔",
+          "幼年火鸡",
+          "野牛",
+          "幼年野牛",
+          "爆炸羊",
+          "爆炸羊幼崽",
+          "幼年爆炸羊",
+          "驯鹿",
+          "驯鹿幼崽",
+          "幼年驯鹿",
+          "牛",
+          "牛犊",
+          "幼年牛",
+          "驴",
+          "驴驹",
+          "单峰骆驼",
+          "单峰骆驼幼崽",
+          "幼年单峰骆驼",
+          "象",
+          "象幼崽",
+          "幼年象",
+          "马鹿",
+          "马鹿幼崽",
+          "幼年马鹿",
+          "山羊",
+          "幼年山羊",
+          "马",
+          "马驹",
+          "雪牛",
+          "雪牛犊",
+          "幼年雪牛",
+          "犀牛",
+          "犀牛幼崽",
+          "幼年犀牛",
+          "牦牛",
+          "幼年牦牛",
+          "野兔",
+          "野兔幼崽",
+          "幼年野兔",
+          "雪兔",
+          "雪兔幼崽",
+          "幼年雪兔",
+          "巨型甲虫",
+          "巨型甲虫幼体",
+          "巨型甲虫成长体",
+          "巨型蜘蛛",
+          "巨型蜘蛛幼体",
+          "巨型蜘蛛成长体",
+          "洞穴阔步虫",
+          "洞穴阔步虫幼体",
+          "洞穴阔步虫成长体",
+          "阿尔法海狸",
+          "阿尔法海狸幼崽",
+          "幼年阿尔法海狸",
+          "眼镜蛇",
+          "眼镜蛇幼崽",
+          "幼年眼镜蛇",
+          "敲击兽",
+          "敲击兽幼崽",
+          "幼年敲击兽",
+          "乌龟",
+          "乌龟幼崽",
+          "幼年乌龟",
+          "栗鼠",
+          "栗鼠幼崽",
+          "幼年栗鼠",
+          "鹿",
+          "鹿幼崽",
+          "幼年鹿",
+          "瞪羚",
+          "瞪羚幼崽",
+          "幼年瞪羚",
+          "野山羊",
+          "野山羊羔",
+          "幼年野山羊",
+          "猪",
+          "乳猪",
+          "幼年猪",
+          "野猪",
+          "野猪幼崽",
+          "幼年野猪",
+          "羊驼",
+          "羊驼幼崽",
+          "幼年羊驼",
+          "水豚",
+          "水豚幼崽",
+          "幼年水豚",
+          "大地懒",
+          "大地懒幼崽",
+          "幼年大地懒",
+          "绵羊",
+          "幼年绵羊",
+          "爆炸鼠",
+          "爆炸鼠幼崽",
+          "幼年爆炸鼠",
+          "鬣蜥",
+          "鬣蜥幼崽",
+          "幼年鬣蜥",
+          "浣熊",
+          "浣熊幼崽",
+          "幼年浣熊",
+          "老鼠",
+          "老鼠幼崽",
+          "幼年老鼠",
+          "松鼠",
+          "松鼠幼崽",
+          "幼年松鼠",
+          "座狼",
+          "座狼幼崽",
+          "幼年座狼",
+          "北极狐",
+          "北极狐幼崽",
+          "幼年北极狐",
+          "耳廓狐",
+          "耳廓狐幼崽",
+          "幼年耳廓狐",
+          "赤狐",
+          "赤狐幼崽",
+          "幼年赤狐",
+          "北极狼",
+          "北极狼幼崽",
+          "幼年北极狼",
+          "森林狼",
+          "森林狼幼崽",
+          "幼年森林狼",
+          "短吻鳄",
+          "阿尔法敲击兽",
+          "阿尔法敲击兽幼崽",
+          "犰狳",
+          "獾",
+          "沼泽猎犬",
+          "沼泽猎犬幼崽",
+          "牛蛙",
+          "锯齿虎",
+          "巨蟾",
+          "大猩猩",
+          "河马",
+          "岩浆蜗牛",
+          "乳齿象",
+          "乳齿象幼崽",
+          "巨鼬",
+          "水貂",
+          "巨蜥",
+          "驼鹿",
+          "驼鹿幼崽",
+          "麝牛",
+          "麝牛犊",
+          "大熊猫",
+          "豪猪",
+          "土拨鼠",
+          "老虎",
+          "巨狼",
+          "巨狼幼崽",
+          "狼獾",
+          "蓝鸲",
+          "乌鸦",
+          "火烈鸟",
+          "苍鹭",
+          "金刚鹦鹉",
+          "孔雀",
+          "企鹅",
+          "鹌鹑",
+          "麻雀",
+          "天鹅",
+          "秃鹫",
+          "寄居蟹",
+          "水獭",
+          "海豹",
+          "幼海豹",
+          "海狮",
+          "幼海狮",
+          "海龟",
+          "石蟹",
+          "海象",
+          "幼海象",
+          "虫后",
+          "幼虫",
+          "蝗虫",
+          "盾皮树精",
+          "幼年树精",
+          "蜜果树精",
+          "协运树精",
+          "利爪树精",
+          "共生树精",
+          "药师树精",
+          "供木树精",
+          "毒爆羊",
+          "毒爆羊幼崽",
+          "污鼠"
         ]
       }
     }

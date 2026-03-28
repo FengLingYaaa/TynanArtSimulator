@@ -460,7 +460,7 @@
         <div class="modal-head">
           <div>
             <h2 id="objectPickerTitle">选择内容</h2>
-            <p>可直接点选常见项，也可搜索更具体的官方条目。</p>
+            <p>可按分类浏览，也可搜索更具体的官方条目。</p>
           </div>
           <button id="closeObjectPickerBtn" type="button" class="ghost">关闭</button>
         </div>
@@ -468,7 +468,6 @@
           <span>搜索条目</span>
           <input id="objectPickerSearch" type="text" placeholder="输入关键词筛选可选内容" />
         </label>
-        <div id="objectPickerQuick" class="object-picker-quick"></div>
         <div id="objectPickerList" class="object-picker-list"></div>
       </div>
     </div>
@@ -483,13 +482,6 @@
         <div id="tutorialDots" class="tutorial-dots" aria-label="教程步骤导航"></div>
         <h2 id="tutorialTitle">使用指引</h2>
         <p id="tutorialText" class="hint">这里会显示简短说明。</p>
-        <div class="tutorial-options">
-          <label class="checkbox-inline">
-            <input id="tutorialDontRemind" type="checkbox" checked />
-            <span>完成后不再提醒</span>
-          </label>
-          <button id="reenableTutorialBtn" type="button" class="ghost">重新启用教程</button>
-        </div>
         <div class="button-row tutorial-actions">
           <button id="prevTutorialBtn" type="button" class="ghost">上一步</button>
           <button id="nextTutorialBtn" type="button">下一步</button>
@@ -502,6 +494,7 @@
 
     <datalist id="roleTitleList"></datalist>
     <script src="./content-data.js"></script>
+    <script src="./data-overrides.js"></script>
     <script src="./core.js"></script>
     <script src="./favorites.js"></script>
     <script src="./presets.js"></script>

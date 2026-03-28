@@ -1124,6 +1124,17 @@ button:disabled {
   margin-top: 12px;
 }
 
+.object-picker-group + .object-picker-group {
+  margin-top: 16px;
+}
+
+.object-picker-group-title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
 .object-picker-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -1195,6 +1206,7 @@ button:disabled {
   user-select: none;
   cursor: grab;
   position: relative;
+  touch-action: none;
 }
 
 .favorite-drag-handle:hover::after {
@@ -1226,29 +1238,20 @@ button:disabled {
 .favorite-manager-item.drag-over-after::after {
   content: "";
   position: absolute;
-  left: 10px;
-  right: 10px;
-  height: 3px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
   border-radius: 999px;
   background: #f59e0b;
   box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.14);
 }
 
 .favorite-manager-item.drag-over-before::before {
-  top: -4px;
+  left: -4px;
 }
 
 .favorite-manager-item.drag-over-after::after {
-  bottom: -4px;
-}
-
-.favorite-drop-placeholder {
-  min-height: 54px;
-  border-radius: 12px;
-  border: 1px dashed rgba(245, 158, 11, 0.7);
-  background: rgba(245, 158, 11, 0.08);
-  animation: dragPlaceholderPulse 0.6s ease-in-out infinite alternate;
-  pointer-events: none;
+  right: -4px;
 }
 
 @keyframes favoritePulse {
@@ -1262,9 +1265,24 @@ button:disabled {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes dragPlaceholderPulse {
-  0% { opacity: 0.42; transform: scale(0.985); }
-  100% { opacity: 0.9; transform: scale(1); }
+@media (max-width: 720px) {
+  .favorite-manager-item.drag-over-before::before,
+  .favorite-manager-item.drag-over-after::after {
+    left: 10px;
+    right: 10px;
+    top: auto;
+    bottom: auto;
+    width: auto;
+    height: 3px;
+  }
+
+  .favorite-manager-item.drag-over-before::before {
+    top: -4px;
+  }
+
+  .favorite-manager-item.drag-over-after::after {
+    bottom: -4px;
+  }
 }
 
 details {

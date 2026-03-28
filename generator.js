@@ -39,7 +39,6 @@
     objectPickerModal: document.querySelector("#objectPickerModal"),
     objectPickerTitle: document.querySelector("#objectPickerTitle"),
     objectPickerSearch: document.querySelector("#objectPickerSearch"),
-    objectPickerQuick: document.querySelector("#objectPickerQuick"),
     objectPickerList: document.querySelector("#objectPickerList"),
     closeObjectPickerBtn: document.querySelector("#closeObjectPickerBtn"),
     formContainer: document.querySelector("#formContainer"),
@@ -426,10 +425,6 @@
   function overviewCard(schema) {
     var node = document.createElement("section");
     node.className = "overview-card";
-    var modeText =
-      state.mode === "simple"
-        ? "简易模板：只填核心人物/对象与时间，适合手机上快速生成。"
-        : "完整模板：可补充称呼、代词、品质、材料与细节开关，更适合精修。";
     node.innerHTML =
       "<h2>当前模板说明</h2>" +
       '<p class="hint">分类：' +
@@ -439,21 +434,7 @@
       "</p>" +
       '<p class="hint">适用载体：' +
       schema.carrier_types.map(esc).join(" / ") +
-      "</p>" +
-      "<p>" +
-      esc(modeText) +
-      "</p>" +
-      '<div class="token-list">' +
-      [
-        "可手填",
-        "可用建议词",
-        state.mode === "simple" ? "移动端友好" : "支持精细控制",
-      ]
-        .map(function (item) {
-          return '<span class="token">' + esc(item) + "</span>";
-        })
-        .join("") +
-      "</div>";
+      "</p>";
     return node;
   }
   function roleSection(schema) {
@@ -476,16 +457,15 @@
 
   function objectSection(schema) {
     var section = createSection("对象槽位", "填写作品、武器、动物等对象；完整模板会额外开放可选对象。", true);
+    var visibleKeys = getVisibleFieldKeys(schema);
     var slots = schema.required_slots.filter(function (slot) {
       return slot.slot_type === "object";
     });
-    if (state.mode === "complete") {
-      slots = slots.concat(
-        schema.optional_slots.filter(function (slot) {
-          return slot.slot_type === "object";
-        })
-      );
-    }
+    slots = slots.concat(
+      schema.optional_slots.filter(function (slot) {
+        return slot.slot_type === "object" && visibleKeys.indexOf(slot.key) !== -1;
+      })
+    );
     if (!slots.length) {
       section.grid.appendChild(createHint("该事件不需要额外对象。"));
     }
@@ -502,22 +482,6 @@
     var wrapper = document.createElement("div");
     wrapper.className = "object-field-card";
     wrapper.appendChild(suggestField(slot.label, key, suggestions, buildObjectPlaceholder(slot, pickerConfig, suggestions)));
-
-    if (pickerConfig && pickerConfig.quick && pickerConfig.quick.length) {
-      var quickRow = document.createElement("div");
-      quickRow.className = "object-quick-row";
-      pickerConfig.quick.slice(0, 5).forEach(function (item) {
-        var chip = document.createElement("button");
-        chip.type = "button";
-        chip.className = "object-quick-chip";
-        chip.textContent = item;
-        chip.addEventListener("click", function () {
-          state.formRefs[key].value = item;
-        });
-        quickRow.appendChild(chip);
-      });
-      wrapper.appendChild(quickRow);
-    }
 
     if (pickerConfig && pickerConfig.all && pickerConfig.all.length) {
       var actionRow = document.createElement("div");
@@ -540,11 +504,13 @@
     var pickers = data.TEXT_TEMPLATES.object_picker_options || {};
     var specific = pickers[schema.id + ":" + slot.key];
     if (specific) return specific;
+    var bySuggestionType = pickers[slot.suggestion_type];
+    if (bySuggestionType) return bySuggestionType;
     var suggestions = data.SLOT_SUGGESTIONS[slot.suggestion_type] || [];
     if (suggestions.length >= 8) {
       return {
         title: "选择" + slot.label,
-        quick: suggestions.slice(0, 5),
+        groups: [{ label: "全部条目", items: suggestions.slice() }],
         all: suggestions.slice(),
       };
     }
@@ -552,7 +518,8 @@
   }
 
   function buildObjectPlaceholder(slot, pickerConfig, suggestions) {
-    var source = (pickerConfig && pickerConfig.quick && pickerConfig.quick.length ? pickerConfig.quick : suggestions) || [];
+    var source =
+      (pickerConfig && pickerConfig.all && pickerConfig.all.length ? pickerConfig.all : suggestions) || [];
     var example = source[0] || slot.label;
     return "例如：" + example;
   }
@@ -571,8 +538,9 @@
 
   function metaSection(schema) {
     var section = createSection("基础补充", "这些字段用于提高文本辨识度；简易模板默认不强制填写。", true);
+    var visibleKeys = getVisibleFieldKeys(schema);
     var slots = schema.optional_slots.filter(function (slot) {
-      return slot.slot_type === "meta" && slot.key !== "date_text" && state.mode === "complete";
+      return slot.slot_type === "meta" && slot.key !== "date_text" && visibleKeys.indexOf(slot.key) !== -1;
     });
     if (!slots.length) {
       section.grid.appendChild(createHint("简易模板下只保留时间；切到完整模板可填写品质、材料、标题等。"));
@@ -608,6 +576,11 @@
     grid.className = useGrid === false ? "" : "form-grid";
     node.appendChild(grid);
     return { node: node, grid: grid };
+  }
+
+  function getVisibleFieldKeys(schema) {
+    var source = state.mode === "complete" ? schema.complete_fields : schema.simple_fields;
+    return Array.isArray(source) ? source.slice() : [];
   }
 
   function suggestField(label, key, suggestions, placeholder) {
@@ -818,6 +791,7 @@
     refs.objectPickerModal.classList.remove("hidden");
     refs.objectPickerModal.setAttribute("aria-hidden", "false");
     renderObjectPickerList();
+    refs.objectPickerSearch.focus();
   }
 
   function closeObjectPicker() {
@@ -830,40 +804,71 @@
     var picker = state.objectPicker.config;
     if (!picker) return;
     var query = refs.objectPickerSearch.value.trim().toLowerCase();
-    var all = (picker.all || []).filter(function (item) {
-      return !query || item.toLowerCase().indexOf(query) !== -1;
-    });
-
-    refs.objectPickerQuick.innerHTML = "";
-    (picker.quick || []).forEach(function (item) {
-      var chip = document.createElement("button");
-      chip.type = "button";
-      chip.className = "object-quick-chip";
-      chip.textContent = item;
-      chip.addEventListener("click", function () {
-        applyObjectPickerValue(item);
-      });
-      refs.objectPickerQuick.appendChild(chip);
-    });
+    var groups = getFilteredObjectPickerGroups(picker, query);
 
     refs.objectPickerList.innerHTML = "";
-    if (!all.length) {
+    if (!groups.length) {
       refs.objectPickerList.appendChild(createPlaceholder("没有匹配的条目。"));
       return;
     }
-    var grid = document.createElement("div");
-    grid.className = "object-picker-grid";
-    all.forEach(function (item) {
-      var button = document.createElement("button");
-      button.type = "button";
-      button.className = "object-picker-item";
-      button.textContent = item;
-      button.addEventListener("click", function () {
-        applyObjectPickerValue(item);
+    var showGroupTitles = groups.length > 1;
+    groups.forEach(function (groupInfo) {
+      var section = document.createElement("section");
+      section.className = "object-picker-group";
+      if (showGroupTitles) {
+        var title = document.createElement("h3");
+        title.className = "object-picker-group-title";
+        title.textContent = groupInfo.label;
+        section.appendChild(title);
+      }
+      var grid = document.createElement("div");
+      grid.className = "object-picker-grid";
+      groupInfo.items.forEach(function (item) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "object-picker-item";
+        button.textContent = item;
+        button.addEventListener("click", function () {
+          applyObjectPickerValue(item);
+        });
+        grid.appendChild(button);
       });
-      grid.appendChild(button);
+      section.appendChild(grid);
+      refs.objectPickerList.appendChild(section);
     });
-    refs.objectPickerList.appendChild(grid);
+  }
+
+  function getFilteredObjectPickerGroups(picker, query) {
+    var groupedItems = [];
+    (picker.groups || []).forEach(function (group) {
+      (group.items || []).forEach(function (item) {
+        if (groupedItems.indexOf(item) === -1) groupedItems.push(item);
+      });
+    });
+    var groups = (picker.groups || []).map(function (group) {
+      return {
+        label: group.label,
+        items: (group.items || []).filter(function (item) {
+          return !query || item.toLowerCase().indexOf(query) !== -1;
+        }),
+      };
+    }).filter(function (group) {
+      return group.items.length;
+    });
+    var extras = (picker.all || []).filter(function (item) {
+      return groupedItems.indexOf(item) === -1 && (!query || item.toLowerCase().indexOf(query) !== -1);
+    });
+    if (extras.length) {
+      groups.push({
+        label: picker.groups && picker.groups.length ? "其他条目" : "全部条目",
+        items: extras,
+      });
+    }
+    if (groups.length) return groups;
+    var all = (picker.all || []).filter(function (item) {
+      return !query || item.toLowerCase().indexOf(query) !== -1;
+    });
+    return all.length ? [{ label: "全部条目", items: all }] : [];
   }
 
   function applyObjectPickerValue(value) {
